@@ -156,12 +156,24 @@ Always be helpful, accurate, and provide well-structured responses.""",
                 meta={"error": str(e)}
             )
 
+# Health Logger v3 import
+try:
+    from healthlogger.workflow import HealthLoggerWorkflowWrapper
+    health_logger_v3 = HealthLoggerWorkflowWrapper()
+except ImportError as e:
+    print(f"Warning: Health Logger v3 not available: {e}")
+    health_logger_v3 = None
+
 # Registry of available agents
 AGENTS: Dict[str, Any] = {
     "EchoAgent": EchoAgent(),
     "ResearchAgent": ResearchAgent(),
     "GeneralAgent": GeneralAgent(),
 }
+
+# Add Health Logger v3 if available
+if health_logger_v3:
+    AGENTS["Health Logger (v3)"] = health_logger_v3
 
 def call_agent(agent_name: str, user_text: str, filepaths: Optional[List[str]] = None) -> ChatResult:
     """

@@ -1,0 +1,20 @@
+{
+  "ep_2025-01-15_migraine_37e2cbeb": {
+    "episode_id": "ep_2025-01-15_migraine_37e2cbeb",
+    "condition": "migraine",
+    "started_at": "2025-01-15T10:30:00",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 7,
+    "max_severity": 7,
+    "severity_points": [
+      {
+        "ts": "2025-01-15T10:30:00",
+        "level": 7
+      }
+    ],
+    "notes_log": [],
+    "interventions": [],
+    "last_updated_at": "2025-01-15T10:30:00"
+  }
+}
