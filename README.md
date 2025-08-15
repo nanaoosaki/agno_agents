@@ -1,125 +1,152 @@
-# Linda Agentic Engine
+# 🤖 Agno Chat Interface
 
-A comprehensive multi-agent AI system built with the Agno framework, featuring different levels of agent complexity and capabilities.
+A local, multi-modal chat interface for Agno AI agents built with Gradio. Features text input, voice transcription, file attachments, and agent switching.
 
-## 🤖 Agent Levels
+## ✨ Features
 
-### Level 1 Agent (`level_1_agent.py`)
-- Basic agent with tools and instructions
-- Simple financial queries using YFinance tools
+- **Multi-modal Input**: Text, microphone (Whisper transcription), and file attachments
+- **Agent Selection**: Switch between different Agno agents via dropdown
+- **Real-time Chat**: Interactive chat history with user/assistant conversation flow
+- **File Support**: Upload and analyze images, PDFs, documents
+- **Voice Input**: Record audio messages with automatic transcription
+- **Modern UI**: Clean Gradio interface with custom styling
 
-### Level 2 Agent (`level_2_agent.py`) 
-- Agents with knowledge base and storage
-- Uses ChromaDB for vector storage (Windows-friendly)
-- Loads external documentation for context
+## 🚀 Quick Start
 
-### Level 3 Agent (`level_3_agent.py`)
-- Agents with memory and reasoning capabilities
-- Persistent memory using SQLite
-- Advanced reasoning tools
+### 1. Setup Environment
 
-### Level 4 Agent (`level_4_agent.py`)
-- Multi-agent teams with collaboration
-- **Triple-hybrid model approach:**
-  - **Web Search Agent**: Gemini 2.0 Flash (cost-effective research)
-  - **Finance Agent**: GPT-4o (superior financial analysis)
-  - **Team Coordinator**: Claude Sonnet 4 (advanced reasoning)
-- Comprehensive financial analysis and portfolio recommendations
-
-### Specialized Agents
-
-#### Migraine Analysis Agent (`migraine_agent.py`)
-- Specialized medical analysis assistant
-- Uses Gemini 2.0 Flash for cost-effective processing
-- Knowledge base from migraine medical documentation
-- Patient memory storage and pattern analysis
-
-## 🛠️ Setup
-
-1. **Install Dependencies**
-   ```bash
-   pip install agno python-dotenv
-   ```
-
-2. **Environment Variables**
-   Create a `.env` file with your API keys:
-   ```
-   OPENAI_API_KEY=your_openai_key_here
-   GEMINI_API_KEY=your_gemini_key_here
-   ANTHROPIC_API_KEY=your_anthropic_key_here
-   ```
-
-3. **Virtual Environment**
-   ```bash
-   python -m venv uv
-   .\uv\Scripts\Activate  # Windows
-   ```
-
-## 🚀 Usage
-
-### Run Individual Agents
 ```bash
-python level_1_agent.py
-python level_2_agent.py
-python level_3_agent.py
-python level_4_agent.py
-python migraine_agent.py
+# Create virtual environment
+python -m venv .venv
+
+# Activate virtual environment
+# On Windows:
+.venv\Scripts\activate
+# On macOS/Linux:
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
 
-### Level 4 Agent Features
-- **Financial Analysis**: Comprehensive stock analysis (AAPL, GOOGL, MSFT)
-- **News Research**: Real-time market sentiment analysis
-- **Portfolio Recommendations**: AI-powered allocation strategies
-- **Risk Assessment**: Multi-dimensional risk evaluation
+### 2. Configure API Keys
 
-## 🧠 AI Model Strategy
+```bash
+# Copy environment template
+cp env_example.txt .env
 
-The system uses a **hybrid multi-model approach** to optimize for:
-- **Performance**: Best-in-class models for specific tasks
-- **Cost**: Efficient model selection based on complexity
-- **Reliability**: Redundancy across different AI providers
+# Edit .env file with your API keys
+# At minimum, you need:
+OPENAI_API_KEY=sk-your-key-here
+```
 
-### Model Selection:
-- **GPT-4o**: Complex financial analysis and calculations
-- **Claude Sonnet 4**: Advanced reasoning and synthesis
-- **Gemini 2.0 Flash**: Fast, cost-effective general tasks
+### 3. Run the Application
 
-## 📊 Features
+```bash
+python app.py
+```
 
-- ✅ Multi-agent collaboration
-- ✅ Persistent memory and storage
-- ✅ Vector databases for knowledge retrieval
-- ✅ Real-time web search and news analysis
-- ✅ Financial data integration (YFinance)
-- ✅ Medical document analysis
-- ✅ Reasoning and analysis tools
-- ✅ Cross-platform compatibility
+The interface will open automatically in your browser at `http://127.0.0.1:7860`
 
-## 🔧 Technical Stack
+## 🔧 Available Agents
 
-- **Framework**: Agno (AI agent framework)
-- **Vector DB**: ChromaDB (Windows-friendly)
-- **Memory**: SQLite-based persistence
-- **APIs**: OpenAI, Anthropic, Google AI
-- **Tools**: YFinance, DuckDuckGo, ReasoningTools
+- **EchoAgent**: Simple test agent that echoes your input
+- **ResearchAgent**: Web-enabled research assistant with DuckDuckGo search
+- **GeneralAgent**: General purpose AI assistant for various tasks
 
-## 📈 Performance
+## 📝 Usage
 
-The Level 4 triple-hybrid team delivers institutional-quality analysis:
-- **Speed**: ~30-130 seconds for comprehensive reports
-- **Accuracy**: Multi-model validation and cross-checking
-- **Cost**: Optimized model selection for efficiency
+1. **Select Agent**: Choose your preferred AI agent from the dropdown
+2. **Text Chat**: Type messages and press Enter or click Send
+3. **Voice Input**: Click the microphone, record your message, then click "Transcribe & Send"
+4. **File Attachments**: Upload files using the file input area
+5. **Clear Chat**: Use the Clear Chat button to start a new conversation
 
-## 🛡️ Security
+## 🛠️ Configuration
 
-- Environment variable management for API keys
-- Local data storage and processing
-- No hardcoded credentials
+### Environment Variables
 
-## 📄 License
+Create a `.env` file with the following variables:
 
-MIT License - Feel free to use and modify for your projects.
+```env
+# Required for all agents
+OPENAI_API_KEY=sk-your-openai-api-key
+
+# Optional - add as needed for specific agents
+EXA_API_KEY=your-exa-key
+ANTHROPIC_API_KEY=your-anthropic-key
+GROQ_API_KEY=your-groq-key
+```
+
+### Adding Custom Agents
+
+To add your own Agno agents, edit `agents.py`:
+
+1. Create a new agent class following the existing pattern
+2. Add it to the `AGENTS` registry
+3. Restart the application
+
+Example:
+```python
+class MyCustomAgent:
+    name = "MyCustomAgent"
+    description = "Description of what this agent does"
+    
+    def __init__(self):
+        self.agent = Agent(
+            name="My Custom Agent",
+            model=OpenAIChat(id="gpt-4o-mini-2024-07-18"),
+            instructions="Your custom instructions here",
+            tools=[YourCustomTools()],
+        )
+    
+    def run(self, prompt: str, files: Optional[List[str]] = None) -> ChatResult:
+        # Your implementation here
+        pass
+
+# Add to registry
+AGENTS["MyCustomAgent"] = MyCustomAgent()
+```
+
+## 🔍 Troubleshooting
+
+### Common Issues
+
+1. **"Agno imports failed"**: Install Agno with `pip install agno`
+2. **"Audio transcription disabled"**: Set `OPENAI_API_KEY` in `.env`
+3. **"Agent not available"**: Check API keys and Agno installation
+4. **Import errors**: Ensure all dependencies are installed with `pip install -r requirements.txt`
+
+### Debug Mode
+
+To run with more verbose logging, modify `app.py`:
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+```
+
+## 📦 Dependencies
+
+- `agno>=0.2.5` - The Agno AI framework
+- `gradio>=4.44.0` - Web UI framework
+- `openai>=1.35.14` - For Whisper transcription
+- `python-dotenv>=1.0.1` - Environment variable loading
 
 ## 🤝 Contributing
 
-Contributions welcome! Please feel free to submit pull requests or open issues for improvements.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project follows the same license as the parent Agno framework.
+
+## 🔗 Links
+
+- [Agno Documentation](https://docs.agno.com/)
+- [Gradio Documentation](https://gradio.app/docs/)
+- [OpenAI API Documentation](https://platform.openai.com/docs/)

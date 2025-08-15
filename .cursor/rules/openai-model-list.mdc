@@ -1,0 +1,30 @@
+---
+alwaysApply: true
+---
+
+# Available OpenAI Models for Current API Key
+
+Based on API call to `https://api.openai.com/v1/models` on 2025-01-11:
+
+## GPT Models Available:
+- `chatgpt-4o-latest`
+- `gpt-4o`
+- `gpt-4o-2024-08-06`
+- `gpt-4o-2024-11-20`
+- `gpt-4o-audio-preview`
+- `gpt-4o-audio-preview-2024-12-17`
+- `gpt-4o-mini-2024-07-18`
+- `gpt-4o-mini-audio-preview-2024-12-17`
+- `gpt-4o-realtime-preview`
+
+## Notes:
+- The correct model ID for "gpt-4o-mini" is `gpt-4o-mini-2024-07-18`
+- The correct model ID for "gpt-4o" is `gpt-4o` (base model)
+- Audio preview models are available for voice/audio applications
+- Realtime preview model available for streaming applications
+
+## Usage in Linda Project:
+- **Primary Model**: `gpt-4o-mini-2024-07-18` (fast, cost-effective for data extraction)
+- **Fallback Model**: `gpt-4o` (stronger reasoning for complex cases)
+
+*Last updated: 2025-01-11*

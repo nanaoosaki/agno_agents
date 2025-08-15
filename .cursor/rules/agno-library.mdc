@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+
+For any Agno API or feature mentioned, search the organized docs/agno/ folder first and include the exact file reference. If not found, say "I can't verify".
+
+Use docs/agno/ as the authoritative reference for Agno APIs and code patterns. This folder contains the complete Agno documentation organized by topic:
+- docs/agno/index.md - Main index of all sections
+- docs/agno/quick_reference.md - Common patterns and APIs
+- docs/agno/knowledge/ - Chunking strategies, embedders, knowledge bases
+- docs/agno/core/ - Agent creation, sessions, basic APIs
+- docs/agno/tools/ - ReasoningTools and other tool integrations
+
+When you generate code, include a brief comment with the file path you followed from docs/agno/.
