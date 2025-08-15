@@ -10,11 +10,7 @@ from datetime import datetime, timedelta
 from typing import List, Optional, Dict, Any
 from pathlib import Path
 
-try:
-    from agno.tools import tool
-except ImportError:
-    # Fallback for development
-    tool = lambda x: x
+# Note: These functions are called directly in workflow steps, not as Agent tools
 
 from .schema import (
     EpisodeData, EpisodeCandidate, ObservationData, InterventionData,
@@ -57,7 +53,6 @@ def _save_episodes(episodes: Dict[str, Dict[str, Any]]):
     with open(EPISODES_FILE, 'w') as f:
         json.dump(episodes, f, indent=2, default=str)
 
-@tool
 def fetch_open_episode_candidates(window_hours: int = 24) -> List[EpisodeCandidate]:
     """
     Fetch recent open episodes as candidates for linking.
@@ -113,7 +108,6 @@ def fetch_open_episode_candidates(window_hours: int = 24) -> List[EpisodeCandida
     candidates.sort(key=lambda x: x.last_updated_at, reverse=True)
     return candidates[:5]  # Limit to top 5 candidates
 
-@tool
 def normalize_condition(text: str) -> Optional[str]:
     """
     Normalize condition text to canonical form using condition families.
@@ -141,7 +135,6 @@ def normalize_condition(text: str) -> Optional[str]:
     
     return None
 
-@tool
 def create_episode(condition: str, fields: Dict[str, Any], now: Optional[str] = None) -> str:
     """
     Create a new health episode.
@@ -185,7 +178,6 @@ def create_episode(condition: str, fields: Dict[str, Any], now: Optional[str] = 
     
     return episode_id
 
-@tool
 def update_episode(episode_id: str, fields: Dict[str, Any], now: Optional[str] = None) -> bool:
     """
     Update an existing episode with new data.
@@ -240,7 +232,6 @@ def update_episode(episode_id: str, fields: Dict[str, Any], now: Optional[str] =
     
     return True
 
-@tool
 def add_intervention(episode_id: str, intervention: Dict[str, Any], now: Optional[str] = None) -> str:
     """
     Add an intervention to an episode.
@@ -302,7 +293,6 @@ def add_intervention(episode_id: str, intervention: Dict[str, Any], now: Optiona
     
     return intervention_id
 
-@tool
 def save_observation(category: str, fields: Dict[str, Any], now: Optional[str] = None) -> str:
     """
     Save a general health observation.
@@ -346,7 +336,6 @@ def save_observation(category: str, fields: Dict[str, Any], now: Optional[str] =
     
     return observation_id
 
-@tool
 def append_event(user_text: str, parsed_data: Dict[str, Any], action: str, 
                 model: Optional[str] = None, confidence: Optional[float] = None,
                 episode_id: Optional[str] = None) -> str:
@@ -390,7 +379,6 @@ def append_event(user_text: str, parsed_data: Dict[str, Any], action: str,
     
     return event_id
 
-@tool
 def get_episode_by_id(episode_id: str) -> Optional[Dict[str, Any]]:
     """
     Retrieve episode by ID.

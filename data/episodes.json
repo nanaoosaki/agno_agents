@@ -16,5 +16,41 @@
     "notes_log": [],
     "interventions": [],
     "last_updated_at": "2025-01-15T10:30:00"
+  },
+  "ep_2025-01-15_migraine_52466aaa": {
+    "episode_id": "ep_2025-01-15_migraine_52466aaa",
+    "condition": "migraine",
+    "started_at": "2025-01-15T10:30:00",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 7,
+    "max_severity": 7,
+    "severity_points": [
+      {
+        "ts": "2025-01-15T10:30:00",
+        "level": 7
+      }
+    ],
+    "notes_log": [],
+    "interventions": [],
+    "last_updated_at": "2025-01-15T10:30:00"
+  },
+  "ep_2025-08-15_migraine_4868be11": {
+    "episode_id": "ep_2025-08-15_migraine_4868be11",
+    "condition": "migraine",
+    "started_at": "2025-08-15T19:36:59.321604",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-08-15T19:36:59.321604",
+        "text": "the pain is still going on, it's mainly on the right side of my temple, neck and scapular area"
+      }
+    ],
+    "interventions": [],
+    "last_updated_at": "2025-08-15T19:36:59.321604"
   }
 }

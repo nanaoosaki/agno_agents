@@ -6,6 +6,8 @@ This document tracks common errors encountered with external APIs and their solu
 
 ### Error: "Invalid schema for response_format: $ref cannot have keywords {'description'}"
 
+**Status:** ✅ **RESOLVED**
+
 **Date:** 2025-01-15  
 **Context:** Health Logger v3 implementation  
 **API:** OpenAI Chat Completions with `response_format` (Structured Output)
@@ -132,8 +134,97 @@ class Fields(BaseModel):
 - Similar issues may occur with other structured output APIs
 - Agno framework abstracts OpenAI calls but inherits these limitations
 
+## Agno Tool Decorator Errors
+
+### Error: "'Function' object is not callable"
+
+**Date:** 2025-01-15  
+**Context:** Health Logger v3 workflow step execution  
+**Library:** Agno Tools  
+
+#### Problem Description
+
+When using the `@tool` decorator on functions that are meant to be called directly in workflow steps (not by agents), the functions become `agno.tools.Function` objects instead of regular Python functions, resulting in a `TypeError: 'Function' object is not callable` error.
+
+#### Error Message
+
+```
+WARNING  Step Process failed (attempt 1): 'Function' object is not callable
+TypeError: 'Function' object is not callable
+```
+
+#### Root Cause
+
+The issue occurs when:
+1. Functions are decorated with `@tool` for future Agent use
+2. Same functions are called directly in workflow steps  
+3. `@tool` decorator wraps functions as `agno.tools.Function` objects
+4. Function objects are only callable within Agent context, not as regular functions
+
+#### Example Problematic Code
+
+```python
+from agno.tools import tool
+
+@tool  # ❌ PROBLEMATIC - makes function uncallable outside Agent
+def fetch_data(param: str) -> str:
+    return f"Data for {param}"
+
+# In workflow step:
+def process_step(step_input):
+    data = fetch_data("test")  # ❌ FAILS - 'Function' object is not callable
+```
+
+#### Solution
+
+**Remove `@tool` decorators** from functions called directly in workflow steps:
+
+```python
+# ✅ WORKS - regular Python function
+def fetch_data(param: str) -> str:
+    return f"Data for {param}"
+
+# In workflow step:
+def process_step(step_input):
+    data = fetch_data("test")  # ✅ WORKS - regular function call
+```
+
+#### Best Practices
+
+1. **For Workflow Functions:**
+   - Use regular Python functions (no `@tool` decorator)
+   - Call directly in workflow steps
+   - Keep function signatures simple and clear
+
+2. **For Agent Tools:**
+   - Use `@tool` decorator for functions agents should call
+   - Add to agent's `tools=[]` parameter
+   - Don't call these directly in workflow code
+
+3. **Hybrid Approach:**
+   ```python
+   # Regular function for direct calls
+   def _internal_fetch_data(param: str) -> str:
+       return f"Data for {param}"
+   
+   # Tool wrapper for agents
+   @tool
+   def fetch_data_tool(param: str) -> str:
+       """Tool for agents to fetch data"""
+       return _internal_fetch_data(param)
+   ```
+
+#### Prevention Checklist
+
+- [ ] Use `@tool` only for Agent tools, not workflow functions
+- [ ] Call regular Python functions directly in workflow steps
+- [ ] Test function calls outside of Agent context
+- [ ] Separate internal functions from Agent tools when both are needed
+
 #### References
 
 - [OpenAI Structured Outputs Documentation](https://platform.openai.com/docs/guides/structured-outputs)
 - [JSON Schema Specification - $ref behavior](https://json-schema.org/understanding-json-schema/structuring.html#ref)
 - [Pydantic JSON Schema Generation](https://docs.pydantic.dev/latest/concepts/json_schema/)
+- [Agno Tools Documentation](https://docs.agno.com/tools/introduction)
+- [Agno Tool Decorator](https://docs.agno.com/tools/tool-decorator)

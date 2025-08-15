@@ -232,7 +232,10 @@ def process_and_log_step(step_input: StepInput) -> StepOutput:
             router_output = RouterOutput(**previous_content)
     else:
         router_output = previous_content
-    session_state = step_input.workflow_session_state
+    
+    # TODO: Figure out proper session state access in Agno v2
+    # For now, use a simple approach without persistent session state
+    session_state = {}
     now = datetime.utcnow()
     
     # Check for pending disambiguation resolution

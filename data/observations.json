@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "observation_id": "obs_feeb7e3c",
+    "timestamp": "2025-08-15T19:36:48.856329",
+    "category": "sleep",
+    "value": null,
+    "notes": "I slept 7 hours last night and it felt pretty bad cause I woke up twice to pee"
+  }
+]
