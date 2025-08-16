@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "source": "html_file",
+    "file_path": "real_user_messages\\Migraine-Asthma-AcidReflux-Sleep Logger - daily log 2025-08-10.html",
+    "extracted_at": "2025-08-16T10:14:53.898055",
+    "total_messages": 16,
+    "user_messages": 8,
+    "ai_messages": 8,
+    "extraction_method": "article_parsing",
+    "parser_version": "final_v1"
+  },
+  "messages": [
+    {
+      "index": 0,
+      "role": "user",
+      "content": "Here's today's entry. I went to bed about 9.15 p.m. I think I got up probably around 4 a.m. somewhere. And then since I stayed in bed, and I actually got out of the bedroom probably 5.30 somewhere, and then I drank the water, and I was playing and sitting out of the field with the electrolyte packet, and then I took my morning anti-reflux medication, and then I did a bunch of neck stretching exercise to just help wake up the day.",
+      "timestamp": null,
+      "message_id": "turn_0",
+      "word_count": 83,
+      "char_count": 433,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 1,
+      "role": "ai",
+      "content": "Log saved FieldDetailsDate2025-08-10Time06:23LocationFrederick, MDWeatherClear 55 °FBed time (HH:MM)21:15Wake time (HH:MM)04:00Meals & times (food, caffeine, alcohol)Water + Liquid IV electrolyte (~05:30)Exercise / ActivityMorning neck-stretch routinePosture breaks / Neck exercises✔ neck stretching on wakingSupplements listLiquid IV electrolyte packetPantoprazole (Y/N time)Y @ 05:30 Reflections Nice job getting in some gentle movement right after waking—neck stretches can help settle that cervico-occipital tension. Quick check-ins: • How many total hours of solid sleep did you feel you actually got, and how would you rate the quality 1-10? • Rough estimate of ounces of water/electrolyte so far? Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_1",
+      "word_count": 96,
+      "char_count": 737,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 2,
+      "role": "user",
+      "content": "I don't know, probably 6 or 7 hours, quality",
+      "timestamp": null,
+      "message_id": "turn_2",
+      "word_count": 9,
+      "char_count": 44,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 3,
+      "role": "ai",
+      "content": "Log saved FieldDetailsSleep hours + Quality (1-10)~6 – 7 h; quality ?Night wakes (#)1 Reflections A single early wake is common—quality score (1 = poor, 10 = best) helps spot trends. How many ounces of water/electrolyte have you finished so far today? Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_3",
+      "word_count": 47,
+      "char_count": 285,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 4,
+      "role": "user",
+      "content": "2.34pm. I'm having a tiny bit of left head pain, probably from the tight neckness. We were out for a couple of hours. We were out in the park and out there. I had a hamburger for lunch and roasted corn.",
+      "timestamp": null,
+      "message_id": "turn_4",
+      "word_count": 41,
+      "char_count": 202,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 5,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNotes (weather change, hormones, travel, etc.)Afternoon park outing; lunch ≈ 14:00 – hamburger & roasted cornEpisode ID linkLH-1 Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowLH-1left-headache14:34????Outdoors (park) Reflections Nice job getting outside and moving—fresh air plus gentle walking often helps cervico-genic tension. Quick check-ins: • How would you rate that left-headache pain on a 0-10 scale? • Roughly how many ounces of water/electrolyte have you had so far today? Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_5",
+      "word_count": 71,
+      "char_count": 555,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 6,
+      "role": "user",
+      "content": "1 for left head pain",
+      "timestamp": null,
+      "message_id": "turn_6",
+      "word_count": 5,
+      "char_count": 20,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 7,
+      "role": "ai",
+      "content": "Log saved FieldDetailsLeft-headache pain (0-10)1 Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowLH-1left-headache14:34?11?Outdoors (park) Reflections Low-grade (1/10) is good news—let’s keep it that way: gentle neck rotation and perhaps a cool compress if you feel it creeping. Still missing: (a) sleep-quality score 1-10 and (b) your hydration total in ounces so far—could you share both? Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_7",
+      "word_count": 55,
+      "char_count": 439,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 8,
+      "role": "user",
+      "content": "I took the amitriptlyne on 2025-08-10 at 08:20pm ; 5mins later than ususal , and we'll start to experiment taking it at this time for another 5 days , so this would be day 1 for the experiment. and I skipped the maintenance inhaler .",
+      "timestamp": null,
+      "message_id": "turn_8",
+      "word_count": 45,
+      "char_count": 233,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 9,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNotes (weather change, hormones, travel, etc.)Added: Day 1 of 5-day trial shifting amitriptyline to 20:20; maintenance inhaler skippedAmitriptyline (Y/N time)Y @ 20:20 (-5 min from usual)Maintenance inhaler (name + puffs)Fluticasone/Salmeterol DPI – skipped Reflections Experiment tracker – Since you’re nudging the amitriptyline dose later, let’s capture tonight’s dry-mouth 0-5, motivation 0-5, and appetite (↓/↔/↑) tomorrow morning so we can see any trend. Skipping the maintenance inhaler occasionally is usually okay, but keep an ear out for subtle chest tightness or nighttime cough—reach for the rescue inhaler if needed, and aim to resume the controller tomorrow. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_9",
+      "word_count": 102,
+      "char_count": 727,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 10,
+      "role": "user",
+      "content": "can you provide the full updated entry of 2025-08-10",
+      "timestamp": null,
+      "message_id": "turn_10",
+      "word_count": 9,
+      "char_count": 52,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 11,
+      "role": "ai",
+      "content": "FieldDetailsDate2025-08-10Time06:23LocationFrederick, MDWeatherMostly cloudy, 73 °FBed time (HH:MM)21:15Wake time (HH:MM)04:00Sleep hours + Quality (1-10)6 – 7 h; quality ?Night wakes (#)1Morning light (min)Weight (lbs)AM-feel refreshed (1-10)Meals & times (food, caffeine, alcohol)Water + Liquid IV (~05:30); hamburger & roasted corn (~14:00)Hydration (oz)Stress (0-10)Mood / emotionsExercise / ActivityNeck stretch on waking; park walk (~2 h)Posture breaks / Neck exercises✔ neck stretchesNotes (weather change, hormones, travel, etc.)Day 1 shifting amitriptyline to 20:20; park outingProtein (g)Fiber (g)Vitamin D (IU)Calcium (mg)Calories (kcal)Carbohydrates (g)Added sugars (g)Supplements listLiquid IV electrolyte packetPantoprazole (Y/N time)Y @ 05:30Famotidine (Y/N time)Amitriptyline (Y/N time)Y @ 20:20Emgality – injection dateDoxylamine (mg + brand)Acetaminophen (mg + brand)Right-side migraine pain (0-10)Left-headache pain (0-10)1Scalp-pain (0-10)Asthma symptoms (none / cough / tight)Reflux symptoms (burn / lump / cool 0-5)Episode ID linkLH-1PT Before pain / tightness (0-10)PT During comfort (0-10)PT After relief (0-10)Dry-mouth (0-5)Motivation (0-5)Appetite (↓ / ↔ / ↑)Maintenance inhaler (name + puffs)Fluticasone/Salmeterol DPI – skippedRescue inhaler uses Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowLH-1left-headache14:3411Outdoors (park) Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_11",
+      "word_count": 159,
+      "char_count": 1412,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 12,
+      "role": "user",
+      "content": "the left- headache dsiappeared after I took the nap, the nap happened between 2:50pm - 4:10 pm and waking up feels fine as well.",
+      "timestamp": null,
+      "message_id": "turn_12",
+      "word_count": 24,
+      "char_count": 128,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 13,
+      "role": "ai",
+      "content": "Log saved FieldDetailsEpisode SummaryLH-1 resolved after restorative nap 14:50 – 16:10 (1 h 36 m); pain = 0 on waking Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowLH-1left-headache14:3416:10 / 1 h 36 m11NapHome bed Reflections Great to see the brief nap wiped out that tension—good data point that rest + neck decompression helps. Still missing: (a) sleep-quality score (1–10) and (b) today’s hydration total in ounces—could you share both so we can spot patterns? Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_13",
+      "word_count": 74,
+      "char_count": 516,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 14,
+      "role": "user",
+      "content": "can you summarize this episode into a pragraph ?",
+      "timestamp": null,
+      "message_id": "turn_14",
+      "word_count": 9,
+      "char_count": 48,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 15,
+      "role": "ai",
+      "content": "Log saved FieldDetails Reflections On August 10 (14:34 → 16:10), you noticed a faint left-temple ache (1/10) after a couple of hours at the park. The discomfort coincided with neck tightness and outdoor activity. Returning home, you lay down and napped from 14:50 to 16:10; the headache faded to 0/10 on waking, indicating that brief restorative rest plus spinal unloading effectively relieved the tension without medication. This episode reinforces how early neck cues, a calm environment, and a 90-minute nap can abort mild headaches before they escalate. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_15",
+      "word_count": 92,
+      "char_count": 591,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    }
+  ]
+}

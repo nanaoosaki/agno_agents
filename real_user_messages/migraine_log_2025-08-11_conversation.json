@@ -1,0 +1,278 @@
+{
+  "metadata": {
+    "source": "html_file",
+    "file_path": "real_user_messages\\Migraine-Asthma-AcidReflux-Sleep Logger - daily log 2025-08-11.html",
+    "extracted_at": "2025-08-16T10:14:54.620697",
+    "total_messages": 24,
+    "user_messages": 12,
+    "ai_messages": 12,
+    "extraction_method": "article_parsing",
+    "parser_version": "final_v1"
+  },
+  "messages": [
+    {
+      "index": 0,
+      "role": "user",
+      "content": "Okay, here's today's entrée. I got up around, I think, probably 4.30 a.m. or 5.00 a.m. And I went to bed a little bit later than usual, 9.40 p.m. And then I took my trip around 8.20 p.m. It was a little bit later than usual, five minutes later. Sleep was okay, quality probably 7. And then after that, I immediately did a neck stretching exercise because I feel there's some pain on the left trapezius part, the end of the left trapezius near the scapula area. And then I drink so far, right now it's like 9.21 a.m. So far I had a total 40 ounces of water already, 42 ounces mixed with electrolyte packet. I think around the 5.50 a.m. I ate, had the morning anti-reflux medication. And then I'm still skipping the maintenance inhaler. And then I had breakfast, which is one cup of oatmeal with half a cup of 1% milk and probably 40 blueberries. And I had a slice of whole wheat bread for breakfast. And between 8.30 a.m. to 9.10 a.m., I did 40 minutes of Ring Fit. So it's a mix of kind of cardio and kind of strength training. That's it.",
+      "timestamp": null,
+      "message_id": "turn_0",
+      "word_count": 199,
+      "char_count": 1038,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 1,
+      "role": "ai",
+      "content": "Log saved FieldDetailsDate2025-08-11Time09:21Bed time (HH:MM)21:40Meals & times (food, caffeine, alcohol)05:50 — 1 c oatmeal + ½ c 1 % milk, ~40 blueberries, 1 slice whole-wheat bread; no caffeine/alcoholHydration (oz)~42 (water + electrolyte drink)Exercise / Activity08:30-09:10 Ring Fit (40 min cardio + strength)Posture breaks / Neck exercisesNeck stretch right after wakingNotes (weather change, hormones, travel, etc.)Left trapezius near scapula soreness; amitriptyline taken 5 min later than usual last nightPantoprazole (Y/N time)Y 05:50Amitriptyline (Y/N time)Y 20:20Maintenance inhaler (name + puffs)Trelegy — skippedAsthma symptoms (none / cough / tight)None Reflections Great job getting hydration and movement in early! Could you confirm exact wake-up time and total ounces (plain vs electrolyte) so we nail sleep hours and hydration math? A steady wake-time helps keep migraine risk lower—regular “lights-off/lights-on” windows are a proven protective habit . Also, your PCP note asks that you keep Trelegy daily for asthma control —worth reconsidering today’s skip. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_1",
+      "word_count": 153,
+      "char_count": 1113,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 2,
+      "role": "user",
+      "content": "probably 4:30 am would be the wake time, total 40 oz (8+32)",
+      "timestamp": null,
+      "message_id": "turn_2",
+      "word_count": 12,
+      "char_count": 59,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 3,
+      "role": "ai",
+      "content": "Log saved FieldDetailsWake time (HH:MM)04:30Sleep hours + Quality (1-10)~6.8 h, 7/10Hydration (oz)40 Reflections You’re holding a steady 04:30 rise—right in line with the “regular sleep/wake windows” migraine-prevention tip . Aiming for a full 7–8 h tonight could nudge pain thresholds even higher. Quick asks: night-wakes count? and 0-10 pain for that left-trapezius spot? (we’ll log an episode if ≥ 3). Don’t forget today’s Trelegy puff to keep airways calm . Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_3",
+      "word_count": 75,
+      "char_count": 495,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 4,
+      "role": "user",
+      "content": "Okay, and then for 8.30 a.m. to 9.20 a.m. I did a rain-fed exercise, and then until 11 o'clock I was just working from computer, and then 11 o'clock we went out for lunch. I had two tacos in a cow tortilla. One is a California screaming taco, the other one is a classic taco with tofu, and had some tortilla chips. And then coming back, watch the movies together until 1 p.m., and then I wanted to take a nap. Before that, I had a pretty, kind of, I think my SCM muscle was pulled on the right side, particularly the one next to the skull base, and I ended up using the rice in the socks to heat it by one minute and spray some water to relax it. And then I took a nap, fall asleep, and woke up at 2 p.m. somewhere. I think the tightness is still there of the SCM muscle on the right side. And by the way, there's just constant pain on the left scapula area, trapezius, but I would say it's like a, you know, I do some kind of a relaxation using the stretches. And I did a, oh okay, I want to mention that I did a pretty intense one, a little bit forceful while we were watching a movie. Before I go do a nap, I think that I ended up making the right side of SCM get pulled, so it's like you cannot force it. The warm dollar help, and I took a nap helps. And after the nap, I ate an apple, a Honeycrispy medium-sized apple, and then I've been doing a little bit of piano, and sitting in front of the desk to work on my app, Learning Agent AI. I noticed my voice is a bit like thick and dry. It's possible, I think the dry mouth, there's just not enough saliva. So I ended up, my voice sounded much more thicker than my usual time, I would say. Particularly in the afternoon, maybe. So the dry mouth is bad, probably from the trip that I'm taking. And the neck tightness on the SCM is a little bit less, I think after like it settled a little bit.",
+      "timestamp": null,
+      "message_id": "turn_4",
+      "word_count": 374,
+      "char_count": 1846,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 5,
+      "role": "ai",
+      "content": "Log saved FieldDetailsExercise / Activity08:30 – 09:20 Ring Fit (50 min cardio + strength)Meals & times (food, caffeine, alcohol)05:50 breakfast – 1 c oatmeal + ½ c 1 % milk, ~40 blueberries, 1 slice whole-wheat bread; 11:00 lunch – 2 corn-tortilla tacos (California Screamin’, classic tofu) + tortilla chips; 14:10 Honeycrisp applePosture breaks / Neck exercisesGentle SCM stretch; one forceful stretch during movie (noted strain)Notes (weather change, hormones, travel, etc.)Nap 13:00-14:00; heat-sock + stretch eased right-SCM; persistent left-trapezius ache; afternoon dry-mouth / thicker voiceEpisode ID linkN1 – right-SCM strain Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowN1Right SCM strain≈ 12:45—??Heat-sock + napMovie-watching posture Reflections Could you drop in pain scores (0-10) for right-SCM, left-trapezius, and any end-time for N1, plus a 0-5 dry-mouth rating? Hydration total after lunch? Try repeating the gentle SCM/upper-trap stretch every 60-90 min rather than forceful pulls—less risk of muscle guard. Not medical advice; check with your clinician for persistent pain or mouth dryness. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_5",
+      "word_count": 158,
+      "char_count": 1162,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 6,
+      "role": "user",
+      "content": "pain level 6 for right SCM, pain level 6 for left trapezius , dry mouth 5, hydration after lunch probably additional 16 ozes",
+      "timestamp": null,
+      "message_id": "turn_6",
+      "word_count": 23,
+      "char_count": 124,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 7,
+      "role": "ai",
+      "content": "Log saved FieldDetailsHydration (oz)56Dry-mouth (0-5)5 Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowN1Right SCM strain≈ 12:45—66Heat-sock + napMovie-watch posture Reflections Dry-mouth is maxed at 5/5 today—classic amitriptyline effect. Sipping water often, sugar-free lozenges, or shifting the dose slightly earlier can ease the throat “thickness.” Both right-SCM and left-trap sit at 6/10; cycle 15 min heat/ice and micro-stretches instead of forceful pulls. When you know N1’s end time (or if pain spreads), let’s close the episode. Daily Trelegy still outstanding—your PCP notes it’s meant to be every day. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_7",
+      "word_count": 87,
+      "char_count": 662,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 8,
+      "role": "user",
+      "content": "The right SEM string has kind of started causing headache on the right side since 6. But also it could be that I had a dinner where the chicken was fried with soy sauce. But I feel like the string on the neck started causing a tiny bit of migraine. But I applied some patches all over. That seems to help contain a little bit. And I also applied essential oil as well.",
+      "timestamp": null,
+      "message_id": "turn_8",
+      "word_count": 73,
+      "char_count": 368,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 9,
+      "role": "ai",
+      "content": "Log saved FieldDetailsMeals & times (food, caffeine, alcohol)05:50 — 1 c oatmeal + ½ c 1 % milk, ~40 blueberries, 1 slice whole-wheat bread; 11:00 — 2 corn-tortilla tacos (California Screamin’, classic tofu) + tortilla chips; 14:10 — Honeycrisp apple; ~18:00 — chicken fried with soy-sauceNotes (weather change, hormones, travel, etc.)Right-SCM strain spread to mild right-side headache (~18:00); applied pain patches + essential oil; soy-sauce (high-amine) dinner may be a triggerEpisode ID linkN1 (right-SCM strain) ; M1 (right-side migraine) Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowN1Right SCM strain≈ 12:45—66Heat-sock + napMovie-watch postureM1Right-side migraine18:00—??Patches + essential oilNeck strain trigger Reflections Could you give a 0-10 pain score for the migraine (M1) and note when/if it resolves? That lets us close both episodes accurately. Soy-sauce counts as a histamine “amine” trigger; > 1/day or > 4/week bumps migraine risk—worth tracking. Dinner time exact? (helps glucose & reflux tracking). Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_9",
+      "word_count": 147,
+      "char_count": 1076,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 10,
+      "role": "user",
+      "content": "Um, also have a bigger appetite. I never having, um, two slice of whole wheat bread right now as snack. 7.19.",
+      "timestamp": null,
+      "message_id": "turn_10",
+      "word_count": 21,
+      "char_count": 109,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 11,
+      "role": "ai",
+      "content": "Log saved FieldDetailsMeals & times (food, caffeine, alcohol)19:19 — 2 slices whole-wheat bread (snack)Appetite (↓ / ↔ / ↑)↑ (bigger than usual) Reflections Amitriptyline can heighten evening carb-cravings; pairing whole-grain bread with a little protein (nut butter, egg) steadies glucose and may curb rebound hunger. Neck-/SCM-driven headache still open—track pain every 30 min this evening; gentle heat, posture reset, and hydration can dial it back. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_11",
+      "word_count": 70,
+      "char_count": 487,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 12,
+      "role": "user",
+      "content": "Day 2 taking amitriptline at 8:20pm",
+      "timestamp": null,
+      "message_id": "turn_12",
+      "word_count": 6,
+      "char_count": 35,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 13,
+      "role": "ai",
+      "content": "Log saved FieldDetailsAmitriptyline (Y/N time)Y 20:20 — Day 2 Reflections Second consecutive 20:20 dose noted. If dry-mouth stays at 5/5 for more than a week, consider saliva aids (xylitol gum, Biotène) or discussing earlier dosing with your prescriber. Still need a 0-10 pain score for the right-side headache and the end-times for episodes N1 and M1 so we can close them and watch for patterns. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_13",
+      "word_count": 70,
+      "char_count": 430,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 14,
+      "role": "user",
+      "content": "Pain level is",
+      "timestamp": null,
+      "message_id": "turn_14",
+      "word_count": 3,
+      "char_count": 13,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 15,
+      "role": "ai",
+      "content": "Log saved FieldDetails Reflections We still need: Right-side headache pain level (0-10) and whether it has eased—if so, the time it settled so we can close episode M1. End time (or current status) for SCM strain episode N1. Once we have those, the day’s picture will be complete. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_15",
+      "word_count": 53,
+      "char_count": 313,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 16,
+      "role": "user",
+      "content": "this Right SCM strain lasted until nigtht, I ended up applying lots of salonpass patches around the right side neck + trapezius to num it and used that to go to bed;",
+      "timestamp": null,
+      "message_id": "turn_16",
+      "word_count": 32,
+      "char_count": 165,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 17,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNotes (weather change, hormones, travel, etc.)Evening: applied multiple Salonpas patches to right-SCM/upper-trap before bed; pain still present at lights-out Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowN1Right SCM strain≈ 12:45— (ongoing)66Heat-sock → Salonpas patchesMovie posture → bedtime Reflections Got it—SCM strain remains active into the night. Let’s capture: did pain drop at all after the Salonpas (0-10)? If you wake with it tomorrow, we’ll keep the episode open; otherwise we’ll set End ≈ 21:40. Still missing the right-side migraine pain rating + whether it resolved. That will tell us if neck tension or soy-sauce amine was the bigger driver so you can tweak tomorrow’s choices. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_17",
+      "word_count": 107,
+      "char_count": 767,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 18,
+      "role": "user",
+      "content": "the pain did drop after the salonpass patch, but lets keep the episode open",
+      "timestamp": null,
+      "message_id": "turn_18",
+      "word_count": 14,
+      "char_count": 75,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 19,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNotes (weather change, hormones, travel, etc.)Pain eased after Salonpas; keeping right-SCM episode N1 open overnight Reflections To capture improvement, what’s the current right-SCM pain (0-10) after the Salonpas? And the right-side headache pain level (0-10) and whether it faded will close episode M1 and tell us how much the neck strain is feeding the migraine circuit. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_19",
+      "word_count": 63,
+      "char_count": 428,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 20,
+      "role": "user",
+      "content": "can you provide the updated full entry of 2025-08-11",
+      "timestamp": null,
+      "message_id": "turn_20",
+      "word_count": 9,
+      "char_count": 52,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 21,
+      "role": "ai",
+      "content": "FieldDetailsDate2025-08-11Time20:20LocationWeatherBed time (HH:MM)21:40Wake time (HH:MM)04:30Sleep hours + Quality (1-10)~6.8 h, 7/10Night wakes (#)Morning light (min)Weight (lbs)AM-feel refreshed (1-10)Meals & times (food, caffeine, alcohol)05:50 — 1 c oatmeal + ½ c 1 % milk, ~40 blueberries, 1 slice whole-wheat bread ・ 11:00 — 2 corn-tortilla tacos (California Screamin’, classic tofu) + tortilla chips ・ 14:10 — Honeycrisp apple ・ 18:00 — chicken stir-fried with soy sauce ・ 19:19 — 2 slices whole-wheat breadHydration (oz)56Stress (0-10)Mood / emotionsExercise / Activity08:30-09:20 Ring Fit Adventure (cardio + strength, 50 min)Posture breaks / Neck exercisesEarly neck stretches; midday forced stretch; gentle SCM stretches throughout dayNotes (weather change, hormones, travel, etc.)Persistent left-trapezius ache; right-SCM strain began ~12:45 → spread to mild right-side headache by 18:00; applied heat-sock then Salonpas patches; dry-mouth 5/5; possible soy-sauce (amine) triggerProtein (g)Fiber (g)Vitamin D (IU)Calcium (mg)Calories (kcal)Carbohydrates (g)Added sugars (g)Supplements listPantoprazole (Y/N time)Y 05:50Famotidine (Y/N time)Amitriptyline (Y/N time)Y 20:20 (Day 2)Emgality – injection dateDoxylamine (mg + brand)Acetaminophen (mg + brand)Right-side migraine pain (0-10)Left-headache pain (0-10)Scalp-pain (0-10)Asthma symptoms (none / cough / tight)NoneReflux symptoms (burn / lump / cool 0-5)Episode ID linkN1; M1PT Before pain / tightness (0-10)PT During comfort (0-10)PT After relief (0-10)Dry-mouth (0-5)5Motivation (0-5)Appetite (↓ / ↔ / ↑)↑Maintenance inhaler (name + puffs)Trelegy — skippedRescue inhaler uses Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowN1Right SCM strain≈ 12:45—66Heat-sock → Salonpas patchesMovie posture → bedtimeM1Right-side migraine18:00———Patches + essential oilNeck strain + soy-sauce trigger Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_21",
+      "word_count": 232,
+      "char_count": 1903,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 22,
+      "role": "user",
+      "content": "the N1 and M1 are the same thing, but N1 developed into M1, can you combine those in one episode and summarize them into a paragraph ?",
+      "timestamp": null,
+      "message_id": "turn_22",
+      "word_count": 27,
+      "char_count": 134,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 23,
+      "role": "ai",
+      "content": "Log saved FieldDetailsEpisode ID linkE1 Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowE1Right SCM strain → right-side headache12:45— (ongoing)66Heat-sock → nap → Salonpas + essential-oilMovie posture → bedtime Reflections The episode began as a right sternocleidomastoid (SCM) strain after a forceful stretch during movie-watching (~12:45). Pain held at 6/10 in the neck/trapezius and, by 18:00, radiated into a right-sided headache consistent with a migraine. Heat, a short nap, multiple Salonpas patches, and essential oil dulled the discomfort, but the episode remains active into the night; we’ll close it once morning pain drops below baseline. Any change overnight—or a distinct migraine pain score—will help us mark an end time and track future neck-trigger patterns. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_23",
+      "word_count": 113,
+      "char_count": 825,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    }
+  ]
+}

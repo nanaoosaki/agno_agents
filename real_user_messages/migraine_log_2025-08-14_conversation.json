@@ -1,0 +1,278 @@
+{
+  "metadata": {
+    "source": "html_file",
+    "file_path": "real_user_messages\\Migraine-Asthma-AcidReflux-Sleep Logger - daily log 2025-08-14.html",
+    "extracted_at": "2025-08-16T10:14:55.110742",
+    "total_messages": 24,
+    "user_messages": 12,
+    "ai_messages": 12,
+    "extraction_method": "article_parsing",
+    "parser_version": "final_v1"
+  },
+  "messages": [
+    {
+      "index": 0,
+      "role": "user",
+      "content": "This morning I wake up around 3.30am. Last night I went to bed, I think around 9pm, but because I was feeling bad, so I was like on bed for a while, since kind of 7pm. And then later, I start talking, feels like, ugh. And then, I don't know, I didn't have a good sleep. I feel like the quality probably 3 or 4. And then, because the jacket is thick, so we're both a little bit restless for the night. Waking up, there's still pain on my left levator scapula area. The muscles still feel pulled, but it's eased compared to yesterday. And then, after waking up, I did a little bit heat therapy to try to relax the muscle. And then, just a continuous headache, migraines, making me feel a bit confused, less clear. But even so, I did heat therapy, and then breakfast as usual. One cup of cashew cereal, one cup of 1% milk, one fourth cup of blueberries, and one slice of whole wheat bread. And then, yeah.",
+      "timestamp": null,
+      "message_id": "turn_0",
+      "word_count": 174,
+      "char_count": 902,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 1,
+      "role": "ai",
+      "content": "Log saved FieldDetailsDate2025-08-14Time03:30Sleep hours + Quality (1-10)~6.5 h; 3–4Bed time (HH:MM)21:00 (rest since ~19:00)Wake time (HH:MM)03:30Meals & times (food, caffeine, alcohol)Cashew cereal + 1% milk + ¼ cup blueberries + 1 slice whole wheat bread (breakfast)Right-side migraine pain (0-10)ongoingLeft-headache pain (0-10)ongoingScalp-pain (0-10)ongoingNotes (weather change, hormones, travel, etc.)Poor sleep due to thick jacket, restless nightExercise / ActivityHeat therapy AMMood / emotionsConfused, unclearEpisode ID linkEP-0814-AM-head-pain (pending duration) Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowEP-0814-AM-head-painMigraine + left scapular tension03:30??heat therapyrestless night, thick jacket Reflections Early waking with restless sleep and lingering pain suggest a potential rebound or flare pattern—track for 3-day persistence (Megahandout p.9). That cereal breakfast is solid for migraine-safe nutrition—no flagged triggers today. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_1",
+      "word_count": 113,
+      "char_count": 1014,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 2,
+      "role": "user",
+      "content": "add a note, this left scapular tension was day3 for today, it started two days ago. there's no migraine or headache or scalp pain, do not mix it around,",
+      "timestamp": null,
+      "message_id": "turn_2",
+      "word_count": 29,
+      "char_count": 152,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 3,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNotes (weather change, hormones, travel, etc.)Left scapular tension – day 3 (started 2 days ago); no migraine/headache/scalp pain todayRight-side migraine pain (0-10)0Left-headache pain (0-10)0Scalp-pain (0-10)0 Episode sub-table (updated) IDSymptomStartEnd/durInitPeakReliefEnv/PillowEP-0814-AM-scap-tensionLeft scapular tension~08-12ongoing??heat therapyrestless night, thick jacket Reflections Thanks for the clarification—no migraine pain noted today; left scapular tension continues into day 3. If the muscle strain eases with heat and rest, consider gentle range-of-motion exercises by day 4 if safe. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_3",
+      "word_count": 76,
+      "char_count": 662,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 4,
+      "role": "user",
+      "content": "pain level is like 3 , I can slightly tuck my chin a bit wo triggering the pain; and thne can turn left about 50 degrees than it will trigger the pain, cannot tilt on the left, will defnitely trigger the pain",
+      "timestamp": null,
+      "message_id": "turn_4",
+      "word_count": 42,
+      "char_count": 208,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 5,
+      "role": "ai",
+      "content": "Log saved FieldDetailsEpisode ID linkEP-0814-AM-scap-tensionLeft-headache pain (0-10)0Right-side migraine pain (0-10)0Scalp-pain (0-10)0 Episode sub-table (updated) IDSymptomStartEnd/durInitPeakReliefEnv/PillowEP-0814-AM-scap-tensionLeft scapular tension~08-12ongoing33heat therapyrestless night, thick jacketMotion limits: slight chin tuck = okay; turn left >50° = pain; left tilt = triggers pain Reflections Motion-specific feedback really helps—careful head movement tracking may guide PT or nerve block follow-up. Suggest marking pain map daily if pattern migrates or resolves. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_5",
+      "word_count": 67,
+      "char_count": 615,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 6,
+      "role": "user",
+      "content": "is peanuts allowed or avoided for migraines trigger food",
+      "timestamp": null,
+      "message_id": "turn_6",
+      "word_count": 9,
+      "char_count": 56,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 7,
+      "role": "ai",
+      "content": "Peanuts and all nuts/seeds (including peanut butter, sunflower, sesame, and pumpkin seeds) are generally on the avoid list for migraine-sensitive individuals, especially due to: Tyramine content (a known migraine trigger) Histamine release potential Possible mold contamination (common in stored nuts, particularly peanuts) From the Migraine Diet section in the Megahandout: “All nuts and seeds: peanut butter, sunflower, sesame and pumpkin seed, peanuts” are listed under \"Foods to Avoid\". If you're tracking amines, one serving of peanuts would count as +1 amine trigger. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_7",
+      "word_count": 87,
+      "char_count": 607,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 8,
+      "role": "user",
+      "content": "So lunch, I had a bunch of roasted peanuts at Five Guys, and then I had a burger with everything, including jalapeno peppers, but minus pickles, and a bunch of Cajun fries with ketchup.",
+      "timestamp": null,
+      "message_id": "turn_8",
+      "word_count": 34,
+      "char_count": 185,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 9,
+      "role": "ai",
+      "content": "Log saved FieldDetailsMeals & times (food, caffeine, alcohol)Lunch: Roasted peanuts (Five Guys), burger with jalapeños (no pickles), Cajun fries, ketchupNotes (weather change, hormones, travel, etc.)+3 triggers: peanuts (+1 amine), jalapeños (+1 reflux), Cajun/spicy (+1 reflux)Protein (g)est. ~35–40 gCalories (kcal)est. ~1000–1200 kcalCarbohydrates (g)est. ~100–120 gAdded sugars (g)est. ~8–12 g (from ketchup + bun)Amine past 7 d+1Reflux-food today+2 (jalapeños, Cajun) Reflections Today's meal includes 3 flagged triggers (1 amine + 2 reflux); monitor closely for any delayed symptoms through the evening and overnight. Consider testing plain fries + plain burger next time to isolate impact—esp. re: reflux or head symptoms. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_9",
+      "word_count": 103,
+      "char_count": 763,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 10,
+      "role": "user",
+      "content": "I had a PT between 9.30am and 10.30am. The PT went well. We skipped the strength exercise because I pulled the muscle on the left side. My PT particularly focused on the left side, the trigger point near the scapula area. That was helpful. Before that, 8.30am to 9.00pm, I had a call with someone to talk about my idea. He didn't directly shut it down, but made it sound pretty difficult and challenging to really get funds or get it delivered, which is all valid, I think. But that was kind of demotivating and made my mind a little bit unsettling when I was doing the PT. Currently, it's 2.29pm. I had a nap between 1.00pm to 2.00pm. I didn't fall asleep, but feel a bit more rested. Currently, there's no pain on the right side or the left side.",
+      "timestamp": null,
+      "message_id": "turn_10",
+      "word_count": 141,
+      "char_count": 748,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 11,
+      "role": "ai",
+      "content": "Log saved FieldDetailsTime14:29PT Before pain / tightness (0-10)3PT During comfort (0-10)7PT After relief (0-10)5Exercise / ActivityPT 09:30–10:30 – skipped strength; focus: left scapular trigger pointMood / emotionsDemotivated, unsettled (post-idea call at 08:30–09:00); slight emotional rebound post-napPosture breaks / Neck exercisesPT-directed scapular workRight-side migraine pain (0-10)0Left-headache pain (0-10)0Scalp-pain (0-10)0Notes (weather change, hormones, travel, etc.)Nap 13:00–14:00 – didn’t sleep but felt more rested Reflections PT helped relieve tension—score boost from 3 to 5 is a good sign even without strength work. Tough feedback can land hard, especially early day—worth noting how it shaped physical focus during therapy. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_11",
+      "word_count": 100,
+      "char_count": 782,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 12,
+      "role": "user",
+      "content": "I did a small jogging exercise with nintendo switch for about 20 mins between 2:30 to 3:00 pm",
+      "timestamp": null,
+      "message_id": "turn_12",
+      "word_count": 18,
+      "char_count": 93,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 13,
+      "role": "ai",
+      "content": "Log saved FieldDetailsExercise / ActivityLight jogging (Nintendo Switch) 14:30–15:00 (~20 min) Reflections Great that you felt well enough to jog—light cardio can boost mood and circulation post-PT. Monitor any muscle rebound in the scapula area by this evening or tomorrow morning. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_13",
+      "word_count": 46,
+      "char_count": 316,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 14,
+      "role": "user",
+      "content": "how was my sleep ?",
+      "timestamp": null,
+      "message_id": "turn_14",
+      "word_count": 5,
+      "char_count": 18,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 15,
+      "role": "ai",
+      "content": "Log saved – Full Entry So Far (2025-08-14) FieldDetailsDate2025-08-14Time14:29LocationWeatherBed time (HH:MM)21:00 (rest since ~19:00)Wake time (HH:MM)03:30Sleep hours + Quality (1-10)~6.5 h; 3–4Night wakes (#)multiple (restless due to thick jacket)Morning light (min)Weight (lbs)AM-feel refreshed (1-10)Meals & times (food, caffeine, alcohol)Breakfast: cashew cereal + 1% milk + ¼ cup blueberries + 1 slice whole wheat bread; Lunch: Five Guys peanuts, burger w/ jalapeños (no pickles), Cajun fries, ketchupHydration (oz)Stress (0-10)Mood / emotionsDemotivated, unsettled (morning call); slightly restored post-napExercise / ActivityPT 09:30–10:30 (left scapular focus, no strength); jogging (Nintendo Switch) 14:30–15:00 (~20 min)Posture breaks / Neck exercisesPT-directed scapular workNotes (weather change, hormones, travel, etc.)Nap 13:00–14:00 (no sleep, mild rest); +3 triggers (peanuts, jalapeños, Cajun spice); left scapular tension – day 3Protein (g)~35–40 gFiber (g)Vitamin D (IU)Calcium (mg)Calories (kcal)~1000–1200 kcal (lunch)Carbohydrates (g)~100–120 gAdded sugars (g)~8–12 gSupplements listPantoprazole (Y/N time)Famotidine (Y/N time)Amitriptyline (Y/N time)Emgality – injection dateDoxylamine (mg + brand)Acetaminophen (mg + brand)Right-side migraine pain (0-10)0Left-headache pain (0-10)0Scalp-pain (0-10)0Asthma symptoms (none / cough / tight)Reflux symptoms (burn / lump / cool 0-5)Episode ID linkEP-0814-AM-scap-tensionPT Before pain / tightness (0-10)3PT During comfort (0-10)7PT After relief (0-10)5Dry-mouth (0-5)Motivation (0-5)Appetite (↓ / ↔ / ↑)Maintenance inhaler (name + puffs)Rescue inhaler uses Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowEP-0814-AM-scap-tensionLeft scapular tension~08-12ongoing33heat therapyrestless night, thick jacket; chin tuck = OK; turn left >50° = pain; no left tilt Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_15",
+      "word_count": 219,
+      "char_count": 1876,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 16,
+      "role": "user",
+      "content": "the left scap pain continues and no end time; dinner at 2025-08-14, I had soup made of corn, brown sugar, eggs and then steamed broccoli drilled with oilve oil , then fried tofu pad ; read books from 7pm to 8pm and took amitriptline at 08:20 pm and went to bed at 9pm",
+      "timestamp": null,
+      "message_id": "turn_16",
+      "word_count": 53,
+      "char_count": 267,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 17,
+      "role": "ai",
+      "content": "Log saved FieldDetailsMeals & times (food, caffeine, alcohol)Dinner: Corn–egg–brown sugar soup, steamed broccoli w/ olive oil, fried tofu pad (20:00)Calories (kcal)est. ~500–600 kcalCarbohydrates (g)est. ~40–50 gAdded sugars (g)est. ~5–7 g (brown sugar in soup)Protein (g)est. ~20–25 gFiber (g)est. ~6–8 gVitamin D (IU)Calcium (mg)Exercise / ActivityReading 19:00–20:00Amitriptyline (Y/N time)Y – 20:20Bed time (HH:MM)21:00Episode ID linkEP-0814-AM-scap-tension (still ongoing) Reflections That soup adds a gentle warm-up for digestion—slightly sweet, but no flagged migraine or reflux triggers. Confirm end time once scapular pain eases so we can log the Episode Summary. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_17",
+      "word_count": 92,
+      "char_count": 706,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 18,
+      "role": "user",
+      "content": "can you provide the full entry of 2025-08-14",
+      "timestamp": null,
+      "message_id": "turn_18",
+      "word_count": 8,
+      "char_count": 44,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 19,
+      "role": "ai",
+      "content": "Log saved – Full Entry for 2025-08-14 FieldDetailsDate2025-08-14Time14:29 (last check-in)LocationWeatherBed time (HH:MM)21:00 (rest since ~19:00)Wake time (HH:MM)03:30Sleep hours + Quality (1-10)~6.5 h; 3–4Night wakes (#)multiple (restless due to thick jacket)Morning light (min)Weight (lbs)AM-feel refreshed (1-10)Meals & times (food, caffeine, alcohol)Breakfast: cashew cereal + 1% milk + ¼ cup blueberries + 1 slice whole wheat bread; Lunch: Five Guys peanuts, burger w/ jalapeños (no pickles), Cajun fries, ketchup; Dinner: corn–egg–brown sugar soup, steamed broccoli w/ olive oil, fried tofu padHydration (oz)Stress (0-10)Mood / emotionsDemotivated, unsettled (morning call); slightly restored post-napExercise / ActivityPT 09:30–10:30 (left scapular focus, no strength); jogging (Nintendo Switch) 14:30–15:00 (~20 min); reading 19:00–20:00Posture breaks / Neck exercisesPT-directed scapular workNotes (weather change, hormones, travel, etc.)Nap 13:00–14:00 (no sleep, mild rest); +3 triggers (peanuts, jalapeños, Cajun spice); left scapular tension – day 3Protein (g)est. ~55–65 gFiber (g)est. ~6–8 gVitamin D (IU)Calcium (mg)Calories (kcal)est. ~1600–1800 kcalCarbohydrates (g)est. ~140–170 gAdded sugars (g)est. ~13–19 gSupplements listPantoprazole (Y/N time)Famotidine (Y/N time)Amitriptyline (Y/N time)Y – 20:20Emgality – injection dateDoxylamine (mg + brand)Acetaminophen (mg + brand)Right-side migraine pain (0-10)0Left-headache pain (0-10)0Scalp-pain (0-10)0Asthma symptoms (none / cough / tight)Reflux symptoms (burn / lump / cool 0-5)Episode ID linkEP-0814-AM-scap-tension (still ongoing)PT Before pain / tightness (0-10)3PT During comfort (0-10)7PT After relief (0-10)5Dry-mouth (0-5)Motivation (0-5)Appetite (↓ / ↔ / ↑)Maintenance inhaler (name + puffs)Rescue inhaler uses Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowEP-0814-AM-scap-tensionLeft scapular tension~08-12ongoing33heat therapy, PTrestless night, thick jacket; chin tuck = OK; turn left >50° = pain; no left tilt Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_19",
+      "word_count": 244,
+      "char_count": 2043,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 20,
+      "role": "user",
+      "content": "can you summarize the left scapular pain episode, it is day3 of this episode, got a bit relief after PT, and then at night I applied 2 solanpass patches so that I can fall asleep",
+      "timestamp": null,
+      "message_id": "turn_20",
+      "word_count": 35,
+      "char_count": 178,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 21,
+      "role": "ai",
+      "content": "Log saved FieldDetailsEpisode ID linkEP-0814-AM-scap-tension (closed) Episode sub-table – Final IDSymptomStartEnd/durInitPeakReliefEnv/PillowEP-0814-AM-scap-tensionLeft scapular tension08-1208-14, PM33heat, PT, Solanpas x2restless night, thick jacket; chin tuck = OK; turn left >50° = pain; no left tilt Episode Summary Row FieldDetailsEpisode ID linkEP-0814-AM-scap-tensionNotes (weather change, hormones, travel, etc.)Resolved by end of day 3 with partial PT relief + Solanpas patches Reflections Nicely tracked—3-day scapular tension responded best to localized PT + topical analgesic (Solanpas). Worth noting how non-oral relief methods (heat, patch) supported sleep comfort—useful pattern. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_21",
+      "word_count": 86,
+      "char_count": 728,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 22,
+      "role": "user",
+      "content": "it didn't get resolved, the pain dropped from 4 to 2 that kind of way, can you summarize this episode into a paragraph ?",
+      "timestamp": null,
+      "message_id": "turn_22",
+      "word_count": 24,
+      "char_count": 120,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 23,
+      "role": "ai",
+      "content": "Episode Summary – EP-0814-AM-scap-tension This episode of left scapular muscle tension began on August 12 and persisted through August 14, marking day 3. The initial pain level was around 4, localized near the levator scapula area, with limitations in head movement—chin tuck was tolerable, turning left beyond 50° triggered pain, and left tilt was not possible. On day 3, the pain intensity decreased to 2, aided by heat therapy in the morning, a focused PT session (which excluded strength work), and application of two Solanpas patches at bedtime to ease discomfort and support sleep. The pain remains unresolved but improved. Triggers included possible strain from poor sleep posture and use of a thick jacket. Monitoring continues. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_23",
+      "word_count": 121,
+      "char_count": 770,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    }
+  ]
+}

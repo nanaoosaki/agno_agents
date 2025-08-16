@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "source": "html_file",
+    "file_path": "real_user_messages\\Migraine-Asthma-AcidReflux-Sleep Logger - daily log 2025-08-15.html",
+    "extracted_at": "2025-08-16T10:14:55.239529",
+    "total_messages": 10,
+    "user_messages": 5,
+    "ai_messages": 5,
+    "extraction_method": "article_parsing",
+    "parser_version": "final_v1"
+  },
+  "messages": [
+    {
+      "index": 0,
+      "role": "user",
+      "content": "Okay, this is today's entry. I woke up at 3 a.m., went to bed at 9 p.m., and stayed up for probably two hours or so, and then fell back to sleep and got up at 7 a.m. And then I did heat therapy to relax the neck, but the left scapula pain is still there. It's the day 4. I feel like it's less, so I would give it a pain level of 2. And then I had breakfast, which is one cup of cashew gold cereal, one cup of 1% milk, one cup of blueberries, and two slices of whole wheat bread. And then I did a ring fit exercise between 9, 10 a.m. to 9, 30 a.m., 20 minutes.",
+      "timestamp": null,
+      "message_id": "turn_0",
+      "word_count": 122,
+      "char_count": 559,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 1,
+      "role": "ai",
+      "content": "Log saved FieldDetailsDate2025-08-15Time07:00Wake time (HH:MM)03:00, then 07:00Bed time (HH:MM)21:00Sleep hours + Quality (1-10)~7 h total; Quality: 6Night wakes (#)1Exercise / ActivityRing Fit 20 min (09:10–09:30)Meals & times (food, caffeine, alcohol)Breakfast: 1 cup Cashew Gold cereal, 1 cup 1% milk, 1 cup blueberries, 2 slices whole wheat breadProtein (g)~17 gFiber (g)~9 gCalories (kcal)~420 kcalCarbohydrates (g)~65 gAdded sugars (g)~11 gLeft-headache pain (0-10)2Notes (weather change, hormones, travel, etc.)Day 4 of left scapula pain; heat therapy donePosture breaks / Neck exercisesHeat therapyEpisode ID linkLeft scapula pain, Day 4 Reflections Nice to see the scapula pain decreasing—continue heat + maybe light stretching? Good early breakfast structure—cereal/milk/fruit/grain combo hits macros well. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_1",
+      "word_count": 110,
+      "char_count": 850,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 2,
+      "role": "user",
+      "content": "um lunch we had indian food um lamb vindaloo and rice and i had one samosa had about a half of the lamb vindaloo and uh i don't know probably less than um um two-fifth of a cup of rice and a little bit um now garlic rosemary now um and then i tried to take a nap but failed to do so i did a heat of ferrity before i go to nap on my neck and then i've been just programming after i got up at 2 p.m um and then because there's an error in the app that i didn't notice and where it just had to redo everything um i feel like that intense uh in thought caused a little bit of pain on my right temple and then i ate a honey crispy apple try to relieve it i'm going to back off from the current day's programming soon and then just focus on relaxing i think now it's not a good time to keep working",
+      "timestamp": null,
+      "message_id": "turn_2",
+      "word_count": 171,
+      "char_count": 792,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 3,
+      "role": "ai",
+      "content": "Log saved FieldDetailsMeals & times (food, caffeine, alcohol)Lunch: ½ lamb vindaloo, ~⅖ cup rice, 1 samosa, rosemary garlic naan; Snack: 1 honeycrisp appleRight-side migraine pain (0-10)1Mood / emotionsFrustrated, mentally drainedStress (0-10)6Posture breaks / Neck exercisesHeat therapy before nap attemptNotes (weather change, hormones, travel, etc.)Neck pain ongoing; failed nap; triggered by app error + overfocusCarbohydrates (g)~80 gCalories (kcal)~600 kcalReflux symptoms (burn / lump / cool 0-5)slight cool sensation (1) after samosa + lamb vindalooAdded sugars (g)~14 gFiber (g)~6 gProtein (g)~20 gEpisode ID linkNew episode: Right temple twinge with intense thought Reflections Heat + stress overload seems to provoke temple twinges—backing off is a wise call. Lamb, samosa, naan = 3 reflux food triggers; flagging this day. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_3",
+      "word_count": 120,
+      "char_count": 868,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 4,
+      "role": "user",
+      "content": "can you give me the full entry of 2025-08-15",
+      "timestamp": null,
+      "message_id": "turn_4",
+      "word_count": 9,
+      "char_count": 44,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 5,
+      "role": "ai",
+      "content": "Full log for 2025-08-15 FieldDetailsDate2025-08-15Time07:00LocationWeatherBed time (HH:MM)21:00Wake time (HH:MM)03:00, then 07:00Sleep hours + Quality (1-10)~7 h total; Quality: 6Night wakes (#)1Morning light (min)Weight (lbs)AM-feel refreshed (1-10)Meals & times (food, caffeine, alcohol)Breakfast: 1 cup Cashew Gold cereal, 1 cup 1% milk, 1 cup blueberries, 2 slices whole wheat bread; Lunch: ½ lamb vindaloo, ~⅖ cup rice, 1 samosa, rosemary garlic naan; Snack: 1 honeycrisp appleHydration (oz)Stress (0-10)6Mood / emotionsFrustrated, mentally drainedExercise / ActivityRing Fit 20 min (09:10–09:30); light programming work post-napPosture breaks / Neck exercisesHeat therapy AM and before napNotes (weather change, hormones, travel, etc.)Day 4 of left scapula pain; nap failed; app error + stress led to right temple painProtein (g)~37 gFiber (g)~15 gVitamin D (IU)Calcium (mg)Calories (kcal)~1020 kcalCarbohydrates (g)~145 gAdded sugars (g)~25 gSupplements listPantoprazole (Y/N time)Famotidine (Y/N time)Amitriptyline (Y/N time)Emgality – injection dateDoxylamine (mg + brand)Acetaminophen (mg + brand)Right-side migraine pain (0-10)1Left-headache pain (0-10)2Scalp-pain (0-10)Asthma symptoms (none / cough / tight)Reflux symptoms (burn / lump / cool 0-5)1 (cool)Episode ID linkLeft scapula pain, Day 4; Right temple pain episode (triggered by mental overload)PT Before pain / tightness (0-10)PT During comfort (0-10)PT After relief (0-10)Dry-mouth (0-5)Motivation (0-5)Appetite (↓ / ↔ / ↑)Maintenance inhaler (name + puffs)Rescue inhaler uses Episode sub-table IDSymptomStartEnd/durInitPeakReliefEnv/PillowLeft scapula painMuscle/nerve painOngoing since ~Aug 12——3 → 2Heat therapy—Right temple painTwinge / thought-triggered~14:00—11None yetProgramming error + stress Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_5",
+      "word_count": 223,
+      "char_count": 1807,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 6,
+      "role": "user",
+      "content": "for the right temple pain episode , I applied salonpass patches and also mint essential oil to relief it,",
+      "timestamp": null,
+      "message_id": "turn_6",
+      "word_count": 19,
+      "char_count": 105,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 7,
+      "role": "ai",
+      "content": "Log updated FieldDetailsEpisode ID linkRight temple pain episode (triggered by mental overload; relief: Salonpas patch + mint oil) Episode sub-table (updated) IDSymptomStartEnd/durInitPeakReliefEnv/PillowRight temple painTwinge / thought-triggered~14:00—11Salonpas patch + mint oilProgramming error + stress Reflections Topical relief with Salonpas + mint is a good low-risk intervention. If these episodes persist or intensify, may want to track duration more precisely. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_7",
+      "word_count": 63,
+      "char_count": 505,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 8,
+      "role": "user",
+      "content": "can you summarize the each episode into a separate paragraph",
+      "timestamp": null,
+      "message_id": "turn_8",
+      "word_count": 10,
+      "char_count": 60,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 9,
+      "role": "ai",
+      "content": "Here’s a paragraph-style summary for each episode logged on 2025-08-15: Left Scapula Pain Episode This episode, ongoing since approximately August 12, involves persistent discomfort in the left scapular region. Pain is gradually decreasing, rated at a 2/10 today. Heat therapy has been the main self-management method, used both in the morning and before a nap attempt. No specific environmental or postural triggers were reported, and no medications have been used. This appears to be a musculoskeletal issue, possibly related to posture or strain, showing slow but steady improvement. Right Temple Pain Episode A new episode emerged around 2:00 p.m., triggered by intense cognitive focus and frustration from debugging a software issue. The pain was localized to the right temple, rated mildly at 1/10. Relief measures included applying a Salonpas patch and mint essential oil topically. The episode coincided with mental exhaustion and stress but did not escalate. No medications were taken. Current plan is to stop work and prioritize rest to avoid further aggravation. Stretch, deep breath, quick walk?",
+      "timestamp": null,
+      "message_id": "turn_9",
+      "word_count": 169,
+      "char_count": 1107,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    }
+  ]
+}
