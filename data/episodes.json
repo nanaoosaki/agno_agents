@@ -52,5 +52,94 @@
     ],
     "interventions": [],
     "last_updated_at": "2025-08-15T19:36:59.321604"
+  },
+  "ep_2025-08-16_scapula pain_4624c4d7": {
+    "episode_id": "ep_2025-08-16_scapula pain_4624c4d7",
+    "condition": "scapula pain",
+    "started_at": "2025-08-16T11:53:40.640555",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 2,
+    "max_severity": 2,
+    "severity_points": [
+      {
+        "ts": "2025-08-16T11:53:40.640555",
+        "level": 2
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-16T11:53:40.640555",
+        "text": "Okay, this is today's entry. I woke up at 3 a.m., went to bed at 9 p.m., and stayed up for probably two hours or so, and then fell back to sleep and got up at 7 a.m. And then I did heat therapy to relax the neck, but the left scapula pain is still there. It's the day 4. I feel like it's less, so I would give it a pain level of 2. And then I had breakfast, which is one cup of cashew gold cereal, one cup of 1% milk, one cup of blueberries, and two slices of whole wheat bread. And then I did a ring fit exercise between 9, 10 a.m. to 9, 30 a.m., 20 minutes."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-16T11:53:40.640555",
+        "type": "heat therapy",
+        "dose": null,
+        "timing": "2023-10-03T09:10:00",
+        "notes": "to relax the neck"
+      },
+      {
+        "ts": "2025-08-16T11:53:40.640555",
+        "type": "exercise",
+        "dose": null,
+        "timing": "2023-10-03T09:30:00",
+        "notes": "20 minutes ring fit exercise"
+      }
+    ],
+    "last_updated_at": "2025-08-16T11:53:40.640555"
+  },
+  "ep_2025-08-16_right temple pain_5964c4c6": {
+    "episode_id": "ep_2025-08-16_right temple pain_5964c4c6",
+    "condition": "right temple pain",
+    "started_at": "2025-08-16T11:54:37.806408",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-08-16T11:54:37.806408",
+        "text": "um lunch we had indian food um lamb vindaloo and rice and i had one samosa had about a half of the lamb vindaloo and uh i don't know probably less than um um two-fifth of a cup of rice and a little bit um now garlic rosemary now um and then i tried to take a nap but failed to do so i did a heat of ferrity before i go to nap on my neck and then i've been just programming after i got up at 2 p.m um and then because there's an error in the app that i didn't notice and where it just had to redo everything um i feel like that intense uh in thought caused a little bit of pain on my right temple and then i ate a honey crispy apple try to relieve it i'm going to back off from the current day's programming soon and then just focus on relaxing i think now it's not a good time to keep working."
+      },
+      {
+        "ts": "2025-08-16T11:58:51.729552",
+        "text": "for the right temple pain episode, I applied salonpass patches and also mint essential oil to relief it."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-16T11:54:37.806408",
+        "type": "heat therapy",
+        "dose": null,
+        "timing": null,
+        "notes": "before nap"
+      },
+      {
+        "ts": "2025-08-16T11:54:37.806408",
+        "type": "food",
+        "dose": "1 apple",
+        "timing": null,
+        "notes": "to relieve pain"
+      },
+      {
+        "ts": "2025-08-16T11:58:51.729552",
+        "type": "salonpass patches",
+        "dose": null,
+        "timing": null,
+        "notes": "to relieve pain"
+      },
+      {
+        "ts": "2025-08-16T11:58:51.729552",
+        "type": "mint essential oil",
+        "dose": null,
+        "timing": null,
+        "notes": null
+      }
+    ],
+    "last_updated_at": "2025-08-16T11:58:51.729552"
   }
 }

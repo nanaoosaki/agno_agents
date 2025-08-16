@@ -1,1 +1,56 @@
-[]
+[
+  {
+    "intervention_id": "int_cccefade",
+    "episode_id": "ep_2025-08-16_scapula pain_4624c4d7",
+    "timestamp": "2025-08-16T11:53:40.640555",
+    "type": "heat therapy",
+    "dose": null,
+    "timing": "2023-10-03T09:10:00",
+    "notes": "to relax the neck"
+  },
+  {
+    "intervention_id": "int_3529f60b",
+    "episode_id": "ep_2025-08-16_scapula pain_4624c4d7",
+    "timestamp": "2025-08-16T11:53:40.640555",
+    "type": "exercise",
+    "dose": null,
+    "timing": "2023-10-03T09:30:00",
+    "notes": "20 minutes ring fit exercise"
+  },
+  {
+    "intervention_id": "int_0ff95c88",
+    "episode_id": "ep_2025-08-16_right temple pain_5964c4c6",
+    "timestamp": "2025-08-16T11:54:37.806408",
+    "type": "heat therapy",
+    "dose": null,
+    "timing": null,
+    "notes": "before nap"
+  },
+  {
+    "intervention_id": "int_3336d80d",
+    "episode_id": "ep_2025-08-16_right temple pain_5964c4c6",
+    "timestamp": "2025-08-16T11:54:37.806408",
+    "type": "food",
+    "dose": "1 apple",
+    "timing": null,
+    "notes": "to relieve pain"
+  },
+  {
+    "intervention_id": "int_a34cf29f",
+    "episode_id": "ep_2025-08-16_right temple pain_5964c4c6",
+    "timestamp": "2025-08-16T11:58:51.729552",
+    "type": "salonpass patches",
+    "dose": null,
+    "timing": null,
+    "notes": "to relieve pain"
+  },
+  {
+    "intervention_id": "int_dd39556e",
+    "episode_id": "ep_2025-08-16_right temple pain_5964c4c6",
+    "timestamp": "2025-08-16T11:58:51.729552",
+    "type": "mint essential oil",
+    "dose": null,
+    "timing": null,
+    "notes": null
+  }
+]

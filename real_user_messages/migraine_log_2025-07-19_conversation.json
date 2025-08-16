@@ -1,0 +1,234 @@
+{
+  "metadata": {
+    "source": "html_file",
+    "file_path": "linda_core\\user_messages\\Migraine-Asthma-AcidReflux-Sleep Logger - daily log 2025-07-19.html",
+    "extracted_at": "2025-08-10T08:59:51.361012",
+    "total_messages": 20,
+    "user_messages": 10,
+    "ai_messages": 10,
+    "extraction_method": "article_parsing",
+    "parser_version": "final_v1"
+  },
+  "messages": [
+    {
+      "index": 0,
+      "role": "user",
+      "content": "This is what happened today. I went to bed probably 9.30 p.m. last night, and then I took my Trilogy inhaler shot, and also Unisom, half of a Unisom, and then I think I woke up three times because I drank too much water to pee, and the third time I basically woke myself up. I believe probably it's 2 a.m. somewhere, and then got a bit angry at David again. It's reminiscent of that, but then I think I was just trying really hard to help myself to calm down, listen to the handpan videos to just calm myself, and also I took a kind of CBD oil under my tongue to help to relieve the anxiety and stress from the emotional turmoil there, and I think I ended up falling to sleep, and then woke up around probably 6 a.m.,",
+      "timestamp": null,
+      "message_id": "turn_0",
+      "word_count": 142,
+      "char_count": 717,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 1,
+      "role": "ai",
+      "content": "Log saved FieldDetailsDate2025-07-19Time~09:00 (local)LocationFrederick, MDWeatherCloudy 75 °FMaint-inhaler (name + puffs)Trelegy – 1 puff at bedtimeSleep h + Q8.5 h (quality ?)MoodAnxious / irritated after argumentNotes / weather / hormonesWoke 3× to pee; took ½ Unisom (12.5 mg) at 21:30, sub-lingual CBD ~02:00 for anxiety; calmed with handpan videos; high evening hydration Currently 75° · CloudyFrederick, MD, United States9 AM76°Showers10 AM78°Intermittent clouds11 AM79°Intermittent clouds12 PM81°Intermittent clouds1 PM83°Intermittent clouds2 PM84°Intermittent clouds3 PM85°Intermittent clouds4 PM86°Intermittent cloudsShow more Reflections Three nocturnal wake-ups fragmented an otherwise solid 8½-hour block. Try tapering fluids after 20:00 and keep a consistent bedtime/wake-time—regular sleep patterns are a proven migraine buffer. Quick check-ins help the log work for you: could you rate (a) last night’s sleep quality 0-10 and (b) current stress level 0-10? Capturing those numbers will spotlight whether evening tension is nudging headaches or reflux. As always, confirm with your clinician before changing meds or supplements.",
+      "timestamp": null,
+      "message_id": "turn_1",
+      "word_count": 148,
+      "char_count": 1143,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 2,
+      "role": "user",
+      "content": "Sleep quality probably 5, stress level zero right now I guess. And then since waking up and I have been I drank 8 ounces plain water and now I have about 16 ounces down for the 32 ounces water bottle with half a packet of electrolyte. I had my breakfast which is one fried egg, a whole glass of milk, and then four baby red potatoes. Also before that I took my morning anti-reflux medication. And then I uh I went out for 30 minutes of basketball. They all happened between kind of 6 to 8 a.m. Right now it's actually 8:12 a.m.",
+      "timestamp": null,
+      "message_id": "turn_2",
+      "word_count": 103,
+      "char_count": 527,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 3,
+      "role": "ai",
+      "content": "Log saved FieldDetailsTime08:12Stress 0-100Hydration oz24 (plain 8 oz + 16 oz electrolyte mix)Meals & timesFried egg, 8 oz whole milk, 4 baby red potatoes @ ≈06:30Protein (g)~16 gCarbs g~36 gCalories~350 kcalVit D (IU)~120Ca (mg)~300Pantoprazole (Y/N,time)Y 06:00Exercise30-min basketball (06:30-07:00) Reflections Nice early-morning workout and 24 oz fluids—just watch evening intake so you’re not up peeing all night. Dehydration swings (and over-hydration before bed) can each nudge migraine risk; steady daytime sipping is ideal. Breakfast gives you ~16 g protein. Aim for ≥70 g total today—e.g., 6 oz Greek yogurt at lunch adds 15 g. Consistent meals plus regular sleep/wake times form a strong migraine buffer. Quick check: any head/neck pain right now (0-10) or rescue-inhaler use since exercise? Logging those keeps the picture clear. As always, confirm with your clinician before any med or supplement changes.",
+      "timestamp": null,
+      "message_id": "turn_3",
+      "word_count": 135,
+      "char_count": 919,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 4,
+      "role": "user",
+      "content": "It's not whole milk. It's 1% skim milk. And then I took my morning supplements as well, vitamin B2, fish oil, magnesium. Yeah.In terms of, there was some tension when I woke up this morning on my right neck. And then, now it's gone. I think after the exercise, basketball,",
+      "timestamp": null,
+      "message_id": "turn_4",
+      "word_count": 50,
+      "char_count": 272,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 5,
+      "role": "ai",
+      "content": "Log saved FieldDetailsSupps listRiboflavin 400 mg, Fish-oil 3 caps, Magnesium 120 mg AMNotes / weather / hormonesMilk is 1 % skim; brief right-neck tension on waking, eased after basketballPain start HH:MM06:00Env at onsetWoke up Reflections Nice choice swapping to 1 % milk—lower fat is kinder to reflux. Breakfast protein is ~14 g (egg + milk); aim for ≥ 70 g total today—e.g., Greek-yogurt snack or nut-butter toast (evenly spaced protein can steady migraine-prone brains). Exercise often melts mild morning tension thanks to endorphins—your 30-min basketball fits the “movement blocks pain-signals” advice in the headache handout . Quick check-in: could you rate that neck tension 0-10 and estimate how many minutes it lasted? These details sharpen the trigger map. As ever, confirm with your clinician before changing meds or supplements.",
+      "timestamp": null,
+      "message_id": "turn_5",
+      "word_count": 129,
+      "char_count": 843,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 6,
+      "role": "user",
+      "content": "Okay, I had eight ounces of pour-over coffee from 12 grams of coarsely grinded medium roast coffee. And lunch, I had lunch is like 12 p.m to 1 p.m. I had a tuna salad panini. I didn't have a pickle. This is the image of my lunch. And I had a half cup of matcha latte and also I had my supplements after the meal. My neck, on the right side, is a bit of tension, probably tension level 1.",
+      "timestamp": null,
+      "message_id": "turn_6",
+      "word_count": 80,
+      "char_count": 387,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 7,
+      "role": "ai",
+      "content": "Log saved FieldDetailsTime12:30Meals & timesTuna-salad multigrain panini (no pickle) + ½-cup matcha latte @ 12 p.m.Protein (g)~25 gCarbs g~30 gCalories~500 kcalVit D (IU)~150Ca (mg)~200Hydration oz+12 oz (8 oz coffee + 4 oz matcha)Trig-food refluxCoffee, matcha (caffeine)Migraine / Neck pain 0-101 (right-side tension)Pain start HH:MM12:30Supps listFish-oil 3 caps (post-meal) Reflections Tuna is on the histamine/tyramine list; stacking several histamine-rich foods in a day (or > 4 days a week) can drop the migraine threshold—keep an eye on patterns. You’re already at two caffeinated servings (pour-over + matcha), which the handout caps at ≈2 cups daily; more could aggravate both reflux and headaches, so consider decaf or herbal later on. Confirm with your clinician before any medication or supplement changes.",
+      "timestamp": null,
+      "message_id": "turn_7",
+      "word_count": 118,
+      "char_count": 819,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 8,
+      "role": "user",
+      "content": "White tuna is also histamine and thyramine-rich food.",
+      "timestamp": null,
+      "message_id": "turn_8",
+      "word_count": 8,
+      "char_count": 53,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 9,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNotes / weather / hormonesConfirmed white tuna is histamine / tyramine-rich (amine count = 1 today) Reflections Good catch on white tuna—the migraine diet lists “tuna, tuna salad” among meats high in tyramine/histamine, so keep it to ≤ 1 serving a day and < 4 days a week to avoid stacking triggers. You’re still on the safe side for caffeine (two cups so far); the handout recommends keeping total coffee/tea to ≤ 2 cups daily to curb headaches and reflux. If you crave another warm drink later, try decaf or ginger tea. Quick check-in: about how many minutes did that mild neck tension (level 1) last, and have you needed the albuterol rescue inhaler yet today? These details tighten the trigger map. Confirm with your clinician before modifying any meds.",
+      "timestamp": null,
+      "message_id": "turn_9",
+      "word_count": 132,
+      "char_count": 779,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 10,
+      "role": "user",
+      "content": "Can you help provide a list of the food to avoid to me from the MegaHandout?",
+      "timestamp": null,
+      "message_id": "turn_10",
+      "word_count": 16,
+      "char_count": 76,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 11,
+      "role": "ai",
+      "content": "Log saved FieldDetails–(no new health data in this message) Reflections Requested “Foods to Avoid / Strictly Limit” (Migraine Diet – MegaHandout) Beverages & caffeine – > 2 cups/day of coffee, tea, cola, energy drinks; any chocolate/cocoa drink; all alcohol, especially red wine Processed or aged meats/fish – bacon, ham, salami, pepperoni, summer sausage, hot dogs, pickled herring, salted-dried fish, chicken livers (plus canned/cured variants) Aged & cultured dairy – blue, feta, Swiss, Gouda, Roquefort, Stilton, mozzarella, Parmesan, Provolone, Romano, buttermilk, sour-cream-style products Fresh yeasty breads / pastries – warm homemade bread, sourdough, coffeecake, doughnuts, plus any baked good with chocolate or nuts High-amine veggies & condiments – large amounts of onions, olives, chili peppers; beans can bother some people Pickled / fermented / soy-based foods – all pickles, sauerkraut, soy sauce, fermented olives, eggs, beets, etc. High-histamine fruits & juices – avocado, banana (> ½ per day), figs, raisins, papaya, passion-fruit, red plums; citrus > ½ cup; dried fruits; prune/ apple/ cherry/ apricot/ peach/ pear juices Nuts & seeds / peanut butter – peanuts, sunflower, sesame, pumpkin, related butters Soups, MSG & yeast extracts – canned soups, bouillon/soup cubes with autolyzed yeast or MSG ; flavor enhancers such as MSG or yeast extracts in any food Miscellaneous triggers – pizza (fresh bread + cheese), red or balsamic vinegar (white is OK), some artificial sweeteners (individual sensitivity varies) Tip: Keep this list handy (phone screenshot or fridge note). If you notice you’re stacking two or more items in the same day, swap one out for a low-amine option (e.g., fresh turkey instead of pepperoni) to stay below your trigger threshold. Confirm with your clinician before making major dietary changes.",
+      "timestamp": null,
+      "message_id": "turn_11",
+      "word_count": 278,
+      "char_count": 1839,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 12,
+      "role": "user",
+      "content": "So dinner, I had spring rolls, fried tofu, carrots, and lettuces, and rice vermicelli, and dipping sauces of peanut sauces. Anyway, and then I had a evening supplement, and I took my evening dose of anti-acid reflux. They all happened at 6 to 7 p.m. Right now, I think I've been feeling a little bit kind of a tension on my right neck and my right temple. One, for like a while.",
+      "timestamp": null,
+      "message_id": "turn_12",
+      "word_count": 72,
+      "char_count": 378,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 13,
+      "role": "ai",
+      "content": "Log saved FieldDetailsTime18:30Meals & timesSpring-roll dinner – fried tofu, carrots, lettuce, rice vermicelli, peanut sauce @ 18:00Protein (g)~20 gCarbs g~40 gCalories~600 kcalTrig-food refluxFried tofu (fried/fatty)Famotidine (Y/N,time)Y 18:00Supps listAshwagandha 500 mg PMMigraine / Neck pain 0-101 (right neck ➜ temple)Pain start HH:MM19:00Env at onsetPost-dinner/evening Reflections Histamine/amine stacking alert: tuna at lunch plus peanut-based sauce at dinner puts today’s amine count at 2. Nuts & seeds (peanuts, etc.) are on the “avoid” list for migraine-prone brains; try to keep amine foods to ≤ 1 a day and < 4 days per week. Reflux-trigger trio: caffeine (coffee + matcha) + fried tofu makes 3 triggers (> 2 goal). Caffeine is already at the 2-cup limit the handout recommends, and fried/fatty foods relax the LES, boosting reflux risk; aim to swap one of these next time. Quick check-in (max two questions): • About how many minutes has tonight’s neck/temple tension lasted so far? • Have you needed the albuterol rescue inhaler at all today? Confirm with your clinician before any medication or diet changes.",
+      "timestamp": null,
+      "message_id": "turn_13",
+      "word_count": 170,
+      "char_count": 1125,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 14,
+      "role": "user",
+      "content": "can you provide the full log from yesterday",
+      "timestamp": null,
+      "message_id": "turn_14",
+      "word_count": 8,
+      "char_count": 43,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 15,
+      "role": "ai",
+      "content": "Log saved – 2025-07-19 (yesterday) FieldDetailsDate2025-07-19Time06:00 – 19:00 entriesLocationFrederick, MDWeatherCloudy, ~75 °F daySleep h + Q8.5 h, quality 5/10Wake pain 0-101 (brief right-neck tension)Meals & times06:30 breakfast: 1 fried egg, 8 oz 1 % milk, 4 baby red potatoes • 12:00 lunch: tuna-salad multigrain panini, ½-cup matcha latte • 18:00 dinner: spring rolls (fried tofu, carrots, lettuce, rice vermicelli, peanut sauce)Hydration oz~36 oz (24 oz AM incl. ½-packet electrolyte, 12 oz caffeinated drinks)Exercise30-min basketball (06:30-07:00)Stress 0-100 (after AM calm-down)MoodMorning anxious/irritated → calmProtein (g)≈59 gCarbs (g)≈106 gCalories≈1 450 kcalVit D (IU)≈270 IUCa (mg)≈500 mgTrig-food refluxCoffee, matcha, fried tofuTrig-posture reflux—Reflux symptom—Reflux relief—Maint-inhalerTrelegy 1 puff @ 21:30 (prior night)Rescue-inhaler uses0Migraine / Neck pain 0-101 (neck ➜ temple)Pain start HH:MM06:00, 12:30, 19:00Pain duration min? (not logged)Env at onsetWoke up • post-lunch • post-dinnerPantoprazole (Y/N,time)Y 06:00Famotidine (Y/N,time)Y 18:00Supps listAM: Riboflavin 400 mg, Fish-oil 3 caps, Magnesium 120 mg • PM: Ashwagandha 500 mgNotes / weather / hormonesAmine count 2 (tuna, peanut); Reflux-food count 3; Protein < 70 g; Vit D/Ca below targets Reflections Trigger tally: two amine foods (>1 goal) + three reflux triggers (>2 goal) and protein/Vit D/Ca all below daily targets. Tomorrow, try swapping either tuna or peanut sauce and choose a non-fried protein (e.g., grilled chicken) to see if neck-temple tension eases. Missing bits: About how long (minutes) did each tension bout last, and did you need albuterol at any point? Answering these two will complete yesterday’s picture. As always, confirm with your clinician before changing meds or diet.",
+      "timestamp": null,
+      "message_id": "turn_15",
+      "word_count": 247,
+      "char_count": 1793,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 16,
+      "role": "user",
+      "content": "I went to bed around 9.30 p.m., and then I took my regular inhaler, Trilogy, and also took the Unisom to go to sleep. I also realize that I missed both the lunch and dinner supplements",
+      "timestamp": null,
+      "message_id": "turn_16",
+      "word_count": 36,
+      "char_count": 184,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 17,
+      "role": "ai",
+      "content": "Log saved FieldDetailsTime21:30Maint-inhaler (name + puffs)Trelegy – 1 puff @ bedtimeNotes / weather / hormonesTook ½ Unisom (doxylamine 12.5 mg) to sleep; missed lunch & dinner supplements (fish-oil, ashwagandha) Reflections Skipping midday fish-oil and evening ashwagandha drops your usual omega-3 and stress-buffer intake; a simple phone alarm or pill case can help keep those slots steady. Consistency matters for supplement benefit. Using Unisom nightly can lead to next-morning grogginess and rebound insomnia over time—worth discussing longer-term sleep strategies with your clinician. • Quick recap requests (still missing): – Rough duration (minutes) of each neck-/temple-tension bout? – Any albuterol rescue puffs yesterday/today? Confirm with your clinician before changing medications or supplements.",
+      "timestamp": null,
+      "message_id": "turn_17",
+      "word_count": 110,
+      "char_count": 812,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 18,
+      "role": "user",
+      "content": "can you provide the full entry of yesterday ? I felt better w.r.t the chest tightness, and there were not too many coughs either",
+      "timestamp": null,
+      "message_id": "turn_18",
+      "word_count": 24,
+      "char_count": 128,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 19,
+      "role": "ai",
+      "content": "Log saved FieldDetailsRescue-inhaler uses0 (no puffs; chest tightness improved)Notes / weather / hormones“Yesterday” chest felt better, only a few coughs Reflections Complete daily entry – Saturday, 19 Jul 2025 FieldDetailsDate2025-07-19Sleep h + Q8.5 h, quality 5/10LocationFrederick, MDWeatherCloudy, ~75 °F dayWake pain 0-101 (brief right-neck tension)Maint-inhalerTrelegy 1 puff @ 21:30 (night before)Rescue-inhaler uses0Meals & times06:30 breakfast – 1 fried egg, 8 oz 1 % milk, 4 baby red potatoes · 12:00 lunch – tuna-salad multigrain panini, ½-cup matcha latte · 18:00 dinner – spring rolls (fried tofu, carrots, lettuce, rice vermicelli, peanut sauce)Hydration oz≈36 oz (24 oz AM incl. electrolyte, 12 oz caffeinated)Exercise30-min basketball (06:30-07:00)Stress 0-100 (after AM calm-down)MoodMorning anxious/irritated → calmProtein g≈59 gCarbs g≈106 gCalories≈1 450 kcalVit D IU≈270 IUCa mg≈500 mgPantoprazoleY 06:00FamotidineY 18:00SupplementsAM: riboflavin 400 mg, fish-oil 3 caps, magnesium 120 mg · PM: missed fish-oil & ashwagandhaMigraine / neck pain 0-101 (neck → temple)Pain start HH:MM06:00, 12:30, 19:00Pain duration minnot recordedEnv at onsetWoke-up · post-lunch · post-dinnerTrig-food refluxCoffee, matcha, fried tofuAmine count2 (tuna, peanut sauce)Reflux-food count3 (coffee, matcha, fried)Other notesChest tightness better; only a few coughs Quick insights Chest & cough: Great to see the Trelegy holding symptoms down—still useful to jot any cough episodes (+ rescue puffs) so trends stay visible. Supplements: Mid- and late-day doses were missed; a pocket pill case or phone alarm may help hit your habitual times. As always, confirm with your clinician before making medication or supplement changes.",
+      "timestamp": null,
+      "message_id": "turn_19",
+      "word_count": 236,
+      "char_count": 1729,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    }
+  ]
+}

@@ -1,6 +1,16 @@
 ---
 alwaysApply: true
 ---
+Always activate the uv virtual environment before implementation of Agno library
+
+**To activate uv environment in PowerShell:**
+```powershell
+& d:/AI/AI_agents_agno/uv/Scripts/Activate.ps1
+```
+or
+```powershell
+.\uv\Scripts\Activate.ps1
+```
 
 For any Agno API or feature mentioned, search the organized docs/agno/ folder first and include the exact file reference. If not found, say "I can't verify".
 

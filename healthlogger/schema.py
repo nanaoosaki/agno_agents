@@ -174,3 +174,34 @@ BODY_REGION_HINTS = {
     "back_pain": ["lower back", "spine", "back"],
     "neck_pain": ["neck", "cervical", "stiff neck"]
 }
+
+# === RECALL AGENT SCHEMAS ===
+# Following docs/agno/tools/writing_your_own_tools.md patterns
+
+class TimeRange(BaseModel):
+    """Structured time range for historical queries"""
+    start_utc_iso: str  # Start time in UTC ISO format
+    end_utc_iso: str   # End time in UTC ISO format  
+    label: str         # Human-readable label e.g., "last 7 days", "yesterday"
+
+class EpisodeSummary(BaseModel):
+    """Summary of an episode for recall purposes"""
+    episode_id: str
+    condition: str
+    started_at: str
+    max_severity: Optional[int] = None
+    interventions: List[str] = Field(default_factory=list)
+
+class CorrelationDetail(BaseModel):
+    """Detailed correlation information between observation and episode"""
+    observation_timestamp: str
+    matched_episode_id: str
+    hours_difference: float
+
+class CorrelationResult(BaseModel):
+    """Result of correlation analysis between observations and episodes"""
+    observation_total: int
+    episodes_with_correlation: int
+    correlation_found: bool
+    details: List[CorrelationDetail] = Field(default_factory=list)
+    conclusion: str

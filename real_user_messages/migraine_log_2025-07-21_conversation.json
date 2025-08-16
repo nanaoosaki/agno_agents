@@ -1,0 +1,300 @@
+{
+  "metadata": {
+    "source": "html_file",
+    "file_path": "linda_core\\user_messages\\Migraine-Asthma-AcidReflux-Sleep Logger - daily log 2025-07-21.html",
+    "extracted_at": "2025-08-10T08:59:52.022866",
+    "total_messages": 26,
+    "user_messages": 13,
+    "ai_messages": 13,
+    "extraction_method": "article_parsing",
+    "parser_version": "final_v1"
+  },
+  "messages": [
+    {
+      "index": 0,
+      "role": "user",
+      "content": "For today's entry, I got up at 6 a.m. the usual time, and then I took my morning dose of antireflux and then waited for about 30 minutes, and I took my breakfast, which I had a cup of milk, a cup of the cereal that I'm having lately, and I'll share the picture later. Oh, I drank eight ounces of plain water first, and then I took a small morning walk about 10 minutes afterwards.Today feels good. The sleep quality was pretty good. I think 5 or 6, 6 or 7. And then I only woke up once, peed once, and then didn't do reminiscing today, so pretty good. Solid sleep. I woke up with no pain, which is good as well.",
+      "timestamp": null,
+      "message_id": "turn_0",
+      "word_count": 123,
+      "char_count": 611,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 1,
+      "role": "ai",
+      "content": "Log saved FieldDetailsDate2025-07-21Time10:00 AMLocationFrederick, MDWeatherMostly cloudy 77 °F → high ≈ 88 °FSleep h + Q? h; quality ≈ 6 / 10Wake pain 0-100Meals & times06:30 – cereal + 1 cup milkHydration oz8Exercise10-min walk @ 06:40Pantoprazole (Y/N,time)Y – 06:00 Reflections Great job taking pantoprazole 30 min before breakfast—textbook timing for best acid control. A second 8-oz glass of water mid-morning will keep hydration on track. Pain-free wake-up and good-quality sleep set a positive tone. To preserve that streak, stick to regular bed/wake times and include light daily movement—both shown to cut migraine frequency. Quick check: • About how many hours did you sleep last night? • Any estimate of protein so far today? (This helps keep the tracker complete.) Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_1",
+      "word_count": 127,
+      "char_count": 829,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 2,
+      "role": "user",
+      "content": "One thing a bit weird is you can see the left top of my head that's the same spot where probably two weeks ago I had more like sharp pain if I touch it more tight and I started using those scalp massager to help to relax it. It helped a lot last week but somehow today this morning when I wake up it's still a bit of dull pain there and then here's the cereal nutrition label I ate.",
+      "timestamp": null,
+      "message_id": "turn_2",
+      "word_count": 80,
+      "char_count": 382,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 3,
+      "role": "ai",
+      "content": "Log saved FieldDetailsProtein (g)13 g (1 cup cereal)Calories280 kcalCarbs g48 gAdded sugar g13 gCa (mg)53 mgHydration oz+8 oz milk → 16 oz total so farNotes / weather / hormonesMild left-vertex scalp tenderness on waking Reflections Nutrition snapshot. Your breakfast delivered a useful 13 g of protein—nice boost toward the 70 g daily goal—but also 13 g added sugar. If cereals are a morning staple, rotating in a lower-sugar option or adding unsweetened Greek yogurt for extra protein can balance macros and keep glucose swings gentler. Scalp tenderness check-in. A lingering dull spot over the parietal/occipital area often ties back to muscle tension or nerve irritation (occipital neuralgia). Short daily stretches (chin tucks, gentle neck rotations) plus a warm compress can calm that region; if tenderness edges above 3 / 10 or spreads, loop in your clinician. Quick data nudge: • How many total hours did you sleep last night? • On a 0–10 scale, what’s that scalp pain now, and when did it first crop up today? Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_3",
+      "word_count": 175,
+      "char_count": 1070,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 4,
+      "role": "user",
+      "content": "My occipital nalgeria was diagnosed on the right side, so the left one is pretty new. I don't know what's going on.",
+      "timestamp": null,
+      "message_id": "turn_4",
+      "word_count": 22,
+      "char_count": 115,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 5,
+      "role": "ai",
+      "content": "Log saved FieldDetailsPain start HH:MM~10:35 (assumed “now”)Env at onsetjust after waking — left-parietal scalpNotes / weather / hormonesNew left-sided occipital-type tenderness (prior ON on right) Reflections A fresh patch of occipital-style pain on the opposite side often links back to neck-muscle tension, pillow height, or long screen sessions. Warm compresses, gentle chin-tucks, and checking that your head isn’t rotated or tilted during sleep can calm the nerve. If the pain shoots, spreads, or climbs past 4 / 10 for >48 h, ring your clinician. Could you jot down (a) total sleep hours last night and (b) the current pain level 0-10? That lets the tracker spot patterns and gauge whether this new tender spot is easing or escalating. Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_5",
+      "word_count": 126,
+      "char_count": 794,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 6,
+      "role": "user",
+      "content": "Now, right now the time is 9.25 a.m. The pain, I don't know, it's like if you don't touch it, you don't feel it. But I do feel a little bit of pain, probably you can say 9 a.m.And then, um, last night I went to bed at 9.30 p.m. Uh, the sleep quality, I would say probably six, and then the current pain level on the left side is like a 0.5.",
+      "timestamp": null,
+      "message_id": "turn_6",
+      "word_count": 73,
+      "char_count": 340,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 7,
+      "role": "ai",
+      "content": "Log saved FieldDetailsSleep h + Q8.5 h; quality 6 / 10Migraine / Neck pain 0-100.5 (left-parietal spot)Pain start HH:MM09:00Pain duration min25 min so far Reflections A barely-there 0.5/10 ache that’s tender only on touch is reassuring; it often points to simple myofascial tension rather than true occipital-nerve flare. A brief warm cloth across the upper neck plus a 30-second chin-tuck stretch every hour can keep it from building. Solid 8.5 h sleep is a migraine protect-factor—nice work. If the new left-side tenderness recurs over the next week, consider checking pillow loft or adding a thin rolled towel under the neck to keep the head centered. Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_7",
+      "word_count": 113,
+      "char_count": 706,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 8,
+      "role": "user",
+      "content": "So in terms of the topical pain on the left side, which area are we talking about? So what do you think a question would be helpful for me to identify what kind of pain it is so we can help the diagnosis a little bit?",
+      "timestamp": null,
+      "message_id": "turn_8",
+      "word_count": 46,
+      "char_count": 217,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 9,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNo new structured data in this message Reflections Pin-point the spot. A handy way to orient yourself (or your doctor) is to press with one fingertip and note: • Is the tender point on the bony ridge at the base of the skull (typical for occipital-nerve pain) or higher up on the vertex/parietal scalp? • Does turning your head, slouching, or pushing on nearby neck muscles sharpen it? Tight sternocleidomastoids can mimic or trigger occipital pain . Six quick questions to jot down before your next visit: ① Quality – stabbing, electric, dull pressure, or burning? ② Trigger – touch only, or also coughing, brushing hair, prolonged screen time? ③ Radiation – does it shoot behind the eye/ear or stay in a coin-sized spot? ④ Duration pattern – fleeting seconds, minutes, or lingering hours? ⑤ Relief – improves with heat, massage, OTC pain reliever, or lying flat? ⑥ Associated signs – scalp numbness, tingling, visual aura, nausea? Bringing those answers—and noting that your right-sided occipital neuralgia was previously documented —will help the clinician decide whether this new left-sided ache is simple muscle-tension referral, true bilateral nerve irritation, or something entirely different. Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_9",
+      "word_count": 201,
+      "char_count": 1274,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 10,
+      "role": "user",
+      "content": "So in this picture, this is exactly where I feel pain. It's not just one point, it's like a large area. But the one I pointed out, it's more like the scalp here. And I do feel like it's, I don't know, turning my head or slouching and pushing on, like that position doesn't work. I think it's more topical on this side. And it's persistent. I don't think it's a frequency or attack, like, in a way. It's just like a it's more dull pressure. And then if you touch it, it hurts more. And then it kind of just persisting. And then this happened probably two or three weeks ago. It's much more painful, I feel like. And then particularly if you touch it. And then I use a scalp massager. It kind of cleared away after a few days. And then today it started again. I have no idea what is the triggers. It's not a headache, and I don't think it's acceptable in Algeria either. It's something separate, independent. I don't know why it's independent, but it's completely different.",
+      "timestamp": null,
+      "message_id": "turn_10",
+      "word_count": 183,
+      "char_count": 972,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 11,
+      "role": "ai",
+      "content": "Log saved FieldDetailsPain duration min~35 min so far (continuous since 09:00)Notes / weather / hormonesDiffuse, coin-sized tender patch over left high-parietal scalp (see photo); dull pressure ↗ with touch, no obvious motion trigger Reflections Tender scalp ≠ nerve only. A broad, touch-sensitive patch on the crown often reflects myofascial scalp tension or cutaneous allodynia that can shadow a migraine cycle—even when you don’t feel a classic headache. Warm compresses, gentle fingertip kneading around the spot, and staying hydrated usually settle it within a day. To help your clinician sort it out, note this trio over the next 48 h: • Surface changes – redness, bumps, dandruff, or hair-product irritation? • Hair pull test – does lightly tugging hair strands reproduce the ache? • Ponytail or hat tension – does loosening headwear relieve it? Those clues separate skin / follicle issues from deeper muscle-nerve tension. Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_11",
+      "word_count": 152,
+      "char_count": 982,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 12,
+      "role": "user",
+      "content": "okay the left side kind of top pain on my scalp seemed to cause a bit more tension on the left side and now it's causing a minor headache on the left temple and also I'm feeling pain on my left side of my neck as well and also I now applied a kind of essential oil and some past patch around my neck and my scapula has about probably one hour now and also had a kind of emotional downtime because I know I was talking with my colleague and I was just complaining about David I don't like how I did that that just made me also feel upset and this lunch and also I just kind of got into small fight with Jack that also just doesn't do well oh I don't know today's no good was a new pain and I feel a little bit negative about it",
+      "timestamp": null,
+      "message_id": "turn_12",
+      "word_count": 152,
+      "char_count": 726,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 13,
+      "role": "ai",
+      "content": "Log saved FieldDetailsStress 0-10? (tension after two work conflicts)MoodUpset / discouragedMigraine / Neck pain 0-10? (dull L-temple ache + L-neck)Pain start HH:MM~11:45Env at onsetEmotional stress during callsRelief actions (other)Essential-oil roll-on & analgesic patch to neck / scapula (on × 1 h)NotesScalp spot spread → temple + neck; no abortive taken Reflections Stress-tension loop. Emotional friction can tighten trapezius and suboccipital muscles within minutes, tugging on scalp tissues and lighting up temple/neck aches. A 3-min box-breathing break or a short shoulder roll set right after stressful calls often aborts these “spread” episodes before they build. Track relief effect. Jot how much the patch/essential oil lowers pain at the 60-min mark (e.g., “down to 1 / 10”). If topical heat + scent help, that hints the driver is mainly muscular, not nerve-based. Quick check for the log (2 items): • Current pain level (0–10) for temple + neck? • How would you score overall stress right now (0–10)? Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_13",
+      "word_count": 164,
+      "char_count": 1067,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 14,
+      "role": "user",
+      "content": "08:32 pm I just took my trelogy inhaler and the NyQuil for sleep and the pain on my left side of head and neck",
+      "timestamp": null,
+      "message_id": "turn_14",
+      "word_count": 24,
+      "char_count": 110,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 15,
+      "role": "ai",
+      "content": "Log saved FieldDetailsTime20:32Maint-inhaler (name + puffs)Trelegy Ellipta 1 puffMigraine / Neck pain 0-10? (left temple + neck)Relief actions (other)NyQuil dose (contains acetaminophen 650 mg + doxylamine)Notes / weather / hormonesPain persists L-temple ↔ L-neck after stressful day Reflections NyQuil watch-out. Because NyQuil bundles acetaminophen, tonight now counts as an acetaminophen day. Keep the rolling total ≤ 10 days per month to avoid rebound headache or liver strain; switching back to plain doxylamine (Unisom) on most nights sidesteps that extra acetaminophen. Inhaler consistency. Trelegy provides your daily steroid/LAMA/LABA protection—good to see it taken on schedule. Jot any nighttime wheeze or cough; if they appear despite Trelegy you may need a spacer check or timing tweak. Quick data nudge (2 items): • Current pain level 0–10 for temple and neck? • How stressed do you feel right now on a 0–10 scale? Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_15",
+      "word_count": 148,
+      "char_count": 980,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 16,
+      "role": "user",
+      "content": "Okay, so last night I changed to the more flattened pillow because I feel like my the other more special pillow seems to be tall because more stress on the neck and I'm trying out the flat pillow. I can't fall asleep I suppose and it was okay and then I woke up about 1.30 a.m. I couldn't fall asleep. I was having salon patches all around my left side and then and then and yeah but taking some CBD oil under my tongue still couldn't fall asleep. There's some reminiscing going on but also just uncomfortableness and then I think I waited the problem until 3 a.m. somewhere. I took 12.5 milligrams of Unisom and then I was able to fall asleep and but before that I applied salon patches all around my right side of my neck and then I woke up around around 7 a.m.",
+      "timestamp": null,
+      "message_id": "turn_16",
+      "word_count": 148,
+      "char_count": 763,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 17,
+      "role": "ai",
+      "content": "Log saved FieldDetailsDate2025-07-22Time07 : 00Sleep h + Q~7.5 h (09 : 30 p m → 01 : 30 a m and 03 : 00 a m → 07 : 00 a m); quality ≈ 4 / 10Relief actions (other)CBD oil SL, Salonpas patches (L scalp ↔ neck), Unisom 12.5 mg @ 03 : 00Notes / weather / hormonesTrial of flatter pillow; two-hour wake window with neck/scalp discomfort Reflections Pillow experiment. A lower pillow can ease neck loading, but if it flattens the natural curve you may still get muscle tug on the scalp. Try sliding a rolled towel under just the cervical hollow so the head stays level while the neck has light support; many people find that “combo” calmer than either a high or totally flat surface. Sedative stack watch. Last night’s NyQuil (acetaminophen + doxylamine) plus a 03 : 00 Unisom (doxylamine) means two antihistamine doses in one night. Double-check the 24-h limit on both doxylamine (max = 25 mg) and acetaminophen (≤ 4 g) to avoid grogginess or rebound headache. Rotating to plain doxylamine on nights you need a rescue may simplify the math. Quick check for today: • Current neck/temple pain 0–10? • Stress level right now 0–10? Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_17",
+      "word_count": 210,
+      "char_count": 1174,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 18,
+      "role": "user",
+      "content": "can we have the full entry of yesterday",
+      "timestamp": null,
+      "message_id": "turn_18",
+      "word_count": 8,
+      "char_count": 39,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 19,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNo new structured data in this message Reflections Full entry for 2025-07-21 FieldDetailsDate2025-07-21Time (first log)10 : 00LocationFrederick, MDWeatherMostly cloudy 77 °F → high ≈ 88 °FSleep h + Q8.5 h; quality 6 / 10Wake pain 0-100Meals & times06 : 30 – cereal (1 cup) + milk (1 cup)Hydration oz16 (8 oz water + 8 oz milk)Exercise10-min walk @ 06 : 40Protein (g)13Calories280Carbs (g)48Added sugar (g)13Vit D (IU)~100Ca (mg)~359Maint-inhalerTrelegy Ellipta 1 puff @ 20 : 32Rescue-inhaler uses0Migraine / Neck pain 0-100.5 (left parietal spot) → temple/neck ache later (level not given)Pain start HH:MM09 : 00 (scalp) / 11 : 45 (temple + neck)Pain duration min≥35 (scalp) / ongoing at bedtimeEnv at onsetWaking; later emotional work stressPantoprazoleY – 06 : 00FamotidineNStress 0-10— (no numeric value provided)MoodUpset / discouragedRelief actionsEssential-oil roll-on, Salonpas neck patch, NyQuil 650 mg acet + doxylamine, CBD oilNotesNew diffuse tender patch over left crown; spread to temple + neck after work conflicts Pattern watch. A mild morning scalp spot expanded once stress hit—classic tension-propagation. Scheduling 2-min shoulder rolls or box-breathing after calls may keep the spread from re-igniting. Sedative stacking. NyQuil (acetaminophen + doxylamine) plus later Unisom pushed total doxylamine to >12.5 mg for the night; aim to cap combined antihistamine doses ≤25 mg and acetaminophen ≤4 g per 24 h to dodge grogginess or rebound pain. Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_19",
+      "word_count": 228,
+      "char_count": 1536,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 20,
+      "role": "user",
+      "content": "Okay, here's the update for hydration of yesterday, and supplements as well. I drank a total of probably three water bottles, which is in 32 ounces. And then lunch was at Cal Tortilla, blackened fish taco, and the classic taco was tofu. Dinner was something I made myself. It's fried rice, and I probably had half a cup of rice, one egg, and then probably two cubes of tofu, and probably I don't know, one cup of green beans. Please particularly note on the on the left side of the scalp pain I was feeling, the left parietal spot, that pain was bothering me yesterday. I'm not quite sure what's the trigger there. It's not another pain. I thought it was kind of disappeared and dialed down a week ago but that's like a rile up again. Please also note the acetaminophen dosage of NyQuil, and that probably should be something I pay attention to.",
+      "timestamp": null,
+      "message_id": "turn_20",
+      "word_count": 155,
+      "char_count": 845,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 21,
+      "role": "ai",
+      "content": "Log saved FieldDetailsHydration oz48 (total for the day)Meals & times12 : 30 – Cal Tortilla: blackened fish taco + tofu taco · 19 : 00 – home-made fried rice (½ c rice, 1 egg, 2 cubes tofu, 1 c green beans)Supps listMg 120 mg, Riboflavin 400 mg, Fish-oil 3 caps, Vit D3 1 000 IU + Ca 280 mg, Ashwagandha 500 mgTrig-food reflux1 (fried rice = fried/fatty)NotesRecurring tender patch over left parietal scalp; NyQuil dose delivered 650 mg acetaminophen Reflections Hydration bump. Yesterday’s 48 oz is a step up—nice. Aim for ~64 oz on warm, active days; staying evenly hydrated helps keep neck-muscle tension (and thus scalp tenderness) in check. Watch the combo of fried + histamine-prone foods. Blackened fish (especially if not ultra-fresh) and fried rice both sit on common histamine or reflux trigger lists. If you notice the scalp spot revs after such meals, a low-histamine test run for a few days could clarify the link while you track acetaminophen days (<10/mo). Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_21",
+      "word_count": 172,
+      "char_count": 1023,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 22,
+      "role": "user",
+      "content": "your hydration seemed wrong, it's 32oz x3 bottles; can you provide the full updated entry from yesterday",
+      "timestamp": null,
+      "message_id": "turn_22",
+      "word_count": 17,
+      "char_count": 104,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 23,
+      "role": "ai",
+      "content": "Log saved FieldDetailsHydration oz96 (three × 32-oz bottles) Reflections Full updated entry for 2025-07-21 FieldDetailsDate2025-07-21Time (first log)10 : 00LocationFrederick, MDWeatherMostly cloudy 77 °F → high ≈ 88 °FSleep h + Q8.5 h; quality 6 / 10Wake pain 0-100Meals & times06 : 30 – cereal (1 c) + milk (1 c) • 12 : 30 – Cal Tortilla: blackened fish taco + tofu taco • 19 : 00 – fried rice (½ c rice, 1 egg, 2 cubes tofu, 1 c green beans)Hydration oz96Exercise10-min walk @ 06 : 40Protein (g)≈ 52 g (13 g breakfast + ~39 g rest of day)Calories≈ 1 580 kcal (est.)Carbs (g)≈ 190 g (est.)Added sugar (g)13Vit D (IU)~1 100 (milk + supp)Ca (mg)~1 230 (milk + supp)Maint-inhalerTrelegy Ellipta 1 puff @ 20 : 32Rescue-inhaler uses0Migraine / Neck pain 0-100.5 (left parietal spot) → temple/neck ache later (level not given)Pain start HH:MM09 : 00 (scalp) / 11 : 45 (temple + neck)Pain duration min≥ 35 (scalp) / ongoing at bedtimeEnv at onsetWaking; later emotional work stressPantoprazoleY – 06 : 00FamotidineNStress 0-10— (value not provided)MoodUpset / discouragedRelief actionsEssential-oil roll-on, Salonpas patch, NyQuil 650 mg acetaminophen + doxylamine, CBD oilSupps listMg 120 mg, Riboflavin 400 mg, Fish-oil 3 caps, Vit D3 1 000 IU + Ca 280 mg, Ashwagandha 500 mgTrig-food reflux1 (fried rice)NotesRecurring tender patch over left crown; spread to temple + neck after work conflicts; NyQuil counts as an acetaminophen day Great hydration correction—96 oz comfortably exceeds the 64 oz target and helps muscle tension fade faster. With protein ≈ 52 g and calcium > 1 000 mg, you hit key daily nutrient thresholds; today just watch acetaminophen totals to keep the month’s count under 10. Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_23",
+      "word_count": 287,
+      "char_count": 1746,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 24,
+      "role": "user",
+      "content": "can you add caffine intake for yesterday where I had 9 grams of medium roasted, coarsely grinded, pour over style coffee.",
+      "timestamp": null,
+      "message_id": "turn_24",
+      "word_count": 21,
+      "char_count": 121,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 25,
+      "role": "ai",
+      "content": "Log saved FieldDetailsCaffeine mg~95 mg (9 g medium-roast pour-over)Trig-food reflux2 — coffee + fried rice Reflections Full updated entry for 2025-07-21 (now including caffeine) FieldDetailsDate2025-07-21Sleep h + Q8.5 h; quality 6 / 10Hydration oz96Meals & times06:30 – cereal + milk • 12:30 – Cal Tortilla fish & tofu tacos • 19:00 – fried rice (½ c rice, 1 egg, tofu, green beans)Protein (g)≈ 52Calories (kcal)≈ 1 580Carbs (g)≈ 190Added sugar (g)13Vit D (IU)~1 100Ca (mg)~1 230Caffeine (mg)95 (morning pour-over)Maint-inhalerTrelegy 1 puff @ 20:32Pantoprazole06:00Migraine / Neck pain0.5 → temple/neck ache laterPain timeline09:00 scalp spot • 11:45 temple/neck (stress-related)Stress / MoodWork-conflict upset (score not given)Relief actionsEssential-oil roll-on, Salonpas patch, NyQuil (650 mg acetaminophen + doxylamine), CBD oilSupplementsMg, Riboflavin, Fish-oil, Vit D3 + Ca, AshwagandhaTrig-food reflux2 – coffee, fried riceNotesRecurrent left parietal scalp tenderness; NyQuil counts toward monthly acetaminophen cap Moderate caffeine. About 95 mg is well below the 200–300 mg threshold that can provoke migraine or reflux in many people. Still, pairing coffee with fried food doubled yesterday’s reflux-trigger count; see if a lower-fat lunch keeps afternoon neck tension quieter. With caffeine and acetaminophen both logged, your tracker can now flag days where those converge—helpful for spotting rebound-risk patterns. Confirm with your clinician before any med changes.",
+      "timestamp": null,
+      "message_id": "turn_25",
+      "word_count": 205,
+      "char_count": 1486,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    }
+  ]
+}

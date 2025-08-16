@@ -5,7 +5,7 @@ from agno.tools.yfinance import YFinanceTools
 
 # Claude with reasoning tools for complex analysis
 reasoning_agent = Agent(
-    model=Claude(id="claude-3-7-sonnet-latest"),
+    model=Claude(id="claude-3-7-sonnet-latest"), #controls the flow of execution, decides whether to reason, act or respond
     tools=[
         ReasoningTools(
             think=True,
@@ -17,8 +17,8 @@ reasoning_agent = Agent(
             analyst_recommendations=True,
             company_info=True,
         ),
-    ],
-    instructions="Use structured reasoning for complex problems",
+    ], #enable an Agent to take actions and interacts with external systems 
+    instructions="Use structured reasoning for complex problems", # how Agno program in the agent, teaching it how to use tools and respond
     stream_intermediate_steps=True,
     show_tool_calls=True,
     markdown=True,

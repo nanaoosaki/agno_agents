@@ -1,0 +1,234 @@
+{
+  "metadata": {
+    "source": "html_file",
+    "file_path": "linda_core\\user_messages\\Migraine-Asthma-AcidReflux-Sleep Logger - daily log 2025-07-25.html",
+    "extracted_at": "2025-08-10T08:59:52.523601",
+    "total_messages": 20,
+    "user_messages": 10,
+    "ai_messages": 10,
+    "extraction_method": "article_parsing",
+    "parser_version": "final_v1"
+  },
+  "messages": [
+    {
+      "index": 0,
+      "role": "user",
+      "content": "So it's today's entry. I just verbally talk about everything that happened. I went to bed about 9.30 p.m. last night, and then I had a tension headache going to bed. I ended up having a dose of NyQuil and Ubrella V to treat the tension headache. But then I woke up at some point, I don't know, 1 or 2 a.m., and then I took a Unisom, one to keep sleeping. And today, this morning, I woke up around 6 a.m. When I wake up at 1 or 2 a.m., I felt like there's some kind of pain and tension still remaining on my left side of head. Oh, and also, by the way, I changed to a new pillow. I believe it's slightly taller than my previous pillow. That might be causing the tension on the left side of the neck. And then this morning, when I wake up, clearly, there's still some pain left, probably level 1 on the left side of my temple and top of my head, and the left side of my neck. And then I had my usual breakfast with cereal and one cup of milk. And then I had about, so far right now, it's 4 p.m., I had almost two and a half water bottle, which is in 32 ounces, with electrolyte packet. And my lunch is lamb in the loo leftover from yesterday or two days ago. And then I had a Korean bread, soboro. And then I had a doctor visit between 10 to 11 in the kind of getting examined for my issues again. And then I still have some kind of pain, like dull pain or tightness on the left top side of my scalp. Which is unusual because it's not my migraine site. And then I've been applying slump patches all around my left side of my neck, scapular area, and they all feel kind of painful. But I can function. That's it.",
+      "timestamp": null,
+      "message_id": "turn_0",
+      "word_count": 327,
+      "char_count": 1609,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 1,
+      "role": "ai",
+      "content": "Currently 97° · Partly sunnyFrederick, MD, United States5 PM94°Partly sunny w/ t-storms6 PM93°Partly sunny7 PM91°Partly sunny8 PM90°Partly sunny9 PM86°Partly cloudy10 PM83°Partly cloudy w/ t-storms11 PM81°Partly cloudy12 AM79°Partly cloudyShow more Log saved FieldDetailsDate2025-07-25Time16:00LocationFrederick, MDWeathersee widget aboveSleep h + Q8.5 h (quality — not noted)Wake pain 0-101 (dull ache L temple + neck)Meals & times07:00 cereal + milk; 13:00 lamb vindaloo & soboro breadHydration oz~80 oz (2½ × 32 oz bottles w/ electrolyte)Calories≈1 200 kcal (est.)Protein (g)≈46 gMigraine / Neck pain 0-101Pain start HH:MM21:30 (07/24)Env at onsetNew, taller pillowRescue-inhaler uses0Relief actions (other)NyQuil at bedtime; Unisom (01-02 a.m.); Salonpas patches; Ubrelvy 100 mgPantoprazole (Y/N, time)?Famotidine (Y/N, time)?Notes / miscPCP visit 10-11 a.m.; hot, humid day Reflections Neck pillow mismatch – A higher pillow can strain the sternocleidomastoid and upper-cervical muscles, a known physical trigger for head/neck pain and migraines. Consider testing a lower pillow or cervical-curve support tonight and log any change. Protein watch – Today’s intake (~46 g) sits below your 70 g target. Try adding an afternoon Greek-yogurt or protein shake to keep muscle repair (and migraine-protective magnesium) on track. Questions for you: • Did you take your Pantoprazole before breakfast and Famotidine with dinner today? • Roughly how long has the current left-sided head/neck pain lasted so far (minutes or hours)? Confirm with your clinician before making any medication changes.",
+      "timestamp": null,
+      "message_id": "turn_1",
+      "word_count": 220,
+      "char_count": 1591,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 2,
+      "role": "user",
+      "content": "I want to add it to the top scalp pain that surfaced up again today. It's less intense than previous day but still. I took my pentoprazole this early morning",
+      "timestamp": null,
+      "message_id": "turn_2",
+      "word_count": 30,
+      "char_count": 157,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 3,
+      "role": "ai",
+      "content": "Log saved FieldDetailsPantoprazole (Y/N,time)Y — early morning (~05 : 30)Notes / miscTop-scalp ache resurfaced this afternoon (milder than yesterday) Reflections Neck-muscle link – Your chart lists sternocleidomastoid tenderness and cervical muscle spasm, both of which can radiate dull pain to the scalp and temples . Keeping the new, taller pillow for a few nights versus switching back to the lower pillow is a quick A/B test: log morning pain (0-10) for each pillow so you can spot a clear trend. Gentle SCM and upper-trap stretches or a warm pack before bed often calm residual tension-type aches . Reflux plan on track – Nice job taking Pantoprazole this morning. To keep nighttime reflux quiet (and reduce sleep-disrupting pain), remember your evening Famotidine dose and note the time so we can see if symptom-free stretches lengthen. Quick asks: • Did you take Famotidine with dinner yet? • Roughly how many minutes/hours has today’s scalp pain lasted so far? Confirm with your clinician before any medication changes.",
+      "timestamp": null,
+      "message_id": "turn_3",
+      "word_count": 164,
+      "char_count": 1027,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 4,
+      "role": "user",
+      "content": "I want to make a note that this top scalpel pain is very similar to what I felt on Monday, this Monday.",
+      "timestamp": null,
+      "message_id": "turn_4",
+      "word_count": 22,
+      "char_count": 103,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 5,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNotes / miscTop-scalp pain feels identical to Monday (Jul 21) episode Reflections A second occurrence of the same top‐scalp ache within five days strengthens the “mechanical trigger” hypothesis (new pillow, sustained neck tension). Logging pillow height and neck position for each night will help confirm whether returning to your old pillow breaks the pattern. We’re still missing today’s Famotidine dose and an estimate of how long the scalp pain has lasted so far. Could you let me know those two details? Confirm with your clinician before any medication changes.",
+      "timestamp": null,
+      "message_id": "turn_5",
+      "word_count": 91,
+      "char_count": 589,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 6,
+      "role": "user",
+      "content": "It's 8 20 p.m. I'm having some pain on my right temple and right side of head now I don't know what's caused that and I don't know it's really bad I know the pain was not that bad it's just the idea that I might have another migraine is bad and I'll try to sleep",
+      "timestamp": null,
+      "message_id": "turn_6",
+      "word_count": 56,
+      "char_count": 262,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 7,
+      "role": "ai",
+      "content": "Log saved FieldDetailsTime20:20Migraine / Neck pain 0-10— (need rating)Pain start HH:MM20:20Env at onsetEvening, preparing to sleep; anxiety about migraineNotes / miscDull ache R temple + R side of head; hoping to sleep soon Reflections A sudden switch from left-sided to right-sided ache can still fit the neck-tension picture. Before bed, try 5 minutes of slow diaphragmatic breathing or a gentle chin-tuck stretch to calm both muscle tone and anxiety—those two often amplify each other. Quick check-ins: • How would you score the current pain on a 0-10 scale? • Have you taken your evening Famotidine yet? Confirm with your clinician before any medication changes.",
+      "timestamp": null,
+      "message_id": "turn_7",
+      "word_count": 104,
+      "char_count": 667,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 8,
+      "role": "user",
+      "content": "Um, just more entries for yesterday. Um, by the time I go to bed, um, I also feel some pain on the right side. Um, I never updated my lunch or dinner from yesterday. Basically, uh, yesterday I had a dinner where I cooked a chicken breast, uh, and baby potato, but I used about probably two teaspoons of light soy sauce and dark soy sauce, um, separately. And I don't know, I'm suspecting that is triggering the right side of the migraine.",
+      "timestamp": null,
+      "message_id": "turn_8",
+      "word_count": 83,
+      "char_count": 438,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 9,
+      "role": "ai",
+      "content": "Log saved FieldDetailsDinner (time + food)~19:00 chicken breast + baby potatoes, seasoned with ≈ 2 tsp light & dark soy sauceTrig-food refluxFermented soy sauce → histamine/tyramine (+1 amine count) Reflections Fermented-soy link – Soy sauce sits on the “avoid” list for migraine because it’s rich in tyramine/histamine, which can provoke attacks in sensitive brains . If Monday’s and yesterday’s scalp aches both followed soy-based meals, that’s a strong clue. Try swapping to coconut aminos or plain salt for a week and watch whether right-temple flares disappear. Data gaps – To tighten today’s log we still need: • Evening Famotidine taken? (Y/N + time) • 0-10 pain score for the right-temple ache at bedtime. Logging these will keep the reflux and migraine trackers accurate. Confirm with your clinician before any medication changes.",
+      "timestamp": null,
+      "message_id": "turn_9",
+      "word_count": 131,
+      "char_count": 839,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 10,
+      "role": "user",
+      "content": "Can you provide the full entry from yesterday, meaning July 25th?",
+      "timestamp": null,
+      "message_id": "turn_10",
+      "word_count": 11,
+      "char_count": 65,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 11,
+      "role": "ai",
+      "content": "Log saved FieldDetails—(no new data added – consolidated entry requested) Full daily entry – Friday 25 Jul 2025 FieldDetailsDate2025-07-25Location / WeatherFrederick, MD · hot & humidSleep (h + quality)~8.5 h (quality not rated)Wake-up pain 0-101 · dull ache L temple + neckMeals & times07:00 cereal + milk 〈B〉 13:00 lamb vindaloo, soboro bread 〈L〉 19:00 chicken breast + baby potatoes (≈ 2 tsp each light & dark soy sauces) 〈D〉Hydration≈ 80 oz water with electrolyte packetsCalories (est.)≈ 1 700 kcalProtein (est.)≈ 76 gMigraine / neck pain 0-101 a.m.–afternoon (L side); evening R-temple pain (rating missing)Pain starts / durations21:30 (7/24) L-side tension → persisted into morning; 20:20 (7/25) R-temple ache (duration unknown)Environment at onsetNew, taller pillow (night); bedtime anxiety about possible migraine (evening)PantoprazoleY — 05:30Famotidine? (not yet logged)Reflux / trigger foodsSoy sauce (fermented → histamine/tyramine)Rescue / abortive medsNyQuil at 21:30 (7/24); Ubrelvy 50 mg at 21:30 (7/24); Unisom 25 mg at ~01:30Relief actionsSalonpas patches on L neck/scapula; gentle stretchesNotesPCP visit 10-11 a.m.; scalp pain resembled episode on Mon 21 Jul Reflections & next steps Histamine flag – Two soy-sauce dinners (Mon 21 Jul & Fri 25 Jul) both preceded right-sided or scalp discomfort. Try a 7-day swap to coconut aminos / salt and note if those headaches disappear. Pillow experiment – Keep the new pillow for two more nights, then switch back to the lower one for two nights. Track morning pain (0-10); a clear drop after the switch would confirm height mismatch. Still missing: • Evening Famotidine (Y/N + time) • 0-10 rating for the right-temple pain at bedtime. Confirm any medication or equipment changes with your clinician before acting.",
+      "timestamp": null,
+      "message_id": "turn_11",
+      "word_count": 270,
+      "char_count": 1775,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 12,
+      "role": "user",
+      "content": "The sleep quality of yesterday was terrible. I think 1. I don't believe there's 8.5 hours. I believe it was restless from probably 1am until 7am.",
+      "timestamp": null,
+      "message_id": "turn_12",
+      "word_count": 26,
+      "char_count": 145,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 13,
+      "role": "ai",
+      "content": "Log saved FieldDetailsSleep h + Q~7 h total (restless 01:00 – 07:00); quality 1 / 10 Reflections Restless stretch matters – Fragmented sleep (quality 1) lowers your migraine threshold. Aiming for 20-min wind-down (no screens, gentle neck stretches) before lights-out may smooth that 01:00-07:00 wakeful block. If Unisom isn’t restoring deeper cycles, consider discussing an alternate sleep aid or cognitive-behavioral sleep tweaks with your PCP (Megahandout p. 8). Still missing for Jul 25: • Evening Famotidine (Y/N + time) • 0-10 rating for the right-temple pain at bedtime. These help tighten both reflux and headache trend graphs. Confirm any medication or sleep-strategy changes with your clinician before acting.",
+      "timestamp": null,
+      "message_id": "turn_13",
+      "word_count": 108,
+      "char_count": 718,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 14,
+      "role": "user",
+      "content": "yesterday's entry, the evening fama today was about 7 p.m. the right temple pain was about 1 p.m. and then and then also yeah the lunch was the leftover of lamb vindaloo which is not so much like a couple lambs and then half cup of rice",
+      "timestamp": null,
+      "message_id": "turn_14",
+      "word_count": 47,
+      "char_count": 236,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 15,
+      "role": "ai",
+      "content": "Log saved FieldDetailsFamotidine (Y/N,time)Y — 19:00Pain start HH:MM13:00 (R-temple) Reflections A midday right-temple ache appearing hours before the soy-sauce dinner points more toward the spicy/acidic lamb vindaloo (and residual neck tension) than to histamine from soy. Keep an eye on whether curry-type lunches coincide with afternoon head pain and jot “spicy curry?” in the trigger column next time. Could you rate that 13:00 pain on the usual 0-10 scale? A number will let the trend chart flag true migraine-level spikes versus mild tension blips. Confirm any dietary or medication adjustments with your clinician before acting.",
+      "timestamp": null,
+      "message_id": "turn_15",
+      "word_count": 95,
+      "char_count": 635,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 16,
+      "role": "user",
+      "content": "can you provide the full updated entry of 2025-07-25 so far ?",
+      "timestamp": null,
+      "message_id": "turn_16",
+      "word_count": 12,
+      "char_count": 61,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 17,
+      "role": "ai",
+      "content": "Log saved FieldDetailsSleep h + Q~7 h (restless 01:00 – 07:00); quality 1/10Meals & times07:00 cereal + milk；13:00 lamb vindaloo (~2 small pieces) + ½ cup rice + soboro bread；19:00 chicken breast + baby potatoes, ~2 tsp each light & dark soy saucePain start HH:MM13:00 (R-temple) — replaces 20:20 entryFamotidine (Y/N,time)Y — 19:00 Full daily entry – Friday 25 Jul 2025 (updated) FieldDetailsDate2025-07-25Location / WeatherFrederick, MD · hot & humidSleep (h + quality)~7 h (restless 01:00-07:00); quality 1/10Wake-up pain 0-101 · dull ache L temple + neckMeals & times07:00 cereal + milk ｜ 13:00 lamb vindaloo (~2 pcs) + ½ cup rice + soboro bread ｜ 19:00 chicken breast + baby potatoes, 2 tsp light + dark soy sauceHydration≈ 80 oz water with electrolyte packetsCalories (est.)≈ 1 650 kcalProtein (est.)≈ 70 gMigraine / neck pain 0-101 (L-side dull) morning → midday R-temple ache (rating pending)Pain starts / durations21:30 (7/24) L-side tension → persisted into a.m. ｜ 13:00 R-temple ache (duration unk.)Environment at onsetNew, taller pillow (night)；after spicy curry lunch (midday)PantoprazoleY — 05:30FamotidineY — 19:00Reflux / trigger foodsSpicy curry；soy sauce (histamine/tyramine)Rescue / abortive medsNyQuil 21:30 (7/24)；Ubrelvy 50 mg 21:30 (7/24)；Unisom 25 mg 01:30Relief actionsSalonpas patches L neck/scapula；gentle stretchesNotesPCP visit 10-11 a.m.；top-scalp pain mirrored Mon 21 Jul episode Reflections Potential dual triggers – Midday R-temple ache followed a spicy, acidic lamb curry, while soy-sauce dinner adds histamine/tyramine load. Tracking whether curry lunches spark early-afternoon pain and soy dishes spark evening pain will clarify which to trim first. Sleep priority – A quality-1 night is a strong sensitizer. Pre-bed neck stretches + screen-free wind-down, or discussing alternate sleep aids, may smooth the 01:00-07:00 wakeful block. Still missing: • 0-10 rating for the 13:00 R-temple pain. Confirm any diet or medication changes with your clinician before acting.",
+      "timestamp": null,
+      "message_id": "turn_17",
+      "word_count": 293,
+      "char_count": 2002,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    },
+    {
+      "index": 18,
+      "role": "user",
+      "content": "no need to mention about the ubrelvy from July 24th, since it's from july 24th and we have it record in that day's journal, but we do want to mention that the ancetominophe dose from nyquil would be the 4th of this month and also the total doxlymine dose is 25 mg (12.5 m from nyquil +unisom 12.5m gram) .",
+      "timestamp": null,
+      "message_id": "turn_18",
+      "word_count": 60,
+      "char_count": 305,
+      "extraction_method": "article_parsing",
+      "turn_type": "user"
+    },
+    {
+      "index": 19,
+      "role": "ai",
+      "content": "Log saved FieldDetailsNotes / miscNyQuil-acetaminophen = 4th dose this month · nightly doxylamine total 25 mg (12.5 mg NyQuil + 12.5 mg Unisom) Full daily entry – Friday 25 Jul 2025 (final update) FieldDetailsDate2025-07-25Location / WeatherFrederick, MD · hot & humidSleep (h + quality)~7 h (restless 01:00–07:00); quality 1/10Wake-up pain 0-101 · dull ache L temple + neckMeals & times07:00 cereal + milk ｜ 13:00 lamb vindaloo (~2 pcs) + ½ cup rice + soboro bread ｜ 19:00 chicken breast + baby potatoes, 2 tsp light + dark soy sauceHydration≈ 80 oz water (electrolyte)Calories (est.)≈ 1 650 kcalProtein (est.)≈ 70 gMigraine / neck pain 0-101 (L-side dull a.m.) → R-temple ache (rating pending) at 13:00Pain starts / durations21:30 (7/24) L-side tension → a.m. ｜ 13:00 R-temple ache (dur. unk.)Environment at onsetNew taller pillow (night); after spicy curry lunch (midday)PantoprazoleY — 05:30FamotidineY — 19:00Reflux / trigger foodsSpicy curry; soy sauce (histamine/tyramine)Rescue / abortive meds— (none taken on 25 Jul)Relief actions (other)Salonpas patches L neck/scapula; gentle stretches; Unisom 12.5 mg 01:30Notes / miscPCP visit 10-11 a.m.; top-scalp pain mirrors Mon 21 Jul; NyQuil 21:30 (7/24) supplied acetaminophen dose #4 this month + 12.5 mg doxylamine (total nightly doxylamine = 25 mg) Reflections Acetaminophen tally: 4 days of use this month — comfortably below the 10-day per-month limit that helps prevent rebound headaches, but worth tracking. Night-time sedatives: Your combined doxylamine (25 mg) is within OTC guidelines, yet ongoing sleep fragmentation suggests limited benefit. Discuss alternative sleep strategies or doses with your clinician if quality stays ≤ 3/10. Still missing: • 0-10 rating (and approximate duration) of the 13:00 right-temple pain. Confirm any medication or diet changes with your clinician before acting.",
+      "timestamp": null,
+      "message_id": "turn_19",
+      "word_count": 279,
+      "char_count": 1859,
+      "extraction_method": "article_parsing",
+      "turn_type": "assistant"
+    }
+  ]
+}

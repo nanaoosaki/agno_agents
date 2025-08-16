@@ -164,6 +164,38 @@ except ImportError as e:
     print(f"Warning: Health Logger v3 not available: {e}")
     health_logger_v3 = None
 
+# Recall Agent import - Following docs/agno/tools/writing_your_own_tools.md
+try:
+    from healthlogger.recall.agent import recall_agent
+    
+    class RecallAgentWrapper:
+        name = "Recall Agent"
+        description = "Analyzes historical health data patterns and correlations using intelligent querying"
+        
+        def run(self, prompt: str, files: Optional[List[str]] = None) -> ChatResult:
+            """Run the Recall Agent with the user's query"""
+            try:
+                response = recall_agent.run(prompt)
+                return ChatResult(
+                    text=response.content,
+                    meta={
+                        "agent": "RecallAgent",
+                        "model": "gpt-4o-mini-2024-07-18",
+                        "tool_calls": getattr(response, 'tool_calls', None),
+                        "metrics": getattr(response, 'metrics', None)
+                    }
+                )
+            except Exception as e:
+                return ChatResult(
+                    text=f"❌ Error running recall agent: {str(e)}",
+                    meta={"error": str(e), "agent": "RecallAgent"}
+                )
+    
+    recall_agent_wrapper = RecallAgentWrapper()
+except ImportError as e:
+    print(f"Warning: Recall Agent not available: {e}")
+    recall_agent_wrapper = None
+
 # Registry of available agents
 AGENTS: Dict[str, Any] = {
     "EchoAgent": EchoAgent(),
@@ -174,6 +206,10 @@ AGENTS: Dict[str, Any] = {
 # Add Health Logger v3 if available
 if health_logger_v3:
     AGENTS["Health Logger (v3)"] = health_logger_v3
+
+# Add Recall Agent if available
+if recall_agent_wrapper:
+    AGENTS["Recall Agent"] = recall_agent_wrapper
 
 def call_agent(agent_name: str, user_text: str, filepaths: Optional[List[str]] = None) -> ChatResult:
     """
