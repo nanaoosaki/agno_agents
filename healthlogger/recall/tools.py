@@ -29,6 +29,23 @@ def _normalize_condition(condition: str) -> Optional[str]:
     
     return None
 
+def _get_related_conditions(condition: str) -> List[str]:
+    """
+    Get related conditions for broader searching.
+    For generic terms like 'pain', returns all pain-related conditions.
+    """
+    normalized = _normalize_condition(condition)
+    if not normalized:
+        return []
+    
+    # If searching for generic "pain", include all pain-related conditions
+    if normalized == "pain":
+        pain_related = ["pain", "migraine", "back_pain", "neck_pain"]
+        return [cond for cond in pain_related if cond in CONDITION_FAMILIES]
+    
+    # Otherwise, return just the normalized condition
+    return [normalized]
+
 def _load_episodes() -> dict:
     """Load episodes from JSON file"""
     episodes_file = os.path.join(DATA_DIR, "episodes.json")
@@ -51,19 +68,9 @@ def _load_observations() -> dict:
             return {}
     return {}
 
-@tool
-def parse_time_range(agent: Agent, query: str, user_timezone: str = "UTC") -> TimeRange:
+def _parse_time_range_core(query: str, user_timezone: str = "UTC") -> TimeRange:
     """
-    Parses a natural language query to identify a time range (e.g., 'last week', 'yesterday', 'since August 1st').
-    Returns a structured start and end time in UTC ISO format. This should be the first step in any historical query.
-    
-    Args:
-        agent: The calling agent (automatically provided by Agno)
-        query: Natural language query containing time references
-        user_timezone: User's timezone (defaults to UTC)
-    
-    Returns:
-        TimeRange: Structured time range with start, end, and label
+    Core logic for parsing time ranges (non-decorated for testing)
     """
     now = datetime.utcnow()
     query_lower = query.lower()
@@ -103,23 +110,28 @@ def parse_time_range(agent: Agent, query: str, user_timezone: str = "UTC") -> Ti
     )
 
 @tool
-def find_episodes_in_range(agent: Agent, condition: str, start_date_iso: str, end_date_iso: str) -> List[EpisodeSummary]:
+def parse_time_range(agent: Agent, query: str, user_timezone: str = "UTC") -> TimeRange:
     """
-    Finds episodes for a given condition within a specific UTC date range.
-    Always normalize the condition using the shared rules first.
+    Parses a natural language query to identify a time range (e.g., 'last week', 'yesterday', 'since August 1st').
+    Returns a structured start and end time in UTC ISO format. This should be the first step in any historical query.
     
     Args:
         agent: The calling agent (automatically provided by Agno)
-        condition: Health condition to search for (will be normalized)
-        start_date_iso: Start date in ISO format
-        end_date_iso: End date in ISO format
+        query: Natural language query containing time references
+        user_timezone: User's timezone (defaults to UTC)
     
     Returns:
-        List[EpisodeSummary]: Episodes matching the criteria
+        TimeRange: Structured time range with start, end, and label
     """
-    # Normalize the condition
-    normalized_condition = _normalize_condition(condition)
-    if not normalized_condition:
+    return _parse_time_range_core(query, user_timezone)
+
+def _find_episodes_in_range_core(condition: str, start_date_iso: str, end_date_iso: str) -> List[EpisodeSummary]:
+    """
+    Core logic for finding episodes in range (non-decorated for testing)
+    """
+    # Get related conditions for broader searching
+    related_conditions = _get_related_conditions(condition)
+    if not related_conditions:
         return []
     
     # Load episodes
@@ -135,8 +147,9 @@ def find_episodes_in_range(agent: Agent, condition: str, start_date_iso: str, en
     matching_episodes = []
     
     for episode_id, episode_data in episodes.items():
-        # Check condition match
-        if episode_data.get("condition") != normalized_condition:
+        # Check condition match (now supports multiple related conditions)
+        episode_condition = episode_data.get("condition")
+        if episode_condition not in related_conditions:
             continue
             
         # Check date range
@@ -164,6 +177,23 @@ def find_episodes_in_range(agent: Agent, condition: str, start_date_iso: str, en
             continue
     
     return matching_episodes
+
+@tool
+def find_episodes_in_range(agent: Agent, condition: str, start_date_iso: str, end_date_iso: str) -> List[EpisodeSummary]:
+    """
+    Finds episodes for a given condition within a specific UTC date range.
+    Now supports broader condition matching - searching for 'pain' will find migraines, back pain, etc.
+    
+    Args:
+        agent: The calling agent (automatically provided by Agno)
+        condition: Health condition to search for (supports semantic expansion)
+        start_date_iso: Start date in ISO format
+        end_date_iso: End date in ISO format
+    
+    Returns:
+        List[EpisodeSummary]: Episodes matching the criteria
+    """
+    return _find_episodes_in_range_core(condition, start_date_iso, end_date_iso)
 
 @tool
 def correlate_observation_to_episodes(agent: Agent, observation_keyword: str, condition: str, 
