@@ -141,5 +141,1101 @@
       }
     ],
     "last_updated_at": "2025-08-16T11:58:51.729552"
+  },
+  "ep_2025-08-01_migraine_40843": {
+    "episode_id": "ep_2025-08-01_migraine_40843",
+    "condition": "migraine",
+    "started_at": "2025-08-01T14:06:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 5,
+    "max_severity": 7,
+    "severity_points": [
+      {
+        "ts": "2025-08-01T14:06:04.520182",
+        "level": 7
+      },
+      {
+        "ts": "2025-08-01T19:06:04.520182",
+        "level": 5
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-01T14:06:04.520182",
+        "text": "The migraine is getting worse. It's mainly on my back of head."
+      },
+      {
+        "ts": "2025-08-01T19:06:04.520182",
+        "text": "The migraine is almost gone. Just 5/10 now."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-01T17:04:04.520182",
+        "type": "mint essential oil",
+        "dose": null,
+        "notes": "Applied for migraine"
+      },
+      {
+        "ts": "2025-08-01T15:46:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for migraine"
+      }
+    ],
+    "last_updated_at": "2025-08-01T19:06:04.520182"
+  },
+  "ep_2025-08-16_back_pain_86919": {
+    "episode_id": "ep_2025-08-16_back_pain_86919",
+    "condition": "back_pain",
+    "started_at": "2025-08-16T19:06:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 7,
+    "max_severity": 7,
+    "severity_points": [
+      {
+        "ts": "2025-08-16T19:06:04.520182",
+        "level": 7
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-16T19:06:04.520182",
+        "text": "I have a back_pain starting about an hour ago. Pain level is 7/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-16T19:55:04.520182",
+        "type": "ubrelvy",
+        "dose": "100mg",
+        "notes": "Applied for back_pain"
+      },
+      {
+        "ts": "2025-08-16T22:04:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for back_pain"
+      }
+    ],
+    "last_updated_at": "2025-08-16T19:06:04.520182"
+  },
+  "ep_2025-08-05_neck_pain_23218": {
+    "episode_id": "ep_2025-08-05_neck_pain_23218",
+    "condition": "neck_pain",
+    "started_at": "2025-08-05T17:24:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 4,
+    "max_severity": 4,
+    "severity_points": [
+      {
+        "ts": "2025-08-05T17:24:04.520182",
+        "level": 4
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-05T17:24:04.520182",
+        "text": "The pain in my cervical area is at 4/10 now."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-05T19:25:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for neck_pain"
+      }
+    ],
+    "last_updated_at": "2025-08-05T17:24:04.520182"
+  },
+  "ep_2025-08-12_sleep_81702": {
+    "episode_id": "ep_2025-08-12_sleep_81702",
+    "condition": "sleep",
+    "started_at": "2025-08-12T19:58:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-08-12T19:58:04.520182",
+        "text": "I have a sleep starting about an hour ago. Pain level is None/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-12T20:37:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for sleep"
+      },
+      {
+        "ts": "2025-08-12T22:19:04.520182",
+        "type": "stretching",
+        "dose": null,
+        "notes": "Applied for sleep"
+      },
+      {
+        "ts": "2025-08-12T22:47:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for sleep"
+      }
+    ],
+    "last_updated_at": "2025-08-12T19:58:04.520182"
+  },
+  "ep_2025-07-26_migraine_27655": {
+    "episode_id": "ep_2025-07-26_migraine_27655",
+    "condition": "migraine",
+    "started_at": "2025-07-26T18:46:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 1,
+    "max_severity": 1,
+    "severity_points": [
+      {
+        "ts": "2025-07-26T18:46:04.520182",
+        "level": 1
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-26T18:46:04.520182",
+        "text": "I have a migraine starting about an hour ago. Pain level is 1/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-26T20:31:04.520182",
+        "type": "mint essential oil",
+        "dose": null,
+        "notes": "Applied for migraine"
+      }
+    ],
+    "last_updated_at": "2025-07-26T18:46:04.520182"
+  },
+  "ep_2025-07-28_reflux_79864": {
+    "episode_id": "ep_2025-07-28_reflux_79864",
+    "condition": "reflux",
+    "started_at": "2025-07-28T12:30:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 8,
+    "max_severity": 8,
+    "severity_points": [
+      {
+        "ts": "2025-07-28T12:30:04.520182",
+        "level": 8
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-28T12:30:04.520182",
+        "text": "The reflux is getting worse. It's mainly on my head."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-28T13:13:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for reflux"
+      },
+      {
+        "ts": "2025-07-28T13:29:04.520182",
+        "type": "mint essential oil",
+        "dose": null,
+        "notes": "Applied for reflux"
+      },
+      {
+        "ts": "2025-07-28T15:29:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for reflux"
+      }
+    ],
+    "last_updated_at": "2025-07-28T12:30:04.520182"
+  },
+  "ep_2025-06-30_sleep_20290": {
+    "episode_id": "ep_2025-06-30_sleep_20290",
+    "condition": "sleep",
+    "started_at": "2025-06-30T10:46:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-06-30T10:46:04.520182",
+        "text": "I have a sleep starting about an hour ago. Pain level is None/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-06-30T12:02:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for sleep"
+      },
+      {
+        "ts": "2025-06-30T12:52:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for sleep"
+      },
+      {
+        "ts": "2025-06-30T11:49:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for sleep"
+      }
+    ],
+    "last_updated_at": "2025-06-30T10:46:04.520182"
+  },
+  "ep_2025-06-17_back_pain_34759": {
+    "episode_id": "ep_2025-06-17_back_pain_34759",
+    "condition": "back_pain",
+    "started_at": "2025-06-17T16:14:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 2,
+    "max_severity": 3,
+    "severity_points": [
+      {
+        "ts": "2025-06-17T16:14:04.520182",
+        "level": 3
+      },
+      {
+        "ts": "2025-06-17T23:14:04.520182",
+        "level": 2
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-06-17T16:14:04.520182",
+        "text": "I think the back_pain was triggered by humidity."
+      },
+      {
+        "ts": "2025-06-17T23:14:04.520182",
+        "text": "Pain is improving. 2/10 after treatment."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-06-17T18:42:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for back_pain"
+      },
+      {
+        "ts": "2025-06-17T17:16:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for back_pain"
+      }
+    ],
+    "last_updated_at": "2025-06-17T23:14:04.520182"
+  },
+  "ep_2025-08-06_anxiety_53993": {
+    "episode_id": "ep_2025-08-06_anxiety_53993",
+    "condition": "anxiety",
+    "started_at": "2025-08-06T11:46:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 1,
+    "max_severity": 1,
+    "severity_points": [
+      {
+        "ts": "2025-08-06T11:46:04.520182",
+        "level": 1
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-06T11:46:04.520182",
+        "text": "I have a anxiety starting about an hour ago. Pain level is 1/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-06T12:51:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for anxiety"
+      }
+    ],
+    "last_updated_at": "2025-08-06T11:46:04.520182"
+  },
+  "ep_2025-07-25_migraine_44311": {
+    "episode_id": "ep_2025-07-25_migraine_44311",
+    "condition": "migraine",
+    "started_at": "2025-07-25T18:59:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 5,
+    "max_severity": 5,
+    "severity_points": [
+      {
+        "ts": "2025-07-25T18:59:04.520182",
+        "level": 5
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-25T18:59:04.520182",
+        "text": "The migraine is getting worse. It's mainly on my forehead."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-25T20:20:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for migraine"
+      },
+      {
+        "ts": "2025-07-25T21:43:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for migraine"
+      },
+      {
+        "ts": "2025-07-25T21:17:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for migraine"
+      }
+    ],
+    "last_updated_at": "2025-07-25T18:59:04.520182"
+  },
+  "ep_2025-07-07_reflux_75142": {
+    "episode_id": "ep_2025-07-07_reflux_75142",
+    "condition": "reflux",
+    "started_at": "2025-07-07T19:05:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 8,
+    "max_severity": 8,
+    "severity_points": [
+      {
+        "ts": "2025-07-07T19:05:04.520182",
+        "level": 8
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-07T19:05:04.520182",
+        "text": "The pain in my head is at 8/10 now."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-07T20:43:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for reflux"
+      }
+    ],
+    "last_updated_at": "2025-07-07T19:05:04.520182"
+  },
+  "ep_2025-06-23_sleep_17480": {
+    "episode_id": "ep_2025-06-23_sleep_17480",
+    "condition": "sleep",
+    "started_at": "2025-06-23T12:34:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-06-23T12:34:04.520182",
+        "text": "The sleep is getting worse. It's mainly on my head."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-06-23T13:36:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for sleep"
+      },
+      {
+        "ts": "2025-06-23T13:34:04.520182",
+        "type": "ubrelvy",
+        "dose": "100mg",
+        "notes": "Applied for sleep"
+      }
+    ],
+    "last_updated_at": "2025-06-23T12:34:04.520182"
+  },
+  "ep_2025-07-07_sleep_91854": {
+    "episode_id": "ep_2025-07-07_sleep_91854",
+    "condition": "sleep",
+    "started_at": "2025-07-07T16:14:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [
+      {
+        "ts": "2025-07-08T00:14:04.520182",
+        "level": null
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-07T16:14:04.520182",
+        "text": "The pain in my head is at None/10 now."
+      },
+      {
+        "ts": "2025-07-08T00:14:04.520182",
+        "text": "I took rest and it's helping. Now at None/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-07T17:46:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for sleep"
+      },
+      {
+        "ts": "2025-07-07T17:42:04.520182",
+        "type": "mint essential oil",
+        "dose": null,
+        "notes": "Applied for sleep"
+      },
+      {
+        "ts": "2025-07-07T17:06:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for sleep"
+      }
+    ],
+    "last_updated_at": "2025-07-08T00:14:04.520182"
+  },
+  "ep_2025-07-19_sleep_68100": {
+    "episode_id": "ep_2025-07-19_sleep_68100",
+    "condition": "sleep",
+    "started_at": "2025-07-19T20:28:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-07-19T20:28:04.520182",
+        "text": "The pain in my head is at None/10 now."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-19T21:12:04.520182",
+        "type": "ubrelvy",
+        "dose": "100mg",
+        "notes": "Applied for sleep"
+      }
+    ],
+    "last_updated_at": "2025-07-19T20:28:04.520182"
+  },
+  "ep_2025-06-26_neck_pain_98420": {
+    "episode_id": "ep_2025-06-26_neck_pain_98420",
+    "condition": "neck_pain",
+    "started_at": "2025-06-26T14:14:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 5,
+    "max_severity": 6,
+    "severity_points": [
+      {
+        "ts": "2025-06-26T14:14:04.520182",
+        "level": 6
+      },
+      {
+        "ts": "2025-06-26T17:14:04.520182",
+        "level": 5
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-06-26T14:14:04.520182",
+        "text": "I think the neck_pain was triggered by hormone changes."
+      },
+      {
+        "ts": "2025-06-26T17:14:04.520182",
+        "text": "The neck_pain is better now. Pain down to 5/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-06-26T16:07:04.520182",
+        "type": "stretching",
+        "dose": null,
+        "notes": "Applied for neck_pain"
+      }
+    ],
+    "last_updated_at": "2025-06-26T17:14:04.520182"
+  },
+  "ep_2025-07-15_neck_pain_32809": {
+    "episode_id": "ep_2025-07-15_neck_pain_32809",
+    "condition": "neck_pain",
+    "started_at": "2025-07-15T09:38:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 7,
+    "max_severity": 7,
+    "severity_points": [
+      {
+        "ts": "2025-07-15T09:38:04.520182",
+        "level": 7
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-15T09:38:04.520182",
+        "text": "The pain in my right neck is at 7/10 now."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-15T10:55:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for neck_pain"
+      }
+    ],
+    "last_updated_at": "2025-07-15T09:38:04.520182"
+  },
+  "ep_2025-06-24_migraine_86009": {
+    "episode_id": "ep_2025-06-24_migraine_86009",
+    "condition": "migraine",
+    "started_at": "2025-06-24T16:31:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 4,
+    "max_severity": 4,
+    "severity_points": [
+      {
+        "ts": "2025-06-24T16:31:04.520182",
+        "level": 4
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-06-24T16:31:04.520182",
+        "text": "I think the migraine was triggered by anxiety."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-06-24T18:50:04.520182",
+        "type": "salonpas patches",
+        "dose": null,
+        "notes": "Applied for migraine"
+      },
+      {
+        "ts": "2025-06-24T19:11:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for migraine"
+      },
+      {
+        "ts": "2025-06-24T18:12:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for migraine"
+      }
+    ],
+    "last_updated_at": "2025-06-24T16:31:04.520182"
+  },
+  "ep_2025-07-02_sleep_22917": {
+    "episode_id": "ep_2025-07-02_sleep_22917",
+    "condition": "sleep",
+    "started_at": "2025-07-02T13:29:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [
+      {
+        "ts": "2025-07-03T00:29:04.520182",
+        "level": null
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-02T13:29:04.520182",
+        "text": "I think the sleep was triggered by anxiety."
+      },
+      {
+        "ts": "2025-07-03T00:29:04.520182",
+        "text": "The sleep is better now. Pain down to None/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-02T14:19:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for sleep"
+      }
+    ],
+    "last_updated_at": "2025-07-03T00:29:04.520182"
+  },
+  "ep_2025-08-12_back_pain_82161": {
+    "episode_id": "ep_2025-08-12_back_pain_82161",
+    "condition": "back_pain",
+    "started_at": "2025-08-12T12:39:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 8,
+    "max_severity": 8,
+    "severity_points": [
+      {
+        "ts": "2025-08-12T12:39:04.520182",
+        "level": 8
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-12T12:39:04.520182",
+        "text": "The back_pain is getting worse. It's mainly on my lumbar."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-12T13:46:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for back_pain"
+      }
+    ],
+    "last_updated_at": "2025-08-12T12:39:04.520182"
+  },
+  "ep_2025-08-03_migraine_28247": {
+    "episode_id": "ep_2025-08-03_migraine_28247",
+    "condition": "migraine",
+    "started_at": "2025-08-03T16:17:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 7,
+    "max_severity": 7,
+    "severity_points": [
+      {
+        "ts": "2025-08-03T16:17:04.520182",
+        "level": 7
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-03T16:17:04.520182",
+        "text": "I have a migraine starting about an hour ago. Pain level is 7/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-03T17:45:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for migraine"
+      }
+    ],
+    "last_updated_at": "2025-08-03T16:17:04.520182"
+  },
+  "ep_2025-08-01_back_pain_23393": {
+    "episode_id": "ep_2025-08-01_back_pain_23393",
+    "condition": "back_pain",
+    "started_at": "2025-08-01T12:35:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 7,
+    "max_severity": 7,
+    "severity_points": [
+      {
+        "ts": "2025-08-01T12:35:04.520182",
+        "level": 7
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-01T12:35:04.520182",
+        "text": "The back_pain is getting worse. It's mainly on my upper back."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-01T14:19:04.520182",
+        "type": "ubrelvy",
+        "dose": "100mg",
+        "notes": "Applied for back_pain"
+      }
+    ],
+    "last_updated_at": "2025-08-01T12:35:04.520182"
+  },
+  "ep_2025-06-17_neck_pain_36257": {
+    "episode_id": "ep_2025-06-17_neck_pain_36257",
+    "condition": "neck_pain",
+    "started_at": "2025-06-17T09:17:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 1,
+    "max_severity": 1,
+    "severity_points": [
+      {
+        "ts": "2025-06-17T09:17:04.520182",
+        "level": 1
+      },
+      {
+        "ts": "2025-06-17T21:17:04.520182",
+        "level": 1
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-06-17T09:17:04.520182",
+        "text": "I have a neck_pain starting about an hour ago. Pain level is 1/10."
+      },
+      {
+        "ts": "2025-06-17T21:17:04.520182",
+        "text": "I took ibuprofen and it's helping. Now at 1/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-06-17T12:15:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for neck_pain"
+      },
+      {
+        "ts": "2025-06-17T10:27:04.520182",
+        "type": "mint essential oil",
+        "dose": null,
+        "notes": "Applied for neck_pain"
+      }
+    ],
+    "last_updated_at": "2025-06-17T21:17:04.520182"
+  },
+  "ep_2025-08-15_anxiety_69138": {
+    "episode_id": "ep_2025-08-15_anxiety_69138",
+    "condition": "anxiety",
+    "started_at": "2025-08-15T18:12:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 1,
+    "max_severity": 4,
+    "severity_points": [
+      {
+        "ts": "2025-08-15T18:12:04.520182",
+        "level": 4
+      },
+      {
+        "ts": "2025-08-16T01:12:04.520182",
+        "level": 1
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-15T18:12:04.520182",
+        "text": "The pain in my head is at 4/10 now."
+      },
+      {
+        "ts": "2025-08-16T01:12:04.520182",
+        "text": "The anxiety is almost gone. Just 1/10 now."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-15T21:10:04.520182",
+        "type": "mint essential oil",
+        "dose": null,
+        "notes": "Applied for anxiety"
+      },
+      {
+        "ts": "2025-08-15T19:54:04.520182",
+        "type": "stretching",
+        "dose": null,
+        "notes": "Applied for anxiety"
+      },
+      {
+        "ts": "2025-08-15T19:40:04.520182",
+        "type": "salonpas patches",
+        "dose": null,
+        "notes": "Applied for anxiety"
+      }
+    ],
+    "last_updated_at": "2025-08-16T01:12:04.520182"
+  },
+  "ep_2025-07-23_reflux_31187": {
+    "episode_id": "ep_2025-07-23_reflux_31187",
+    "condition": "reflux",
+    "started_at": "2025-07-23T18:18:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 5,
+    "max_severity": 8,
+    "severity_points": [
+      {
+        "ts": "2025-07-23T18:18:04.520182",
+        "level": 8
+      },
+      {
+        "ts": "2025-07-24T05:18:04.520182",
+        "level": 5
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-23T18:18:04.520182",
+        "text": "The reflux is getting worse. It's mainly on my head."
+      },
+      {
+        "ts": "2025-07-24T05:18:04.520182",
+        "text": "The reflux is almost gone. Just 5/10 now."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-23T21:17:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for reflux"
+      },
+      {
+        "ts": "2025-07-23T19:38:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for reflux"
+      },
+      {
+        "ts": "2025-07-23T19:59:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for reflux"
+      }
+    ],
+    "last_updated_at": "2025-07-24T05:18:04.520182"
+  },
+  "ep_2025-08-15_reflux_56470": {
+    "episode_id": "ep_2025-08-15_reflux_56470",
+    "condition": "reflux",
+    "started_at": "2025-08-15T10:25:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 3,
+    "max_severity": 3,
+    "severity_points": [
+      {
+        "ts": "2025-08-15T10:25:04.520182",
+        "level": 3
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-15T10:25:04.520182",
+        "text": "I think the reflux was triggered by work pressure."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-15T11:00:04.520182",
+        "type": "stretching",
+        "dose": null,
+        "notes": "Applied for reflux"
+      },
+      {
+        "ts": "2025-08-15T11:57:04.520182",
+        "type": "salonpas patches",
+        "dose": null,
+        "notes": "Applied for reflux"
+      },
+      {
+        "ts": "2025-08-15T13:03:04.520182",
+        "type": "rest",
+        "dose": null,
+        "notes": "Applied for reflux"
+      }
+    ],
+    "last_updated_at": "2025-08-15T10:25:04.520182"
+  },
+  "ep_2025-06-28_migraine_16185": {
+    "episode_id": "ep_2025-06-28_migraine_16185",
+    "condition": "migraine",
+    "started_at": "2025-06-28T20:16:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 2,
+    "max_severity": 3,
+    "severity_points": [
+      {
+        "ts": "2025-06-28T20:16:04.520182",
+        "level": 3
+      },
+      {
+        "ts": "2025-06-29T07:16:04.520182",
+        "level": 2
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-06-28T20:16:04.520182",
+        "text": "I have a migraine starting about an hour ago. Pain level is 3/10."
+      },
+      {
+        "ts": "2025-06-29T07:16:04.520182",
+        "text": "I took ubrelvy and it's helping. Now at 2/10."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-06-28T20:52:04.520182",
+        "type": "ubrelvy",
+        "dose": "100mg",
+        "notes": "Applied for migraine"
+      },
+      {
+        "ts": "2025-06-28T21:35:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for migraine"
+      },
+      {
+        "ts": "2025-06-28T23:04:04.520182",
+        "type": "ibuprofen",
+        "dose": "400mg",
+        "notes": "Applied for migraine"
+      }
+    ],
+    "last_updated_at": "2025-06-29T07:16:04.520182"
+  },
+  "ep_2025-06-25_reflux_41646": {
+    "episode_id": "ep_2025-06-25_reflux_41646",
+    "condition": "reflux",
+    "started_at": "2025-06-25T13:05:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": 5,
+    "max_severity": 5,
+    "severity_points": [
+      {
+        "ts": "2025-06-25T13:05:04.520182",
+        "level": 5
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-06-25T13:05:04.520182",
+        "text": "I think the reflux was triggered by work pressure."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-06-25T13:51:04.520182",
+        "type": "stretching",
+        "dose": null,
+        "notes": "Applied for reflux"
+      },
+      {
+        "ts": "2025-06-25T15:17:04.520182",
+        "type": "hydration",
+        "dose": "32oz",
+        "notes": "Applied for reflux"
+      },
+      {
+        "ts": "2025-06-25T13:47:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for reflux"
+      }
+    ],
+    "last_updated_at": "2025-06-25T13:05:04.520182"
+  },
+  "ep_2025-07-30_sleep_40287": {
+    "episode_id": "ep_2025-07-30_sleep_40287",
+    "condition": "sleep",
+    "started_at": "2025-07-30T17:45:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-07-30T17:45:04.520182",
+        "text": "I think the sleep was triggered by dehydration."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-30T20:11:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for sleep"
+      }
+    ],
+    "last_updated_at": "2025-07-30T17:45:04.520182"
+  },
+  "ep_2025-08-08_sleep_54461": {
+    "episode_id": "ep_2025-08-08_sleep_54461",
+    "condition": "sleep",
+    "started_at": "2025-08-08T17:11:04.520182",
+    "ended_at": null,
+    "status": "closed",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-08-08T17:11:04.520182",
+        "text": "I think the sleep was triggered by work pressure."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-08T18:00:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for sleep"
+      }
+    ],
+    "last_updated_at": "2025-08-08T17:11:04.520182"
+  },
+  "ep_2025-07-16_migraine_35654": {
+    "episode_id": "ep_2025-07-16_migraine_35654",
+    "condition": "migraine",
+    "started_at": "2025-07-16T15:11:04.520182",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 4,
+    "max_severity": 4,
+    "severity_points": [
+      {
+        "ts": "2025-07-16T15:11:04.520182",
+        "level": 4
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-07-16T15:11:04.520182",
+        "text": "I'm having another migraine episode. This is the third one this week."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-07-16T17:46:04.520182",
+        "type": "heat therapy",
+        "dose": null,
+        "notes": "Applied for migraine"
+      }
+    ],
+    "last_updated_at": "2025-07-16T15:11:04.520182"
   }
 }

@@ -5,5 +5,185 @@
     "category": "sleep",
     "value": null,
     "notes": "I slept 7 hours last night and it felt pretty bad cause I woke up twice to pee"
+  },
+  {
+    "observation_id": "obs_2025-08-10_8442",
+    "timestamp": "2025-08-10T10:07:04.520960",
+    "category": "diet",
+    "notes": "Had spicy Indian food for lunch",
+    "metadata": {
+      "mood": "good"
+    }
+  },
+  {
+    "observation_id": "obs_2025-08-09_1326",
+    "timestamp": "2025-08-09T10:07:04.520960",
+    "category": "sleep",
+    "notes": "Poor sleep quality last night",
+    "metadata": {
+      "mood": "okay"
+    }
+  },
+  {
+    "observation_id": "obs_2025-06-30_7529",
+    "timestamp": "2025-06-30T10:07:04.520960",
+    "category": "diet",
+    "notes": "Had spicy Indian food for lunch",
+    "metadata": {
+      "mood": "tired"
+    }
+  },
+  {
+    "observation_id": "obs_2025-07-31_4165",
+    "timestamp": "2025-07-31T10:07:04.520960",
+    "category": "sleep",
+    "notes": "I slept 7 hours but woke up 3 times",
+    "metadata": {
+      "mood": "tired"
+    }
+  },
+  {
+    "observation_id": "obs_2025-07-11_9444",
+    "timestamp": "2025-07-11T10:07:04.520960",
+    "category": "mood",
+    "notes": "Feeling anxious today",
+    "metadata": {
+      "mood": "good"
+    }
+  },
+  {
+    "observation_id": "obs_2025-06-24_6820",
+    "timestamp": "2025-06-24T10:07:04.520960",
+    "category": "mood",
+    "notes": "Stressed about work deadline",
+    "metadata": {
+      "mood": "stressed"
+    }
+  },
+  {
+    "observation_id": "obs_2025-07-11_3348",
+    "timestamp": "2025-07-11T10:07:04.520960",
+    "category": "mood",
+    "notes": "Feeling anxious today",
+    "metadata": {
+      "mood": "tired"
+    }
+  },
+  {
+    "observation_id": "obs_2025-07-27_5711",
+    "timestamp": "2025-07-27T10:07:04.520960",
+    "category": "exercise",
+    "notes": "Did 30 min yoga",
+    "metadata": {
+      "mood": "stressed"
+    }
+  },
+  {
+    "observation_id": "obs_2025-07-17_8100",
+    "timestamp": "2025-07-17T10:07:04.520960",
+    "category": "sleep",
+    "notes": "I slept 7 hours but woke up 3 times",
+    "metadata": {
+      "mood": "good"
+    }
+  },
+  {
+    "observation_id": "obs_2025-08-03_2881",
+    "timestamp": "2025-08-03T10:07:04.520960",
+    "category": "stress",
+    "notes": "Relaxing day at home",
+    "metadata": {
+      "mood": "good"
+    }
+  },
+  {
+    "observation_id": "obs_2025-06-28_5489",
+    "timestamp": "2025-06-28T10:07:04.520960",
+    "category": "exercise",
+    "notes": "Did 30 min yoga",
+    "metadata": {
+      "mood": "tired"
+    }
+  },
+  {
+    "observation_id": "obs_2025-07-02_8461",
+    "timestamp": "2025-07-02T10:07:04.520960",
+    "category": "mood",
+    "notes": "Stressed about work deadline",
+    "metadata": {
+      "mood": "stressed"
+    }
+  },
+  {
+    "observation_id": "obs_2025-08-06_2769",
+    "timestamp": "2025-08-06T10:07:04.520960",
+    "category": "diet",
+    "notes": "Had spicy Indian food for lunch",
+    "metadata": {
+      "mood": "okay"
+    }
+  },
+  {
+    "observation_id": "obs_2025-08-04_8237",
+    "timestamp": "2025-08-04T10:07:04.520960",
+    "category": "exercise",
+    "notes": "No exercise today",
+    "metadata": {
+      "mood": "okay"
+    }
+  },
+  {
+    "observation_id": "obs_2025-07-06_7400",
+    "timestamp": "2025-07-06T10:07:04.520960",
+    "category": "mood",
+    "notes": "Mood is good",
+    "metadata": {
+      "mood": "stressed"
+    }
+  },
+  {
+    "observation_id": "obs_2025-06-23_1334",
+    "timestamp": "2025-06-23T10:07:04.520960",
+    "category": "exercise",
+    "notes": "Did 30 min yoga",
+    "metadata": {
+      "mood": "stressed"
+    }
+  },
+  {
+    "observation_id": "obs_2025-06-23_8877",
+    "timestamp": "2025-06-23T10:07:04.520960",
+    "category": "stress",
+    "notes": "Relaxing day at home",
+    "metadata": {
+      "mood": "tired"
+    }
+  },
+  {
+    "observation_id": "obs_2025-06-18_2822",
+    "timestamp": "2025-06-18T10:07:04.520960",
+    "category": "stress",
+    "notes": "Work was very stressful",
+    "metadata": {
+      "mood": "okay"
+    }
+  },
+  {
+    "observation_id": "obs_2025-08-06_3834",
+    "timestamp": "2025-08-06T10:07:04.520960",
+    "category": "exercise",
+    "notes": "Went for a 20 min walk",
+    "metadata": {
+      "mood": "tired"
+    }
+  },
+  {
+    "observation_id": "obs_2025-07-28_4230",
+    "timestamp": "2025-07-28T10:07:04.520960",
+    "category": "exercise",
+    "notes": "Did 30 min yoga",
+    "metadata": {
+      "mood": "stressed"
+    }
   }
 ]
