@@ -210,26 +210,221 @@ def clear_chat():
     """Clear the chat history."""
     return [], ""
 
-def load_daily_history_ui():
-    records = [r.__dict__ for r in load_history()]
-    if records:
-        df = pd.DataFrame(records)
-        df['date'] = pd.to_datetime(df['date'])
-        fig = px.density_heatmap(
-            df,
-            x=df['date'].dt.day,
-            y=df['date'].dt.month,
-            z='max_pain',
-            nbinsx=31,
-            nbinsy=12,
-            color_continuous_scale='Reds',
-            labels={'x': 'Day', 'y': 'Month', 'z': 'Max Pain'}
-        )
-        table = df[['date','avg_pain','max_pain','episodes','observations']]
+def create_calendar_view(df):
+    """Create a calendar-style visualization with color-coded pain levels."""
+    import plotly.graph_objects as go
+    from datetime import datetime, timedelta
+    import calendar
+    
+    # Get current month and year, or the latest data month
+    if not df.empty:
+        latest_date = df['date'].max()
+        current_month = latest_date.month
+        current_year = latest_date.year
     else:
-        fig = px.density_heatmap(x=[0], y=[0], z=[0])
-        table = pd.DataFrame(columns=['date','avg_pain','max_pain','episodes','observations'])
-    return fig, table
+        now = datetime.now()
+        current_month = now.month
+        current_year = now.year
+    
+    # Create a calendar grid
+    cal = calendar.monthcalendar(current_year, current_month)
+    
+    # Pain level color mapping
+    def get_pain_color(pain_level):
+        if pain_level is None or pd.isna(pain_level):
+            return '#f0f0f0'  # Light gray for no data
+        elif pain_level <= 2:
+            return '#4ade80'  # Green - Great
+        elif pain_level <= 4:
+            return '#fbbf24'  # Yellow/Orange - Okay
+        elif pain_level <= 6:
+            return '#fb923c'  # Orange - Challenging
+        else:
+            return '#ef4444'  # Red - Tough
+    
+    def get_pain_category(pain_level):
+        if pain_level is None or pd.isna(pain_level):
+            return 'No Data'
+        elif pain_level <= 2:
+            return 'Great'
+        elif pain_level <= 4:
+            return 'Okay'
+        elif pain_level <= 6:
+            return 'Challenging'
+        else:
+            return 'Tough'
+    
+    # Create calendar data
+    calendar_data = []
+    for week_num, week in enumerate(cal):
+        for day_num, day in enumerate(week):
+            if day == 0:  # Empty cell
+                continue
+                
+            date_str = f"{current_year}-{current_month:02d}-{day:02d}"
+            try:
+                date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+                
+                # Find pain data for this day
+                day_data = df[df['date'].dt.date == date_obj.date()]
+                if not day_data.empty:
+                    pain_level = day_data.iloc[0]['max_pain']
+                    episodes = day_data.iloc[0]['episodes']
+                    avg_pain = day_data.iloc[0]['avg_pain']
+                else:
+                    pain_level = None
+                    episodes = 0
+                    avg_pain = None
+                
+                calendar_data.append({
+                    'day': day,
+                    'week': week_num,
+                    'weekday': day_num,
+                    'date': date_str,
+                    'pain_level': pain_level,
+                    'episodes': episodes,
+                    'avg_pain': avg_pain,
+                    'color': get_pain_color(pain_level),
+                    'category': get_pain_category(pain_level)
+                })
+            except ValueError:
+                # Invalid date (e.g., Feb 30th)
+                continue
+    
+    # Create the calendar visualization
+    fig = go.Figure()
+    
+    # Add calendar squares
+    for item in calendar_data:
+        # Calculate position (flip week order so week 0 is at top)
+        x = item['weekday']
+        y = 5 - item['week']  # Flip Y-axis so first week is at top
+        
+        hover_text = f"<b>{calendar.month_name[current_month]} {item['day']}, {current_year}</b><br>"
+        hover_text += f"Status: {item['category']}<br>"
+        if item['pain_level'] is not None:
+            hover_text += f"Max Pain: {item['pain_level']}/10<br>"
+            if item['avg_pain'] is not None:
+                hover_text += f"Avg Pain: {item['avg_pain']:.1f}/10<br>"
+            hover_text += f"Episodes: {item['episodes']}"
+        else:
+            hover_text += "No health data logged"
+        
+        # Add the calendar square
+        fig.add_trace(go.Scatter(
+            x=[x], y=[y],
+            mode='markers+text',
+            marker=dict(
+                size=50,
+                color=item['color'],
+                line=dict(width=2, color='white'),
+                symbol='square'
+            ),
+            text=str(item['day']),
+            textfont=dict(color='black', size=14, family='Arial Black'),
+            hovertemplate=hover_text + '<extra></extra>',
+            showlegend=False
+        ))
+    
+    # Add weekday labels
+    weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    for i, day_name in enumerate(weekdays):
+        fig.add_trace(go.Scatter(
+            x=[i], y=[6],
+            mode='text',
+            text=day_name,
+            textfont=dict(size=12, color='#666'),
+            showlegend=False,
+            hoverinfo='skip'
+        ))
+    
+    # Create legend
+    legend_items = [
+        {'category': 'Great', 'color': '#4ade80', 'range': '1-2'},
+        {'category': 'Okay', 'color': '#fbbf24', 'range': '3-4'},
+        {'category': 'Challenging', 'color': '#fb923c', 'range': '5-6'},
+        {'category': 'Tough', 'color': '#ef4444', 'range': '7-10'},
+        {'category': 'No Data', 'color': '#f0f0f0', 'range': '—'}
+    ]
+    
+    for i, item in enumerate(legend_items):
+        fig.add_trace(go.Scatter(
+            x=[8.5], y=[4.5 - i * 0.5],
+            mode='markers+text',
+            marker=dict(size=20, color=item['color'], symbol='square'),
+            text=f"   {item['category']} ({item['range']})",
+            textposition='middle right',
+            textfont=dict(size=10),
+            showlegend=False,
+            hoverinfo='skip'
+        ))
+    
+    # Update layout
+    fig.update_layout(
+        title=f"📅 {calendar.month_name[current_month]} {current_year} - Pain Level Calendar",
+        xaxis=dict(
+            range=[-0.5, 10],
+            showgrid=False,
+            showticklabels=False,
+            zeroline=False
+        ),
+        yaxis=dict(
+            range=[-0.5, 6.5],
+            showgrid=False,
+            showticklabels=False,
+            zeroline=False
+        ),
+        plot_bgcolor='white',
+        margin=dict(l=20, r=20, t=60, b=20),
+        height=400
+    )
+    
+    return fig
+
+def load_daily_history_ui():
+    """Load and display daily health history data."""
+    try:
+        records = [r.__dict__ for r in load_history()]
+        print(f"📊 Loading daily history: {len(records)} records found")
+        
+        if records:
+            df = pd.DataFrame(records)
+            df['date'] = pd.to_datetime(df['date'])
+            
+            # Create a calendar-style visualization
+            fig = create_calendar_view(df)
+            fig.update_layout(height=500)
+            
+            # Format table data
+            table_df = df[['date','avg_pain','max_pain','episodes','observations']].copy()
+            table_df['date'] = table_df['date'].dt.strftime('%Y-%m-%d')
+            table_df = table_df.round(1)  # Round pain values
+        else:
+            # Create empty calendar view
+            empty_df = pd.DataFrame()  # Empty dataframe
+            fig = create_calendar_view(empty_df)
+            fig.update_layout(
+                title="📅 No Daily History Data Available Yet - Start logging health episodes to see your pain patterns!",
+                height=400
+            )
+            
+            table_df = pd.DataFrame(columns=['Date','Avg Pain','Max Pain','Episodes','Observations'])
+            
+        return fig, table_df
+        
+    except Exception as e:
+        print(f"❌ Error loading daily history: {e}")
+        # Return error visualization
+        fig = px.scatter(
+            x=[1], y=[1], 
+            title=f"Error loading daily history: {str(e)}",
+            labels={'x': 'Check console for details', 'y': ''}
+        )
+        fig.update_layout(height=400, showlegend=False)
+        fig.update_traces(marker=dict(size=0))
+        
+        table_df = pd.DataFrame(columns=['Date','Avg Pain','Max Pain','Episodes','Observations'])
+        return fig, table_df
 
 def get_agent_description(agent_name: str) -> str:
     """Get description for the selected agent."""
@@ -308,6 +503,17 @@ with gr.Blocks(
             file_count="multiple"
         )
     
+    # Daily history calendar - moved up and opened by default
+    with gr.Accordion("📅 Daily Health History", open=True):
+        gr.Markdown("**View your aggregated daily health metrics and pain patterns**")
+        refresh_history = gr.Button("🔄 Refresh Daily History", variant="secondary")
+        calendar_plot = gr.Plot(label="📅 Pain Calendar View")
+        history_table = gr.Dataframe(
+            label="📋 Daily History Table", 
+            interactive=False,
+            headers=["Date", "Avg Pain", "Max Pain", "Episodes", "Observations"]
+        )
+
     # Status/info section
     with gr.Row():
         gr.Markdown("""
@@ -317,12 +523,6 @@ with gr.Blocks(
         - **Files**: Attach images, PDFs, or documents for analysis
         - **Agents**: Switch between different AI agents for specialized tasks
         """)
-
-    # Daily history calendar
-    with gr.Accordion("📅 Daily History", open=False):
-        refresh_history = gr.Button("Refresh")
-        calendar_plot = gr.Plot(label="Pain Calendar")
-        history_table = gr.Dataframe(interactive=False)
     
     # --- Event Handling ---
     

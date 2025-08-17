@@ -1,0 +1,51 @@
+[
+  {
+    "date": "2025-08-11",
+    "avg_pain": null,
+    "max_pain": null,
+    "episodes": 0,
+    "observations": 0
+  },
+  {
+    "date": "2025-08-12",
+    "avg_pain": 8.0,
+    "max_pain": 8,
+    "episodes": 1,
+    "observations": 0
+  },
+  {
+    "date": "2025-08-13",
+    "avg_pain": null,
+    "max_pain": null,
+    "episodes": 0,
+    "observations": 0
+  },
+  {
+    "date": "2025-08-14",
+    "avg_pain": null,
+    "max_pain": null,
+    "episodes": 0,
+    "observations": 0
+  },
+  {
+    "date": "2025-08-15",
+    "avg_pain": 3.5,
+    "max_pain": 4,
+    "episodes": 2,
+    "observations": 1
+  },
+  {
+    "date": "2025-08-16",
+    "avg_pain": 4.5,
+    "max_pain": 7,
+    "episodes": 2,
+    "observations": 0
+  },
+  {
+    "date": "2025-08-17",
+    "avg_pain": 7.0,
+    "max_pain": 7,
+    "episodes": 1,
+    "observations": 0
+  }
+]
