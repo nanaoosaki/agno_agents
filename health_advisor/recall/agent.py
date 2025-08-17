@@ -5,7 +5,13 @@
 
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
-from .tools import parse_time_range, find_episodes_in_range, find_all_episodes_in_range, correlate_observation_to_episodes
+from .tools import (
+    parse_time_range,
+    find_episodes_in_range,
+    find_all_episodes_in_range,
+    correlate_observation_to_episodes,
+    get_daily_history,
+)
 
 def create_recall_agent() -> Agent:
     """
@@ -21,6 +27,7 @@ def create_recall_agent() -> Agent:
             find_episodes_in_range,
             find_all_episodes_in_range,
             correlate_observation_to_episodes,
+            get_daily_history,
         ],
         show_tool_calls=True,
         markdown=True,
@@ -36,8 +43,9 @@ def create_recall_agent() -> Agent:
             "",
             "2. **CHOOSE THE RIGHT TOOL** based on the question type:",
             "   - For GENERAL overview questions ('what happened last week?', 'show me recent episodes'): use `find_all_episodes_in_range`",
-            "   - For SPECIFIC condition searches ('my migraine episodes', 'pain episodes'): use `find_episodes_in_range`", 
+            "   - For SPECIFIC condition searches ('my migraine episodes', 'pain episodes'): use `find_episodes_in_range`",
             "   - For correlation questions (\"Does X trigger Y?\"): use `correlate_observation_to_episodes`",
+            "   - For daily summaries or calendar views: use `get_daily_history`",
             "",
             "3. **SYNTHESIZE** the structured data from tools into a clear, empathetic response:",
             "   - Use natural language, not technical jargon",

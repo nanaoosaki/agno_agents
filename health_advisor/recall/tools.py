@@ -8,9 +8,10 @@ import os
 from agno.tools import tool
 from agno.agent import Agent
 from data.schemas.episodes import TimeRange, EpisodeSummary, CorrelationResult, CorrelationDetail
+from data.daily_history import get_history
 from core.ontology import CONDITION_FAMILIES, normalize_condition, get_related_conditions
 from datetime import datetime, timedelta
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 # Get the data directory path
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data")
@@ -79,6 +80,12 @@ def _parse_time_range_core(query: str, user_timezone: str = "UTC") -> TimeRange:
         end_utc_iso=end_date.isoformat(),
         label=label
     )
+
+@tool
+def get_daily_history(agent: Agent, start_date_iso: str, end_date_iso: str) -> List[Dict[str, Optional[float]]]:
+    """Fetch compiled daily history records between two dates (inclusive)."""
+    records = get_history(start_date_iso, end_date_iso)
+    return [r.__dict__ for r in records]
 
 @tool
 def parse_time_range(agent: Agent, query: str, user_timezone: str = "UTC") -> TimeRange:

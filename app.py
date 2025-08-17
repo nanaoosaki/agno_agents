@@ -4,8 +4,17 @@
 
 import os
 from typing import List, Tuple, Optional
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import gradio as gr
+import pandas as pd
+import plotly.express as px
+from data.daily_history import load_history, compile_day
+
+try:
+    from apscheduler.schedulers.background import BackgroundScheduler
+except ImportError:
+    BackgroundScheduler = None
 
 # OpenAI for speech-to-text transcription
 try:
@@ -30,6 +39,19 @@ if OPENAI_API_KEY and OpenAI:
         print(f"Warning: Could not initialize OpenAI client: {e}")
 else:
     print("Warning: OPENAI_API_KEY not set or OpenAI not installed. Audio transcription will be disabled.")
+
+# --- Daily history scheduler ---
+if BackgroundScheduler:
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(compile_day, "cron", hour=23, minute=59)
+    scheduler.start()
+    # Ensure today's history exists
+    try:
+        compile_day()
+    except Exception as e:
+        print(f"Warning: could not compile today's history: {e}")
+else:
+    print("Warning: APScheduler not installed; daily history compilation disabled.")
 
 def transcribe_audio(audio_path: str) -> str:
     """
@@ -188,6 +210,27 @@ def clear_chat():
     """Clear the chat history."""
     return [], ""
 
+def load_daily_history_ui():
+    records = [r.__dict__ for r in load_history()]
+    if records:
+        df = pd.DataFrame(records)
+        df['date'] = pd.to_datetime(df['date'])
+        fig = px.density_heatmap(
+            df,
+            x=df['date'].dt.day,
+            y=df['date'].dt.month,
+            z='max_pain',
+            nbinsx=31,
+            nbinsy=12,
+            color_continuous_scale='Reds',
+            labels={'x': 'Day', 'y': 'Month', 'z': 'Max Pain'}
+        )
+        table = df[['date','avg_pain','max_pain','episodes','observations']]
+    else:
+        fig = px.density_heatmap(x=[0], y=[0], z=[0])
+        table = pd.DataFrame(columns=['date','avg_pain','max_pain','episodes','observations'])
+    return fig, table
+
 def get_agent_description(agent_name: str) -> str:
     """Get description for the selected agent."""
     agent_info = get_agent_info()
@@ -270,10 +313,16 @@ with gr.Blocks(
         gr.Markdown("""
         ### 💡 Tips:
         - **Text**: Type and press Enter or click Send
-        - **Voice**: Record audio and click "Transcribe & Send"  
+        - **Voice**: Record audio and click "Transcribe & Send"
         - **Files**: Attach images, PDFs, or documents for analysis
         - **Agents**: Switch between different AI agents for specialized tasks
         """)
+
+    # Daily history calendar
+    with gr.Accordion("📅 Daily History", open=False):
+        refresh_history = gr.Button("Refresh")
+        calendar_plot = gr.Plot(label="Pain Calendar")
+        history_table = gr.Dataframe(interactive=False)
     
     # --- Event Handling ---
     
@@ -307,6 +356,17 @@ with gr.Blocks(
     clear_btn.click(
         fn=clear_chat,
         outputs=[chat_history, text_input]
+    )
+
+    refresh_history.click(
+        fn=load_daily_history_ui,
+        outputs=[calendar_plot, history_table],
+    )
+
+    demo.load(
+        load_daily_history_ui,
+        inputs=None,
+        outputs=[calendar_plot, history_table],
     )
 
 if __name__ == "__main__":
