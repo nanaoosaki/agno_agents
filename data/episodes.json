@@ -1266,5 +1266,58 @@
       }
     ],
     "last_updated_at": "2025-07-16T15:11:04.520182"
+  },
+  "ep_2025-08-17_tension headache_e5a04b08": {
+    "episode_id": "ep_2025-08-17_tension headache_e5a04b08",
+    "condition": "tension headache",
+    "started_at": "2025-08-17T12:48:25.534973",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 7,
+    "max_severity": 7,
+    "severity_points": [
+      {
+        "ts": "2025-08-17T12:48:25.534973",
+        "level": 5
+      },
+      {
+        "ts": "2025-08-17T13:08:20.015336",
+        "level": 7
+      }
+    ],
+    "notes_log": [
+      {
+        "ts": "2025-08-17T12:48:25.534973",
+        "text": "Okay, here's today's entry. I think I woke up around 4.30 a.m. I went to bed around 9 p.m. last night and woke up once to pee. And then waking up, the sleep quality is probably 5 or 6. And then waking up there and got out of the bed at 4.50 a.m. Felt like there's some tension on my right side of head. And after getting up, I drink some water and then I did the neck stretch exercise and then applied some essential oil on the right temple area and some lidocaine cream on the right side of my neck. And I had my breakfast at about 5.40, 5 a.m. It's a 3-4 cup of cashew cereal, one cup of one percent milk, and about 20 blueberries. And I had my morning anti-reflux medication. At 5.10 a.m."
+      },
+      {
+        "ts": "2025-08-17T13:08:20.015336",
+        "text": "i had a migraine since this morning at 7 and it's still ongoing, it's pretty severe\n\nI slept 7 hours last night and it felt pretty bad cause I woke up twice to pee\n\nthe pain is still going on, it's mainly on the right side of my temple, neck and scapular area"
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-17T12:48:25.534973",
+        "type": "neck stretch exercise",
+        "dose": "none",
+        "timing": "4:50 a.m.",
+        "notes": "after getting up"
+      },
+      {
+        "ts": "2025-08-17T12:48:25.534973",
+        "type": "essential oil application",
+        "dose": "none",
+        "timing": "4:50 a.m.",
+        "notes": "on the right temple area"
+      },
+      {
+        "ts": "2025-08-17T12:48:25.534973",
+        "type": "lidocaine cream",
+        "dose": "none",
+        "timing": "4:50 a.m.",
+        "notes": "on the right side of neck"
+      }
+    ],
+    "last_updated_at": "2025-08-17T13:08:20.015336"
   }
 }

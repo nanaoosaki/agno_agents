@@ -1,3 +1,2 @@
-"""
-Coach agent for providing health guidance and personalized advice.
-"""
+# health_advisor/coach/__init__.py
+# Coach Agent for health guidance and non-medication suggestions

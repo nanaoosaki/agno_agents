@@ -1,3 +1,2 @@
-"""
-Knowledge base management for health information and educational content.
-"""
+# health_advisor/knowledge/__init__.py
+# Knowledge management for health advisor agents

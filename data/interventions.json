@@ -79,5 +79,32 @@
     "dose": null,
     "timing": null,
     "notes": "applied heat therapy"
+  },
+  {
+    "intervention_id": "int_cbe6b140",
+    "episode_id": "ep_2025-08-17_tension headache_e5a04b08",
+    "timestamp": "2025-08-17T12:48:25.534973",
+    "type": "neck stretch exercise",
+    "dose": "none",
+    "timing": "4:50 a.m.",
+    "notes": "after getting up"
+  },
+  {
+    "intervention_id": "int_bcf04b03",
+    "episode_id": "ep_2025-08-17_tension headache_e5a04b08",
+    "timestamp": "2025-08-17T12:48:25.534973",
+    "type": "essential oil application",
+    "dose": "none",
+    "timing": "4:50 a.m.",
+    "notes": "on the right temple area"
+  },
+  {
+    "intervention_id": "int_867a9b61",
+    "episode_id": "ep_2025-08-17_tension headache_e5a04b08",
+    "timestamp": "2025-08-17T12:48:25.534973",
+    "type": "lidocaine cream",
+    "dose": "none",
+    "timing": "4:50 a.m.",
+    "notes": "on the right side of neck"
   }
 ]
