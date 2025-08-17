@@ -192,18 +192,26 @@
     "started_at": "2025-08-16T19:06:04.520182",
     "ended_at": null,
     "status": "open",
-    "current_severity": 7,
+    "current_severity": 2,
     "max_severity": 7,
     "severity_points": [
       {
         "ts": "2025-08-16T19:06:04.520182",
         "level": 7
+      },
+      {
+        "ts": "2025-08-16T16:03:08.661252",
+        "level": 2
       }
     ],
     "notes_log": [
       {
         "ts": "2025-08-16T19:06:04.520182",
         "text": "I have a back_pain starting about an hour ago. Pain level is 7/10."
+      },
+      {
+        "ts": "2025-08-16T16:03:08.661252",
+        "text": "Okay, here's today's logger. Basically, I got up at 3.40 a.m., went to bed about 9, 10 p.m., and then sleep is okay, I think. And then this will be day three. I'm using the new pillow, seems to be better. And then the left scap pain that lasted, this would be, I think, day five. Yes, day five. And then, oh, it's less, it's less. And then so probably give it one or two. And then after getting up, I took my antireflux medication, and then I did a neck stretch, all kinds, try to relieve the pain. Did a heat therapy on the left scap, try to relieve it as well. And then I had my breakfast, two slices of whole wheat bread, one cup of cashew gold cereal, plus one cup of one percent milk, and one-fourth cup of blueberries, and some chia seeds. And then I had so far a lot of water, probably 56 ounces at this moment, right now it's 9.39 a.m. And then I did a ring-fitted exercise for about 45 minutes, and then in between I was just kind of programming and watching shows."
       }
     ],
     "interventions": [
@@ -218,9 +226,30 @@
         "type": "ibuprofen",
         "dose": "400mg",
         "notes": "Applied for back_pain"
+      },
+      {
+        "ts": "2025-08-16T16:03:08.661252",
+        "type": "medication",
+        "dose": null,
+        "timing": "upon waking",
+        "notes": "took antireflux medication"
+      },
+      {
+        "ts": "2025-08-16T16:03:08.661252",
+        "type": "stretching",
+        "dose": null,
+        "timing": null,
+        "notes": "did neck stretches"
+      },
+      {
+        "ts": "2025-08-16T16:03:08.661252",
+        "type": "heat therapy",
+        "dose": null,
+        "timing": null,
+        "notes": "applied heat therapy"
       }
     ],
-    "last_updated_at": "2025-08-16T19:06:04.520182"
+    "last_updated_at": "2025-08-16T16:03:08.661252"
   },
   "ep_2025-08-05_neck_pain_23218": {
     "episode_id": "ep_2025-08-05_neck_pain_23218",

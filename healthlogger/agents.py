@@ -12,7 +12,8 @@ except ImportError:
     Agent = object
     OpenAIChat = object
 
-from .schema import RouterOutput, SimpleRouterOutput, ProcessingResult
+from healthlogger.schema_router import RouterOutput, SimpleRouterOutput
+from data.schemas.episodes import ProcessingResult
 from .prompts import get_extractor_system_prompt, get_reply_system_prompt
 
 def create_extractor_agent():

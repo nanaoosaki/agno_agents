@@ -166,7 +166,7 @@ except ImportError as e:
 
 # Recall Agent import - Following docs/agno/tools/writing_your_own_tools.md
 try:
-    from healthlogger.recall.agent import recall_agent
+    from health_advisor.recall.agent import recall_agent
     
     class RecallAgentWrapper:
         name = "Recall Agent"

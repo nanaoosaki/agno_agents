@@ -648,14 +648,271 @@ To thoroughly test the Recall Agent's capabilities, especially after the critica
 
 ---
 
+## 🔧 **General Query Support Enhancement**
+
+**Enhancement Date:** August 17, 2025 10:30 UTC  
+**Issue:** Recall Agent couldn't handle general overview queries like "what's last 7days look like"  
+**Solution:** Added new tool for comprehensive episode retrieval
+
+### **Problem Analysis**
+
+**Root Cause:** Original tool design required specific condition parameters:
+```python
+find_episodes_in_range(condition="specific_condition", start_date, end_date)
+```
+
+**User Query Issue:** When users asked general questions like "what's last 7days look like", the agent had no tool to retrieve ALL episodes regardless of condition.
+
+### **Solution Implemented**
+
+**New Tool Added: `find_all_episodes_in_range`**
+```python
+@tool  
+def find_all_episodes_in_range(agent: Agent, start_date_iso: str, end_date_iso: str) -> List[EpisodeSummary]:
+    """
+    Finds ALL episodes within a specific UTC date range, regardless of condition.
+    Use this for general queries like 'what happened last week' or 'show me my recent episodes'.
+    Perfect for overview questions where the user wants to see everything.
+    """
+```
+
+**Updated Agent Instructions:**
+```python
+"2. **CHOOSE THE RIGHT TOOL** based on the question type:",
+"   - For GENERAL overview questions ('what happened last week?', 'show me recent episodes'): use `find_all_episodes_in_range`",
+"   - For SPECIFIC condition searches ('my migraine episodes', 'pain episodes'): use `find_episodes_in_range`", 
+"   - For correlation questions: use `correlate_observation_to_episodes`",
+```
+
+### **Data Flow Enhancement**
+
+**Updated Query Processing for General Questions:**
+```
+1. User: "what's last 7days look like"
+2. parse_time_range() → Returns: 2025-08-10 to 2025-08-17
+3. find_all_episodes_in_range() → Searches ALL episodes in date range
+4. Result: 8 episodes found across all conditions
+5. Agent synthesizes: "Here's what your last 7 days looked like - I found 8 health episodes..."
+```
+
+**Enhanced Tool Set:**
+- `parse_time_range` - Time parsing (unchanged)
+- `find_episodes_in_range` - Condition-specific searches  
+- `find_all_episodes_in_range` - **NEW:** General overview queries
+- `correlate_observation_to_episodes` - Correlation analysis (unchanged)
+
+---
+
+## 📊 **Data Storage & Retrieval Architecture**
+
+### **Data Storage Layer**
+
+**Physical Storage:**
+```
+data/
+├── episodes.json          # 35 episodes with full health event data
+├── observations.json      # 21 observations (triggers, environment, behaviors) 
+├── interventions.json     # Treatment and intervention records
+└── events.jsonl          # 39+ audit trail events (append-only log)
+```
+
+**Episode Data Structure:**
+```json
+{
+  "ep_2025-08-15_migraine_4868be11": {
+    "episode_id": "ep_2025-08-15_migraine_4868be11",
+    "condition": "migraine",
+    "started_at": "2025-08-15T19:36:59.321604",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": 7,
+    "max_severity": 7,
+    "severity_points": [...],
+    "notes_log": [...],
+    "interventions": [...],
+    "last_updated_at": "2025-08-15T19:36:59.321604"
+  }
+}
+```
+
+**Observation Data Structure:**
+```json
+[
+  {
+    "observation_id": "obs_2025-08-15_stress_work",
+    "timestamp": "2025-08-15T14:30:00",
+    "type": "emotional_trigger",
+    "value": "high work stress",
+    "location": "office",
+    "notes": "deadline pressure, team conflict"
+  }
+]
+```
+
+### **Data Retrieval Process**
+
+**Step 1: Query Parsing & Routing**
+```python
+# LLM decides which tool to use based on query type
+User: "what's last 7days look like" → find_all_episodes_in_range()
+User: "migraine episodes last week" → find_episodes_in_range(condition="migraine")
+User: "does cheese trigger migraines?" → correlate_observation_to_episodes()
+```
+
+**Step 2: Time Range Processing**
+```python
+def _parse_time_range_core(query: str) -> TimeRange:
+    # Deterministic time parsing (no LLM involved)
+    now = datetime.utcnow()
+    if "last week" in query.lower():
+        return TimeRange(now - 7days, now, "the last 7 days")
+    # Pattern matching for various time expressions
+```
+
+**Step 3: Data Loading & Filtering**
+```python
+def _load_episodes() -> dict:
+    # Pure Python file I/O (no LLM involved)
+    with open("data/episodes.json", 'r') as f:
+        return json.load(f)
+
+def _find_episodes_in_range_core(condition, start_date, end_date):
+    # Deterministic filtering (no LLM involved)
+    episodes = _load_episodes()
+    for episode_id, episode_data in episodes.items():
+        # Date range and condition filtering logic
+```
+
+**Step 4: Condition Normalization**
+```python
+# Uses core/ontology.py (deterministic, no LLM)
+CONDITION_FAMILIES = {
+    "migraine": ["migraine", "headache", "head pain", "temple pain"],
+    "pain": ["pain", "ache", "hurt", "sore"]  # Generic pain family
+}
+
+def get_related_conditions(condition: str) -> List[str]:
+    # Semantic expansion for broader searching
+    if normalized == "pain":
+        return ["pain", "migraine", "back_pain", "neck_pain"]
+```
+
+### **LLM Involvement Points**
+
+**Where LLM is Used:**
+1. **Query Understanding** - Agent decides which tool to call based on user intent
+2. **Tool Parameter Extraction** - LLM extracts condition names from user queries
+3. **Response Synthesis** - LLM converts structured data into natural language responses
+4. **Empathetic Communication** - LLM adds supportive and understanding tone
+
+**Where LLM is NOT Used (Deterministic):**
+1. **Data Loading** - Pure file I/O operations
+2. **Time Parsing** - Rule-based pattern matching  
+3. **Date Filtering** - Mathematical date comparisons
+4. **Condition Normalization** - Dictionary-based lookups
+5. **Statistical Calculations** - Count, correlation, severity analysis
+
+### **Hybrid Architecture Benefits**
+
+**LLM Strengths Leveraged:**
+- Natural language understanding of user intent
+- Flexible parameter extraction from conversational queries
+- Empathetic and supportive response generation
+- Ability to handle various query phrasings
+
+**Deterministic Strengths Preserved:**
+- Reliable data retrieval and filtering
+- Accurate date/time calculations
+- Consistent condition normalization
+- Repeatable statistical analysis
+
+### **Example Data Flow**
+
+**User Query:** "what's last 7days look like"
+
+**Step-by-Step Process:**
+1. **LLM Analysis:** Recognizes this as a general overview query
+2. **Tool Selection:** Chooses `find_all_episodes_in_range` (no condition filter needed)
+3. **Time Parsing:** `_parse_time_range_core()` converts to UTC timestamps (deterministic)
+4. **Data Loading:** `_load_episodes()` reads data/episodes.json (deterministic)
+5. **Date Filtering:** Loops through episodes, compares timestamps (deterministic)
+6. **Result Assembly:** Creates `List[EpisodeSummary]` objects (deterministic)
+7. **LLM Synthesis:** Converts structured data to natural language response
+
+**Result:** 
+```
+"Here's what your last 7 days looked like - I found 8 health episodes:
+• 2 back_pain episodes
+• 1 migraine episode  
+• 1 anxiety episode
+• 1 reflux episode
+• 1 sleep episode
+• 1 right temple pain episode
+• 1 scapula pain episode"
+```
+
+---
+
+## 🏗️ **Architecture Updates Post-Refactor**
+
+### **New Layered Architecture**
+
+**Following refactor in `architecture-refactor` branch:**
+
+```
+health_advisor/recall/    # Moved from healthlogger/recall/
+├── agent.py              # Recall Agent definition
+├── tools.py              # Enhanced with find_all_episodes_in_range
+└── __init__.py
+
+core/                     # NEW: Shared primitives
+├── ontology.py           # CONDITION_FAMILIES, normalize_condition  
+├── timeutils.py          # Time parsing utilities
+└── policies.py           # App-wide constants
+
+data/                     # NEW: Persistence layer
+├── json_store.py         # Storage implementation (moved from healthlogger/)
+├── storage_interface.py  # Abstract storage API
+└── schemas/episodes.py   # Pydantic models for persistence
+```
+
+**Updated Import Structure:**
+```python
+# OLD (before refactor)
+from healthlogger.recall.agent import recall_agent
+from healthlogger.schema import CONDITION_FAMILIES
+
+# NEW (after refactor)  
+from health_advisor.recall.agent import recall_agent
+from core.ontology import CONDITION_FAMILIES, normalize_condition
+from data.schemas.episodes import TimeRange, EpisodeSummary
+```
+
+**Benefits of Refactored Architecture:**
+- **Separation of Concerns:** Clear boundaries between data, logic, and presentation
+- **Reusability:** Core ontology and time utilities shared across agents
+- **Maintainability:** Centralized configuration and policies
+- **Scalability:** Abstract storage interface enables database migration
+- **Testability:** Modular components with clear dependencies
+
+---
+
 ## 📋 **Sample Queries for Testing**
 
 Once OPENAI_API_KEY is configured, test with:
 
-1. **"Did I have any migraines last week?"** - Episode count query
-2. **"Does eating cheese trigger my migraines?"** - Correlation analysis
-3. **"Show me my pain episodes from yesterday"** - Historical summary
-4. **"How severe were my headaches last month?"** - Severity analysis
-5. **"What interventions worked best for my migraines?"** - Treatment effectiveness
+**General Overview Queries:**
+1. **"what's last 7days look like"** - General episode overview
+2. **"show me my recent episodes"** - All recent health events
+3. **"what happened last week"** - Weekly health summary
+
+**Specific Condition Queries:**
+4. **"Did I have any migraines last week?"** - Episode count query
+5. **"Show me my pain episodes from yesterday"** - Historical summary with semantic expansion
+
+**Correlation Analysis:**
+6. **"Does eating cheese trigger my migraines?"** - Correlation analysis
+7. **"How severe were my headaches last month?"** - Severity analysis
+8. **"What interventions worked best for my migraines?"** - Treatment effectiveness
 
 Each query will demonstrate the agent's ability to parse time ranges, analyze data, and provide empathetic, evidence-based responses.

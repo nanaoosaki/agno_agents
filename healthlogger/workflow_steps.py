@@ -19,14 +19,18 @@ except ImportError:
         def __init__(self, content=None):
             self.content = content
 
-from .schema import RouterOutput, SimpleRouterOutput, ProcessingResult, EpisodeCandidate, CONDITION_FAMILIES
-from .storage import (
-    fetch_open_episode_candidates, normalize_condition, create_episode,
+from healthlogger.schema_router import RouterOutput, SimpleRouterOutput
+from data.schemas.episodes import ProcessingResult, EpisodeCandidate
+from core.ontology import CONDITION_FAMILIES, normalize_condition
+from data.json_store import (
+    fetch_open_episode_candidates, create_episode,
     update_episode, add_intervention, save_observation, append_event, get_episode_by_id
 )
 
-# Policy configuration
-EPISODE_WINDOW_HOURS = 12
+# Policy configuration - importing from core.policies
+from core.policies import EPISODE_LINKING_WINDOW_HOURS
+
+EPISODE_WINDOW_HOURS = EPISODE_LINKING_WINDOW_HOURS
 DAY_BOUNDARY_HOURS = 24
 CONFIDENCE_THRESHOLD = 0.6
 

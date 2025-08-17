@@ -52,5 +52,32 @@
     "dose": null,
     "timing": null,
     "notes": null
+  },
+  {
+    "intervention_id": "int_f8c2d2e4",
+    "episode_id": "ep_2025-08-16_back_pain_86919",
+    "timestamp": "2025-08-16T16:03:08.661252",
+    "type": "medication",
+    "dose": null,
+    "timing": "upon waking",
+    "notes": "took antireflux medication"
+  },
+  {
+    "intervention_id": "int_2f64e086",
+    "episode_id": "ep_2025-08-16_back_pain_86919",
+    "timestamp": "2025-08-16T16:03:08.661252",
+    "type": "stretching",
+    "dose": null,
+    "timing": null,
+    "notes": "did neck stretches"
+  },
+  {
+    "intervention_id": "int_9ce454d9",
+    "episode_id": "ep_2025-08-16_back_pain_86919",
+    "timestamp": "2025-08-16T16:03:08.661252",
+    "type": "heat therapy",
+    "dose": null,
+    "timing": null,
+    "notes": "applied heat therapy"
   }
 ]
