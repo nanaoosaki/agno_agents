@@ -1,20 +1,138 @@
-# 🤖 Agno Chat Interface
+# 🏥 Health Companion - Intelligent AI Health Management System
 
-A local, multi-modal chat interface for Agno AI agents built with Gradio. Features text input, voice transcription, file attachments, and agent switching.
+An advanced, multi-modal health management system built with Agno AI agents and Gradio. This project provides intelligent health logging, data analysis, and personalized coaching through a sophisticated router-based architecture that understands user intent and provides comprehensive health support.
 
-## ✨ Features
+## 🎯 Project Purpose
 
+The Health Companion system is designed to:
+- **Intelligently log** health episodes with structured data capture
+- **Analyze patterns** in health data to provide insights and correlations  
+- **Provide evidence-based coaching** for health management and lifestyle improvements
+- **Route complex requests** automatically to the appropriate specialist agents
+- **Maintain comprehensive health records** with episodic tracking and intervention logging
+
+This system is particularly focused on **migraine and chronic pain management** but can be extended to other health conditions.
+
+## ✨ System Features
+
+### 🤖 **Intelligent Agent Architecture**
+- **Multi-intent routing** with confidence-based decision making
+- **Stateful orchestration** for complex, multi-step workflows  
+- **Context-aware responses** using conversation history
+- **Graceful error handling** with robust fallback mechanisms
+
+### 🏥 **Health Management Capabilities**
+- **Structured episode logging** with severity tracking and temporal linking
+- **Pattern analysis** and correlation detection across health data
+- **Evidence-based coaching** using migraine research handouts
+- **Intervention tracking** with effectiveness monitoring
+- **Comprehensive audit trails** for all health interactions
+
+### 💻 **User Interface**
 - **Multi-modal Input**: Text, microphone (Whisper transcription), and file attachments
-- **Agent Selection**: Switch between different Agno agents via dropdown
-- **Real-time Chat**: Interactive chat history with user/assistant conversation flow
-- **File Support**: Upload and analyze images, PDFs, documents
-- **Voice Input**: Record audio messages with automatic transcription
-- **Modern UI**: Clean Gradio interface with custom styling
+- **Agent Selection**: Switch between different specialist agents
+- **Real-time Chat**: Interactive conversation flow with health context
+- **File Support**: Upload and analyze health-related documents
+- **Voice Input**: Record symptoms and updates hands-free
+- **Modern UI**: Clean Gradio interface optimized for health workflows
+
+### 🛡️ **Safety & Privacy**
+- **Local data storage** with JSON-based health records
+- **Medical safety guardrails** preventing inappropriate medical advice
+- **Privacy-first design** with no external health data transmission
+- **Disclaimer integration** for all health-related responses
+
+## 🤖 Available AI Agents
+
+The Health Companion system includes several specialized agents, each designed for specific health management tasks:
+
+### 🎯 **Health Companion (Auto-Router)** - *Recommended Default*
+**The intelligent orchestrator that automatically routes your requests to the right specialist.**
+
+**What it does:**
+- Analyzes your message to understand intent (logging, recall, coaching, etc.)
+- Routes simple requests directly to the appropriate specialist
+- Handles complex multi-intent requests (e.g., "I have a migraine, what should I do?")
+- Combines responses from multiple agents for comprehensive care
+
+**Best for:** All health-related conversations, especially complex requests
+
+---
+
+### 📝 **Health Logger (v3)** - *Pure Agno Implementation*
+**Structured health data capture with intelligent episode linking.**
+
+**What it does:**
+- Extracts structured data from natural language health reports
+- Links related symptoms to ongoing episodes (e.g., continuation of a migraine)
+- Tracks severity, location, timing, and interventions
+- Maintains comprehensive health episode records
+
+**Example:** *"I have a tension headache on the right side, severity 6/10, started 2 hours ago"*
+**Best for:** Logging new symptoms, episodes, or health updates
+
+---
+
+### 📊 **Recall Agent** - *Historical Analysis*
+**Your personal health data analyst for pattern recognition and historical insights.**
+
+**What it does:**
+- Searches your health history by date, condition, or pattern
+- Correlates observations with health episodes
+- Provides statistical summaries and trend analysis
+- Answers questions about frequency, triggers, and patterns
+
+**Example:** *"How often do I get migraines?" or "What were my pain levels last week?"*
+**Best for:** Understanding health patterns, trends, and historical data
+
+---
+
+### 🩺 **Coach Agent** - *Evidence-Based Guidance*
+**Compassionate health coaching based on migraine research and your current episodes.**
+
+**What it does:**
+- Provides non-medication lifestyle and comfort recommendations
+- Searches migraine research handouts for evidence-based advice
+- Considers your current/recent episodes for personalized guidance
+- Includes safety guardrails and medical disclaimers
+
+**Example:** *"What can I do to manage stress-related headaches?"*
+**Best for:** Lifestyle advice, comfort measures, and evidence-based health guidance
+
+---
+
+### 🔄 **How the Agents Work Together**
+
+**Simple Request:**
+```
+"Show me my migraine history" → Auto-Router → Recall Agent → Historical analysis
+```
+
+**Complex Request:**
+```
+"I have a severe migraine, what should I do?" 
+→ Auto-Router detects: logging + coaching intents
+→ Health Logger: Records the episode  
+→ Coach Agent: Provides personalized advice
+→ Combined response: Logging confirmation + guidance
+```
 
 ## 🚀 Quick Start
 
 ### 1. Setup Environment
 
+**Option A: Using UV (Recommended)**
+```bash
+# Activate UV virtual environment (Windows PowerShell)
+& d:/AI/AI_agents_agno/uv/Scripts/Activate.ps1
+# Or from project root:
+.\uv\Scripts\Activate.ps1
+
+# Dependencies are pre-installed in UV environment
+# Agno library is already configured
+```
+
+**Option B: Standard Python Environment**
 ```bash
 # Create virtual environment
 python -m venv .venv
@@ -26,19 +144,20 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Install dependencies
-pip install -r requirements.txt
+pip install agno gradio openai python-dotenv
+pip install chromadb  # For Windows-compatible vector storage
+pip install unstructured markdown  # For knowledge base functionality
 ```
 
 ### 2. Configure API Keys
 
 ```bash
-# Copy environment template
-cp env_example.txt .env
-
-# Edit .env file with your API keys
+# Create .env file with your API keys
 # At minimum, you need:
 OPENAI_API_KEY=sk-your-key-here
 ```
+
+**📝 Note:** The system is configured to use `text-embedding-ada-002` for embeddings, which is more widely accessible than newer embedding models. If your OpenAI API key doesn't have access to embeddings, the Coach Agent will use fallback advice instead of the knowledge base.
 
 ### 3. Run the Application
 
@@ -48,105 +167,228 @@ python app.py
 
 The interface will open automatically in your browser at `http://127.0.0.1:7860`
 
-## 🔧 Available Agents
+## 📝 Example Usage Scenarios
 
-- **EchoAgent**: Simple test agent that echoes your input
-- **ResearchAgent**: Web-enabled research assistant with DuckDuckGo search
-- **GeneralAgent**: General purpose AI assistant for various tasks
+### 🏥 **Complete Health Management Workflow**
 
-## 📝 Usage
+**1. Start with the Auto-Router (Recommended)**
+```
+Select: "Health Companion (Auto-Router)"
+Message: "I have a severe migraine on my right temple, 8/10 pain. What should I do?"
 
-1. **Select Agent**: Choose your preferred AI agent from the dropdown
-2. **Text Chat**: Type messages and press Enter or click Send
-3. **Voice Input**: Click the microphone, record your message, then click "Transcribe & Send"
-4. **File Attachments**: Upload files using the file input area
-5. **Clear Chat**: Use the Clear Chat button to start a new conversation
+Result: 
+→ Logs the migraine episode automatically
+→ Provides evidence-based coaching advice  
+→ Combined response with both actions
+```
+
+**2. Individual Agent Usage**
+
+**Health Logging:**
+```
+Select: "Health Logger (v3)"
+Message: "Woke up with neck pain, 5/10, feels stiff and tight"
+
+Result: Structured episode logged with severity, location, and timing
+```
+
+**Historical Analysis:**
+```
+Select: "Recall Agent"  
+Message: "How many migraines did I have last month?"
+
+Result: Statistical analysis with episode counts and patterns
+```
+
+**Health Coaching:**
+```
+Select: "Coach Agent"
+Message: "What lifestyle changes help with stress headaches?"
+
+Result: Evidence-based advice from migraine research with safety disclaimers
+```
+
+### 🎙️ **Voice Input Examples**
+- Record: *"I just took ibuprofen for my headache"*
+- Record: *"Pain level has decreased to a 4 out of 10"*
+- Record: *"Show me my pain patterns for this week"*
+
+### 📄 **File Upload Support**
+- Upload health reports, lab results, or medical documents
+- Agents can analyze and incorporate file content into health records
+- Supported formats: PDF, images, text documents
+
+## 🎯 **Getting Started Tips**
+
+1. **Start Simple**: Begin with "Health Companion (Auto-Router)" for all interactions
+2. **Be Descriptive**: Include severity (1-10), location, timing, and triggers when logging symptoms  
+3. **Ask Questions**: The Recall Agent can help you understand patterns and trends
+4. **Get Guidance**: The Coach Agent provides safe, evidence-based lifestyle advice
+5. **Natural Language**: No need for special commands - speak naturally about your health
 
 ## 🛠️ Configuration
 
 ### Environment Variables
 
-Create a `.env` file with the following variables:
+Create a `.env` file in the project root:
 
 ```env
-# Required for all agents
+# Required - OpenAI API for agents and embeddings
 OPENAI_API_KEY=sk-your-openai-api-key
-
-# Optional - add as needed for specific agents
-EXA_API_KEY=your-exa-key
-ANTHROPIC_API_KEY=your-anthropic-key
-GROQ_API_KEY=your-groq-key
 ```
 
-### Adding Custom Agents
+**💡 Tips:**
+- The system uses `text-embedding-ada-002` for better compatibility
+- `gpt-4o-mini-2024-07-18` is used for all agent models for cost efficiency
+- Only OpenAI API key is required - other services are optional
 
-To add your own Agno agents, edit `agents.py`:
+### Data Storage
 
-1. Create a new agent class following the existing pattern
-2. Add it to the `AGENTS` registry
-3. Restart the application
+Health data is stored locally in JSON files:
+- `data/episodes.json` - Health episodes and interventions
+- `data/observations.json` - Routine health observations  
+- `data/events.jsonl` - Complete audit trail of all interactions
+- `data/chroma_coach/` - ChromaDB vector database for knowledge base
 
-Example:
-```python
-class MyCustomAgent:
-    name = "MyCustomAgent"
-    description = "Description of what this agent does"
-    
-    def __init__(self):
-        self.agent = Agent(
-            name="My Custom Agent",
-            model=OpenAIChat(id="gpt-4o-mini-2024-07-18"),
-            instructions="Your custom instructions here",
-            tools=[YourCustomTools()],
-        )
-    
-    def run(self, prompt: str, files: Optional[List[str]] = None) -> ChatResult:
-        # Your implementation here
-        pass
+## 🏗️ Project Architecture
 
-# Add to registry
-AGENTS["MyCustomAgent"] = MyCustomAgent()
+### **Layered Architecture**
 ```
+📁 health_advisor/          # Health management layer
+├── router/                 # Intent routing and orchestration  
+├── coach/                  # Evidence-based health coaching
+├── recall/                 # Historical data analysis
+└── knowledge/              # Knowledge base management
+
+📁 healthlogger/            # Health data capture workflow
+├── agents.py               # Extractor and Reply agents
+├── workflow.py             # Pure Agno workflow orchestration
+├── workflow_steps.py       # Deterministic processing logic
+└── prompts.py              # LLM instructions and examples
+
+📁 core/                    # Shared business logic
+├── ontology.py             # Health condition normalization
+├── policies.py             # Application-wide constants
+└── timeutils.py            # Date/time utilities
+
+📁 data/                    # Data persistence layer
+├── json_store.py           # JSON-based storage implementation
+├── storage_interface.py    # Abstract storage contracts
+└── schemas/                # Pydantic data models
+```
+
+### **Agent Workflow Architecture**
+
+**Router-Based Orchestration:**
+```mermaid
+graph TD
+    A[User Input] --> B[Router Agent]
+    B --> C{Intent Classification}
+    C -->|log| D[Health Logger v3]
+    C -->|recall| E[Recall Agent]  
+    C -->|coach| F[Coach Agent]
+    C -->|log + coach| G[Multi-Intent Chain]
+    G --> D
+    G --> F
+    D --> H[Combined Response]
+    E --> H
+    F --> H
+```
+
+**Pure Agno Implementation:**
+- Uses Agno's `Agent`, `Workflow`, `Step` primitives
+- Structured outputs with Pydantic models
+- Tool-based architecture with `@tool` decorators
+- ChromaDB for Windows-compatible vector storage
 
 ## 🔍 Troubleshooting
 
 ### Common Issues
 
-1. **"Agno imports failed"**: Install Agno with `pip install agno`
-2. **"Audio transcription disabled"**: Set `OPENAI_API_KEY` in `.env`
-3. **"Agent not available"**: Check API keys and Agno installation
-4. **Import errors**: Ensure all dependencies are installed with `pip install -r requirements.txt`
+**Environment Setup:**
+- **"Agno imports failed"**: Activate UV environment or install with `pip install agno`
+- **"ChromaDB import error"**: Install with `pip install chromadb`
+- **"Knowledge base loading failed"**: Install with `pip install unstructured markdown`
 
-### Debug Mode
+**API & Functionality:**
+- **"Audio transcription disabled"**: Set valid `OPENAI_API_KEY` in `.env` file
+- **"Coach Agent using fallback advice"**: Check embeddings API access for text-embedding-ada-002
+- **"No health data found"**: Use Health Logger first to create episode data
 
-To run with more verbose logging, modify `app.py`:
+**Windows Compatibility:**
+- **Vector database errors**: System uses ChromaDB for Windows compatibility
+- **File path issues**: Use forward slashes or raw strings in file paths
+- **Permission errors**: Run PowerShell as administrator if needed
 
-```python
-import logging
-logging.basicConfig(level=logging.DEBUG)
-```
+### Performance Tips
 
-## 📦 Dependencies
+- **Use Auto-Router**: Start with "Health Companion (Auto-Router)" for best experience
+- **Batch Related Requests**: Include multiple questions in one message for efficient processing
+- **Specific Descriptions**: Detailed symptom descriptions improve data quality
+- **Regular Usage**: Consistent logging improves pattern recognition and coaching relevance
 
-- `agno>=0.2.5` - The Agno AI framework
-- `gradio>=4.44.0` - Web UI framework
-- `openai>=1.35.14` - For Whisper transcription
-- `python-dotenv>=1.0.1` - Environment variable loading
+## 📦 Key Dependencies
+
+- **`agno`** - Pure Agno AI framework implementation
+- **`gradio`** - Web UI framework for chat interface  
+- **`openai`** - For GPT models and Whisper transcription
+- **`chromadb`** - Windows-compatible vector database
+- **`unstructured`** - Document processing for knowledge base
+- **`pydantic`** - Data validation and structured outputs
+
+## 🏥 Health Data & Privacy
+
+**Local Storage Only:**
+- All health data stored locally in JSON files
+- No external health data transmission  
+- Complete user control over personal health information
+- HIPAA-friendly local-only architecture
+
+**Medical Disclaimers:**
+- System provides lifestyle and comfort advice only
+- Not a substitute for professional medical care
+- Always includes appropriate medical disclaimers
+- Safety guardrails prevent inappropriate medical recommendations
 
 ## 🤝 Contributing
 
+We welcome contributions to improve the Health Companion system:
+
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes following Agno best practices
+4. Test thoroughly with health scenarios
+5. Update documentation as needed
+6. Submit a pull request
 
-## 📄 License
+**Areas for Contribution:**
+- Additional health condition support beyond migraines
+- Enhanced data analysis and visualization
+- Integration with wearable devices or health APIs
+- Improved coaching content and knowledge bases
+- Multi-language support for international users
 
-This project follows the same license as the parent Agno framework.
+## 📄 License & Acknowledgments
 
-## 🔗 Links
+This project is built with the [Agno AI framework](https://docs.agno.com/) and follows open-source principles for health technology accessibility.
 
-- [Agno Documentation](https://docs.agno.com/)
-- [Gradio Documentation](https://gradio.app/docs/)
-- [OpenAI API Documentation](https://platform.openai.com/docs/)
+**Acknowledgments:**
+- **Agno Team** - For the exceptional AI agent framework
+- **Gradio Team** - For the intuitive web interface framework  
+- **OpenAI** - For GPT models and Whisper transcription
+- **ChromaDB** - For Windows-compatible vector storage
+- **Medical Research Community** - For evidence-based migraine treatment guidelines
+
+**Health Data Ethics:**
+This project prioritizes user privacy, data ownership, and medical safety in all health technology implementations.
+
+## 🔗 Additional Resources
+
+- **[Agno Documentation](https://docs.agno.com/)** - Framework documentation and guides
+- **[Agno GitHub](https://github.com/agnoinc/agno)** - Source code and examples
+- **[Gradio Documentation](https://gradio.app/docs/)** - UI framework documentation
+- **[OpenAI API Documentation](https://platform.openai.com/docs/)** - AI model documentation
+
+---
+
+**🏥 Built for Better Health Management - Privacy First, Evidence-Based, AI-Powered** 🤖✨
