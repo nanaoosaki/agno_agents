@@ -156,15 +156,17 @@ Always be helpful, accurate, and provide well-structured responses.""",
                 meta={"error": str(e)}
             )
 
-# Health Logger v3 import
+# Health Logger v3 import (temporarily disabled for dev mode testing)
+health_logger_v3 = None
+print("ℹ️ Health Logger v3 temporarily disabled for dev mode testing")
+
+# Profile & Onboarding Workflow import
 try:
-    from healthlogger.workflow import HealthLoggerWorkflowWrapper
-    # Import file handling utilities for multi-modal support
-    from core.file_handler import process_uploaded_files, Attachment, get_image_description
-    health_logger_v3 = HealthLoggerWorkflowWrapper()
+    from profile_and_onboarding.workflow import OnboardingWorkflowWrapper
+    onboarding_workflow = OnboardingWorkflowWrapper()
 except ImportError as e:
-    print(f"Warning: Health Logger v3 not available: {e}")
-    health_logger_v3 = None
+    print(f"Warning: Onboarding Workflow not available: {e}")
+    onboarding_workflow = None
 
 # Recall Agent import - Following docs/agno/tools/writing_your_own_tools.md
 try:
@@ -437,23 +439,27 @@ AGENTS: Dict[str, Any] = {
     "GeneralAgent": GeneralAgent(),
 }
 
-# Add Health Logger v3.1 if available
-if health_logger_v3:
-    AGENTS["Health Logger (v3.1 Multi-Modal)"] = health_logger_v3
+# Add Health Logger v3.1 if available (temporarily disabled)
+# if health_logger_v3:
+#     AGENTS["Health Logger (v3.1 Multi-Modal)"] = health_logger_v3
+
+# Add Profile & Onboarding Workflow if available
+if onboarding_workflow:
+    AGENTS[onboarding_workflow.name] = onboarding_workflow
 
 # Add Recall Agent if available
-if recall_agent_wrapper:
-    AGENTS["Recall Agent"] = recall_agent_wrapper
+# if recall_agent_wrapper:
+#     AGENTS["Recall Agent"] = recall_agent_wrapper
 
-# Add Coach Agent if available
-if coach_agent_wrapper:
-    AGENTS["Coach Agent"] = coach_agent_wrapper
+# Add Coach Agent if available (temporarily disabled)
+# if coach_agent_wrapper:
+#     AGENTS["Coach Agent"] = coach_agent_wrapper
 
 # Add Master Agent (Health Companion) if available - This should be the DEFAULT
 if master_agent:
     AGENTS["Health Companion (Auto-Router)"] = master_agent
 
-def call_agent(agent_name: str, user_text: str, filepaths: Optional[List[str]] = None) -> ChatResult:
+def call_agent(agent_name: str, user_text: str, filepaths: Optional[List[str]] = None, session_id: str = None) -> ChatResult:
     """
     Call the specified agent with user input and optional file attachments.
     
@@ -461,6 +467,7 @@ def call_agent(agent_name: str, user_text: str, filepaths: Optional[List[str]] =
         agent_name: Name of the agent to use
         user_text: User's text input
         filepaths: List of file paths (optional)
+        session_id: Session identifier for stateful agents (optional)
     
     Returns:
         ChatResult with the agent's response
@@ -473,7 +480,41 @@ def call_agent(agent_name: str, user_text: str, filepaths: Optional[List[str]] =
         )
     
     try:
-        return agent.run(user_text, files=filepaths)
+        # Check if agent supports session_id (for stateful agents)
+        import inspect
+        run_signature = inspect.signature(agent.run)
+        if 'session_id' in run_signature.parameters and session_id:
+            result = agent.run(user_text, files=filepaths, session_id=session_id)
+        else:
+            result = agent.run(user_text, files=filepaths)
+        
+        # Shadow routing for development mode testing
+        try:
+            from core.shadow_routing import shadow_router
+            from health_advisor.router.agent import MasterAgent
+            
+            # Only run shadow routing for direct agent calls (not auto-router)
+            if agent_name != "Health Companion (Auto-Router)":
+                try:
+                    master_agent = MasterAgent()
+                    router_result = master_agent.router_agent.run(user_text)
+                    
+                    # Convert router result to dict for logging
+                    router_dict = {
+                        "primary": getattr(router_result, 'primary', getattr(router_result, 'primary_intent', 'unknown')),
+                        "confidence": getattr(router_result, 'confidence', 0.0),
+                        "rationale": getattr(router_result, 'rationale', '')
+                    }
+                    
+                    shadow_router.run_shadow_test(user_text, agent_name, lambda x: router_dict)
+                except Exception as shadow_error:
+                    # Silently ignore shadow routing errors to not disrupt user experience
+                    pass
+        except ImportError:
+            # Shadow routing dependencies not available
+            pass
+        
+        return result
     except Exception as e:
         return ChatResult(
             text=f"❌ Error calling agent {agent_name}: {str(e)}",

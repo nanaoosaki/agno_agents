@@ -1,372 +1,174 @@
-# data/json_store.py
-# JSON file implementation of the health data storage interface
+"""
+JSON-based storage implementation for health data.
+"""
 
-from __future__ import annotations
 import json
 import os
-import uuid
-import hashlib
-from datetime import datetime, timedelta
-from typing import List, Optional, Dict, Any
+from datetime import datetime
+from typing import Dict, List, Optional, Any
 from pathlib import Path
+import uuid
 
-from data.storage_interface import HealthDataStorage
-from core.ontology import CONDITION_FAMILIES, BODY_REGION_HINTS, normalize_condition
-from core.policies import (
-    EPISODE_LINKING_WINDOW_HOURS, MAX_EPISODE_DURATION_HOURS,
-    DATA_FILES, MAX_EVENTS_IN_MEMORY
-)
-from data.schemas.episodes import EpisodeData, EpisodeCandidate, ObservationData, InterventionData
+from .storage_interface import HealthDataStorage
 
-# Default storage instance - will be replaced with proper class structure in future
-# For now, keeping the functional approach to maintain compatibility
-
-# Data directory and files
-DATA_DIR = Path("data")
-EPISODES_FILE = DATA_DIR / "episodes.json"
-OBSERVATIONS_FILE = DATA_DIR / "observations.json"
-INTERVENTIONS_FILE = DATA_DIR / "interventions.json"
-EVENTS_FILE = DATA_DIR / "events.jsonl"
-
-def _ensure_data_dir():
-    """Ensure data directory and files exist"""
-    DATA_DIR.mkdir(exist_ok=True)
+class JsonStore(HealthDataStorage):
+    """Simple JSON file-based storage implementation."""
     
-    # Initialize files if they don't exist
-    if not EPISODES_FILE.exists():
-        EPISODES_FILE.write_text(json.dumps({}, indent=2))
-    if not OBSERVATIONS_FILE.exists():
-        OBSERVATIONS_FILE.write_text(json.dumps([], indent=2))
-    if not INTERVENTIONS_FILE.exists():
-        INTERVENTIONS_FILE.write_text(json.dumps([], indent=2))
-    if not EVENTS_FILE.exists():
-        EVENTS_FILE.touch()
-
-def _load_episodes() -> Dict[str, Dict[str, Any]]:
-    """Load episodes from storage"""
-    _ensure_data_dir()
-    try:
-        with open(EPISODES_FILE, 'r') as f:
-            return json.load(f)
-    except (json.JSONDecodeError, FileNotFoundError):
-        return {}
-
-def _save_episodes(episodes: Dict[str, Dict[str, Any]]):
-    """Save episodes to storage"""
-    _ensure_data_dir()
-    with open(EPISODES_FILE, 'w') as f:
-        json.dump(episodes, f, indent=2, default=str)
-
-def fetch_open_episode_candidates(window_hours: int = 24) -> List[EpisodeCandidate]:
-    """
-    Fetch recent open episodes as candidates for linking.
-    This tool provides context to the Extractor Agent.
-    
-    Args:
-        window_hours: How far back to look for candidates
+    def __init__(self, base_path: str = "data"):
+        self.base_path = Path(base_path)
+        self.base_path.mkdir(exist_ok=True)
         
-    Returns:
-        List of episode candidates with salient information
-    """
-    episodes = _load_episodes()
-    now = datetime.utcnow()
-    candidates = []
-    
-    for episode_id, ep_data in episodes.items():
-        if ep_data.get("status") != "open":
-            continue
-            
-        # Parse last_updated_at
-        last_updated_str = ep_data.get("last_updated_at", ep_data.get("started_at"))
-        if isinstance(last_updated_str, str):
-            try:
-                last_updated = datetime.fromisoformat(last_updated_str.replace('Z', '+00:00'))
-            except ValueError:
-                continue
-        else:
-            last_updated = last_updated_str
-            
-        # Check if within time window
-        if (now - last_updated).total_seconds() <= window_hours * 3600:
-            # Create salient summary
-            salient_parts = []
-            if ep_data.get("current_severity"):
-                salient_parts.append(f"severity {ep_data['current_severity']}")
-            if ep_data.get("notes_log"):
-                # Get most recent note
-                latest_note = ep_data["notes_log"][-1].get("text", "")[:50]
-                if latest_note:
-                    salient_parts.append(latest_note)
-            
-            candidate = EpisodeCandidate(
-                episode_id=episode_id,
-                condition=ep_data["condition"],
-                started_at=ep_data["started_at"],
-                last_updated_at=last_updated_str,
-                current_severity=ep_data.get("current_severity"),
-                salient="; ".join(salient_parts) or "recent episode"
-            )
-            candidates.append(candidate)
-    
-    # Sort by most recent first
-    candidates.sort(key=lambda x: x.last_updated_at, reverse=True)
-    return candidates[:5]  # Limit to top 5 candidates
-
-# normalize_condition is now imported from core.ontology
-
-def create_episode(condition: str, fields: Dict[str, Any], now: Optional[str] = None) -> str:
-    """
-    Create a new health episode.
-    
-    Args:
-        condition: Normalized condition name
-        fields: Health data fields (severity, location, etc.)
-        now: Timestamp (optional, defaults to current time)
+        self.episodes_file = self.base_path / "episodes.json"
+        self.observations_file = self.base_path / "observations.json"
+        self.interventions_file = self.base_path / "interventions.json"
+        self.profiles_file = self.base_path / "user_profiles.json"
+        self.sessions_file = self.base_path / "session_data.json"
         
-    Returns:
-        Episode ID of created episode
-    """
-    if now is None:
-        timestamp = datetime.utcnow()
-    else:
-        timestamp = datetime.fromisoformat(now) if isinstance(now, str) else now
+        self._initialize_files()
     
-    episodes = _load_episodes()
-    
-    # Generate episode ID
-    date_str = timestamp.date().isoformat()
-    episode_id = f"ep_{date_str}_{condition}_{uuid.uuid4().hex[:8]}"
-    
-    # Create episode data
-    episode = {
-        "episode_id": episode_id,
-        "condition": condition,
-        "started_at": timestamp.isoformat(),
-        "ended_at": None,
-        "status": "open",
-        "current_severity": fields.get("severity"),
-        "max_severity": fields.get("severity"),
-        "severity_points": [{"ts": timestamp.isoformat(), "level": fields["severity"]}] if fields.get("severity") else [],
-        "notes_log": [{"ts": timestamp.isoformat(), "text": fields.get("notes")}] if fields.get("notes") else [],
-        "interventions": [],
-        "last_updated_at": timestamp.isoformat()
-    }
-    
-    episodes[episode_id] = episode
-    _save_episodes(episodes)
-    
-    return episode_id
-
-def update_episode(episode_id: str, fields: Dict[str, Any], now: Optional[str] = None) -> bool:
-    """
-    Update an existing episode with new data.
-    
-    Args:
-        episode_id: ID of episode to update
-        fields: New health data fields
-        now: Timestamp (optional)
+    def _initialize_files(self):
+        """Initialize empty data files."""
+        for file_path in [self.episodes_file, self.observations_file, self.interventions_file]:
+            if not file_path.exists():
+                with open(file_path, 'w') as f:
+                    json.dump([], f)
         
-    Returns:
-        True if update successful
-    """
-    if now is None:
-        timestamp = datetime.utcnow()
-    else:
-        timestamp = datetime.fromisoformat(now) if isinstance(now, str) else now
+        for file_path in [self.profiles_file, self.sessions_file]:
+            if not file_path.exists():
+                with open(file_path, 'w') as f:
+                    json.dump({}, f)
     
-    episodes = _load_episodes()
+    def _load_data(self, file_path: Path):
+        """Load data from JSON file."""
+        try:
+            with open(file_path, 'r') as f:
+                return json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            return [] if "profiles" not in file_path.name else {}
     
-    if episode_id not in episodes:
+    def _save_data(self, file_path: Path, data):
+        """Save data to JSON file."""
+        with open(file_path, 'w') as f:
+            json.dump(data, f, indent=2, default=str)
+    
+    # Episode methods
+    def create_episode(self, episode_data: Dict[str, Any]) -> str:
+        episodes = self._load_data(self.episodes_file)
+        episode_id = str(uuid.uuid4())
+        episode = {"id": episode_id, "created_at": datetime.now().isoformat(), **episode_data}
+        episodes.append(episode)
+        self._save_data(self.episodes_file, episodes)
+        return episode_id
+    
+    def update_episode(self, episode_id: str, updates: Dict[str, Any]) -> bool:
+        episodes = self._load_data(self.episodes_file)
+        for episode in episodes:
+            if episode["id"] == episode_id:
+                episode.update(updates)
+                self._save_data(self.episodes_file, episodes)
+                return True
         return False
     
-    episode = episodes[episode_id]
+    def find_episodes(self, user_id=None, condition=None, start_date=None, end_date=None, active_only=False):
+        episodes = self._load_data(self.episodes_file)
+        return [ep for ep in episodes if not user_id or ep.get("user_id") == user_id]
     
-    # Update severity if provided
-    if fields.get("severity") is not None:
-        new_severity = fields["severity"]
-        episode["current_severity"] = new_severity
-        episode["max_severity"] = max(new_severity, episode.get("max_severity", 0))
-        
-        # Add severity point
-        if "severity_points" not in episode:
-            episode["severity_points"] = []
-        episode["severity_points"].append({
-            "ts": timestamp.isoformat(),
-            "level": new_severity
-        })
+    def get_episode(self, episode_id: str) -> Optional[Dict[str, Any]]:
+        episodes = self._load_data(self.episodes_file)
+        for episode in episodes:
+            if episode["id"] == episode_id:
+                return episode
+        return None
     
-    # Add notes if provided
-    if fields.get("notes"):
-        if "notes_log" not in episode:
-            episode["notes_log"] = []
-        episode["notes_log"].append({
-            "ts": timestamp.isoformat(),
-            "text": fields["notes"]
-        })
+    # Observation methods
+    def create_observation(self, observation_data: Dict[str, Any]) -> str:
+        observations = self._load_data(self.observations_file)
+        obs_id = str(uuid.uuid4())
+        observation = {"id": obs_id, "created_at": datetime.now().isoformat(), **observation_data}
+        observations.append(observation)
+        self._save_data(self.observations_file, observations)
+        return obs_id
     
-    episode["last_updated_at"] = timestamp.isoformat()
+    def find_observations(self, user_id=None, observation_type=None, start_date=None, end_date=None):
+        observations = self._load_data(self.observations_file)
+        return [obs for obs in observations if not user_id or obs.get("user_id") == user_id]
     
-    episodes[episode_id] = episode
-    _save_episodes(episodes)
+    # Intervention methods
+    def create_intervention(self, intervention_data: Dict[str, Any]) -> str:
+        interventions = self._load_data(self.interventions_file)
+        int_id = str(uuid.uuid4())
+        intervention = {"id": int_id, "created_at": datetime.now().isoformat(), **intervention_data}
+        interventions.append(intervention)
+        self._save_data(self.interventions_file, interventions)
+        return int_id
     
-    return True
-
-def add_intervention(episode_id: str, intervention: Dict[str, Any], now: Optional[str] = None) -> str:
-    """
-    Add an intervention to an episode.
+    def find_interventions(self, user_id=None, intervention_type=None, start_date=None, end_date=None):
+        interventions = self._load_data(self.interventions_file)
+        return [inter for inter in interventions if not user_id or inter.get("user_id") == user_id]
     
-    Args:
-        episode_id: Target episode ID
-        intervention: Intervention data (type, dose, timing, notes)
-        now: Timestamp (optional)
-        
-    Returns:
-        Intervention ID
-    """
-    if now is None:
-        timestamp = datetime.utcnow()
-    else:
-        timestamp = datetime.fromisoformat(now) if isinstance(now, str) else now
+    # User profile methods
+    def create_user_profile(self, user_id: str, profile_data: Dict[str, Any]) -> bool:
+        profiles = self._load_data(self.profiles_file)
+        profiles[user_id] = {"user_id": user_id, "created_at": datetime.now().isoformat(), **profile_data}
+        self._save_data(self.profiles_file, profiles)
+        return True
     
-    intervention_id = f"int_{uuid.uuid4().hex[:8]}"
+    def get_user_profile(self, user_id: str) -> Optional[Dict[str, Any]]:
+        profiles = self._load_data(self.profiles_file)
+        return profiles.get(user_id)
     
-    # Load interventions file
-    try:
-        with open(INTERVENTIONS_FILE, 'r') as f:
-            interventions = json.load(f)
-    except (json.JSONDecodeError, FileNotFoundError):
-        interventions = []
+    def update_user_profile(self, user_id: str, updates: Dict[str, Any]) -> bool:
+        profiles = self._load_data(self.profiles_file)
+        if user_id not in profiles:
+            return False
+        profiles[user_id].update(updates)
+        self._save_data(self.profiles_file, profiles)
+        return True
     
-    # Create intervention record
-    intervention_record = {
-        "intervention_id": intervention_id,
-        "episode_id": episode_id,
-        "timestamp": timestamp.isoformat(),
-        "type": intervention.get("type"),
-        "dose": intervention.get("dose"),
-        "timing": intervention.get("timing"),
-        "notes": intervention.get("notes")
-    }
+    # Session methods
+    def store_session_data(self, session_id: str, data: Dict[str, Any]) -> bool:
+        sessions = self._load_data(self.sessions_file)
+        sessions[session_id] = {"session_id": session_id, "data": data}
+        self._save_data(self.sessions_file, sessions)
+        return True
     
-    interventions.append(intervention_record)
+    def get_session_data(self, session_id: str) -> Optional[Dict[str, Any]]:
+        sessions = self._load_data(self.sessions_file)
+        session = sessions.get(session_id)
+        return session.get("data") if session else None
     
-    # Save interventions
-    with open(INTERVENTIONS_FILE, 'w') as f:
-        json.dump(interventions, f, indent=2, default=str)
+    def clear_session_data(self, session_id: str) -> bool:
+        sessions = self._load_data(self.sessions_file)
+        if session_id in sessions:
+            del sessions[session_id]
+            self._save_data(self.sessions_file, sessions)
+            return True
+        return False
     
-    # Also add to episode
-    episodes = _load_episodes()
-    if episode_id in episodes:
-        episode = episodes[episode_id]
-        if "interventions" not in episode:
-            episode["interventions"] = []
-        episode["interventions"].append({
-            "ts": timestamp.isoformat(),
-            "type": intervention.get("type"),
-            "dose": intervention.get("dose"),
-            "timing": intervention.get("timing"),
-            "notes": intervention.get("notes")
-        })
-        episode["last_updated_at"] = timestamp.isoformat()
-        _save_episodes(episodes)
+    # Analysis methods
+    def get_correlation_data(self, user_id: str, conditions: List[str], start_date: datetime, end_date: datetime):
+        return {"episodes": [], "observations": [], "interventions": []}
     
-    return intervention_id
-
-def save_observation(category: str, fields: Dict[str, Any], now: Optional[str] = None) -> str:
-    """
-    Save a general health observation.
+    def backup_user_data(self, user_id: str) -> Dict[str, Any]:
+        return {"user_id": user_id, "timestamp": datetime.now().isoformat()}
     
-    Args:
-        category: Observation category (sleep, mood, diet, etc.)
-        fields: Observation data
-        now: Timestamp (optional)
-        
-    Returns:
-        Observation ID
-    """
-    if now is None:
-        timestamp = datetime.utcnow()
-    else:
-        timestamp = datetime.fromisoformat(now) if isinstance(now, str) else now
+    def restore_user_data(self, user_id: str, backup_data: Dict[str, Any]) -> bool:
+        return True
     
-    observation_id = f"obs_{uuid.uuid4().hex[:8]}"
+    def health_check(self) -> Dict[str, Any]:
+        return {"status": "ok", "timestamp": datetime.now().isoformat()}
     
-    # Load observations
-    try:
-        with open(OBSERVATIONS_FILE, 'r') as f:
-            observations = json.load(f)
-    except (json.JSONDecodeError, FileNotFoundError):
-        observations = []
-    
-    # Create observation record
-    observation_record = {
-        "observation_id": observation_id,
-        "timestamp": timestamp.isoformat(),
-        "category": category,
-        "value": fields.get("value"),
-        "notes": fields.get("notes")
-    }
-    
-    observations.append(observation_record)
-    
-    # Save observations
-    with open(OBSERVATIONS_FILE, 'w') as f:
-        json.dump(observations, f, indent=2, default=str)
-    
-    return observation_id
-
-def append_event(user_text: str, parsed_data: Dict[str, Any], action: str, 
-                model: Optional[str] = None, confidence: Optional[float] = None,
-                episode_id: Optional[str] = None) -> str:
-    """
-    Append event to audit log for tracking and debugging.
-    
-    Args:
-        user_text: Original user message
-        parsed_data: Structured data from extraction
-        action: Action taken (create, update, observation, etc.)
-        model: Model used for extraction
-        confidence: Extraction confidence
-        episode_id: Associated episode ID
-        
-    Returns:
-        Event ID
-    """
-    timestamp = datetime.utcnow()
-    event_id = f"evt_{uuid.uuid4().hex[:8]}"
-    
-    # Create event hash for idempotency
-    bucket = timestamp.replace(second=0, microsecond=0).isoformat()
-    event_hash = hashlib.sha1((user_text.strip() + bucket).encode()).hexdigest()
-    
-    event = {
-        "event_id": event_id,
-        "timestamp": timestamp.isoformat(),
-        "user_text": user_text,
-        "parsed_data": parsed_data,
-        "action": action,
-        "model": model,
-        "confidence": confidence,
-        "episode_id": episode_id,
-        "event_hash": event_hash
-    }
-    
-    # Append to JSONL file
-    _ensure_data_dir()
-    with open(EVENTS_FILE, 'a') as f:
-        f.write(json.dumps(event, default=str) + '\n')
-    
-    return event_id
-
-def get_episode_by_id(episode_id: str) -> Optional[Dict[str, Any]]:
-    """
-    Retrieve episode by ID.
-    
-    Args:
-        episode_id: Episode ID to retrieve
-        
-    Returns:
-        Episode data or None if not found
-    """
-    episodes = _load_episodes()
-    return episodes.get(episode_id)
+    def fetch_open_episode_candidates(self, limit: int = 10) -> List[Dict[str, Any]]:
+        """Fetch open episodes for coaching context."""
+        try:
+            episodes = self._load_data(self.episodes_file)
+            open_episodes = [
+                ep for ep in episodes 
+                if ep.get("status") == "active"
+            ]
+            # Sort by created_at descending and limit
+            open_episodes.sort(key=lambda x: x.get("created_at", ""), reverse=True)
+            return open_episodes[:limit]
+        except Exception as e:
+            print(f"Error fetching open episodes: {e}")
+            return []

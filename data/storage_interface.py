@@ -1,129 +1,293 @@
 """
-Abstract storage interface for health data persistence.
+Abstract storage interface for health data management.
 
-This module defines the contract that all storage backends must implement,
-allowing for easy swapping between JSON files, SQLite, PostgreSQL, etc.
+This module defines the abstract interface that all storage implementations
+must follow, enabling easy migration between storage backends.
 """
 
 from abc import ABC, abstractmethod
-from typing import Optional, List, Dict, Any
+from typing import Dict, List, Optional, Any, Union
 from datetime import datetime
+from enum import Enum
 
+class HealthDataType(Enum):
+    """Types of health data that can be stored."""
+    EPISODE = "episode"
+    OBSERVATION = "observation" 
+    INTERVENTION = "intervention"
+    USER_PROFILE = "user_profile"
+    SESSION_DATA = "session_data"
 
 class HealthDataStorage(ABC):
     """
-    Abstract base class for health data storage backends.
+    Abstract interface for health data storage.
     
-    Defines the standard interface that all storage implementations
-    must provide for episodes, observations, and interventions.
+    This interface provides a consistent API for storing and retrieving
+    health data regardless of the underlying storage backend (JSON, SQL, etc.).
     """
     
-    # === EPISODE OPERATIONS ===
-    
     @abstractmethod
-    def create_episode(self, condition: str, started_at: str, current_severity: int, 
-                      location: Optional[str] = None, notes: Optional[str] = None) -> str:
+    def create_episode(self, episode_data: Dict[str, Any]) -> str:
         """
         Create a new health episode.
         
         Args:
-            condition: The health condition (normalized)
-            started_at: ISO timestamp when episode began
-            current_severity: Initial severity (1-10)
-            location: Optional location information
-            notes: Optional additional notes
+            episode_data: Episode information including condition, severity, etc.
             
         Returns:
-            The generated episode ID
+            Episode ID
         """
         pass
     
     @abstractmethod
-    def get_episode_by_id(self, episode_id: str) -> Optional[Dict[str, Any]]:
-        """Get an episode by its ID."""
+    def update_episode(self, episode_id: str, updates: Dict[str, Any]) -> bool:
+        """
+        Update an existing episode.
+        
+        Args:
+            episode_id: ID of episode to update
+            updates: Dictionary of fields to update
+            
+        Returns:
+            True if update was successful
+        """
         pass
     
     @abstractmethod
-    def update_episode(self, episode_id: str, **updates) -> bool:
-        """Update an existing episode with new data."""
+    def find_episodes(self, 
+                     user_id: Optional[str] = None,
+                     condition: Optional[str] = None,
+                     start_date: Optional[datetime] = None,
+                     end_date: Optional[datetime] = None,
+                     active_only: bool = False) -> List[Dict[str, Any]]:
+        """
+        Find episodes matching criteria.
+        
+        Args:
+            user_id: User ID to filter by
+            condition: Condition type to filter by  
+            start_date: Earliest episode start date
+            end_date: Latest episode start date
+            active_only: Only return active episodes
+            
+        Returns:
+            List of episode dictionaries
+        """
         pass
     
     @abstractmethod
-    def find_latest_open_episode(self, condition: str, window_hours: int = 12) -> Optional[Dict[str, Any]]:
-        """Find the most recent open episode for a condition within a time window."""
+    def get_episode(self, episode_id: str) -> Optional[Dict[str, Any]]:
+        """
+        Get a specific episode by ID.
+        
+        Args:
+            episode_id: Episode identifier
+            
+        Returns:
+            Episode data or None if not found
+        """
         pass
     
     @abstractmethod
-    def fetch_open_episode_candidates(self, window_hours: int = 24) -> List[Dict[str, Any]]:
-        """Fetch episodes that might be candidates for linking new data."""
+    def create_observation(self, observation_data: Dict[str, Any]) -> str:
+        """
+        Create a new health observation.
+        
+        Args:
+            observation_data: Observation information
+            
+        Returns:
+            Observation ID
+        """
         pass
     
     @abstractmethod
-    def close_episode(self, episode_id: str, ended_at: Optional[str] = None) -> bool:
-        """Close an episode and mark it as resolved."""
-        pass
-    
-    # === OBSERVATION OPERATIONS ===
-    
-    @abstractmethod
-    def save_observation(self, timestamp: str, observation_type: str, value: str,
-                        location: Optional[str] = None, notes: Optional[str] = None) -> str:
-        """Save a health observation."""
-        pass
-    
-    @abstractmethod
-    def get_observations_in_range(self, start_time: str, end_time: str) -> List[Dict[str, Any]]:
-        """Get all observations within a time range."""
-        pass
-    
-    # === INTERVENTION OPERATIONS ===
-    
-    @abstractmethod
-    def add_intervention(self, episode_id: str, intervention_type: str, 
-                        dosage: Optional[str] = None, timing: Optional[str] = None,
-                        notes: Optional[str] = None) -> bool:
-        """Add an intervention to an episode."""
+    def find_observations(self,
+                         user_id: Optional[str] = None,
+                         observation_type: Optional[str] = None,
+                         start_date: Optional[datetime] = None,
+                         end_date: Optional[datetime] = None) -> List[Dict[str, Any]]:
+        """
+        Find observations matching criteria.
+        
+        Args:
+            user_id: User ID to filter by
+            observation_type: Type of observation to filter by
+            start_date: Earliest observation date
+            end_date: Latest observation date
+            
+        Returns:
+            List of observation dictionaries
+        """
         pass
     
     @abstractmethod
-    def get_episode_interventions(self, episode_id: str) -> List[Dict[str, Any]]:
-        """Get all interventions for a specific episode."""
-        pass
-    
-    # === EVENT LOG OPERATIONS ===
-    
-    @abstractmethod
-    def append_event(self, event_type: str, data: Dict[str, Any], 
-                    episode_id: Optional[str] = None) -> bool:
-        """Append an event to the audit log."""
-        pass
-    
-    @abstractmethod
-    def get_recent_events(self, limit: int = 100) -> List[Dict[str, Any]]:
-        """Get the most recent events from the audit log."""
-        pass
-    
-    # === QUERY OPERATIONS ===
-    
-    @abstractmethod
-    def get_episodes_in_range(self, start_time: str, end_time: str, 
-                             condition: Optional[str] = None) -> List[Dict[str, Any]]:
-        """Get episodes within a time range, optionally filtered by condition."""
+    def create_intervention(self, intervention_data: Dict[str, Any]) -> str:
+        """
+        Create a new health intervention.
+        
+        Args:
+            intervention_data: Intervention information
+            
+        Returns:
+            Intervention ID
+        """
         pass
     
     @abstractmethod
-    def search_episodes_by_keyword(self, keyword: str) -> List[Dict[str, Any]]:
-        """Search episodes by keyword in notes or other text fields."""
+    def find_interventions(self,
+                          user_id: Optional[str] = None,
+                          intervention_type: Optional[str] = None,
+                          start_date: Optional[datetime] = None,
+                          end_date: Optional[datetime] = None) -> List[Dict[str, Any]]:
+        """
+        Find interventions matching criteria.
+        
+        Args:
+            user_id: User ID to filter by
+            intervention_type: Type of intervention to filter by
+            start_date: Earliest intervention date
+            end_date: Latest intervention date
+            
+        Returns:
+            List of intervention dictionaries
+        """
         pass
     
-    # === MAINTENANCE OPERATIONS ===
-    
     @abstractmethod
-    def backup_data(self, backup_path: str) -> bool:
-        """Create a backup of all data."""
+    def create_user_profile(self, user_id: str, profile_data: Dict[str, Any]) -> bool:
+        """
+        Create or update a user profile.
+        
+        Args:
+            user_id: User identifier
+            profile_data: Profile information
+            
+        Returns:
+            True if successful
+        """
         pass
     
     @abstractmethod
-    def get_storage_stats(self) -> Dict[str, Any]:
-        """Get statistics about the stored data."""
+    def get_user_profile(self, user_id: str) -> Optional[Dict[str, Any]]:
+        """
+        Get user profile by ID.
+        
+        Args:
+            user_id: User identifier
+            
+        Returns:
+            Profile data or None if not found
+        """
+        pass
+    
+    @abstractmethod
+    def update_user_profile(self, user_id: str, updates: Dict[str, Any]) -> bool:
+        """
+        Update user profile.
+        
+        Args:
+            user_id: User identifier
+            updates: Fields to update
+            
+        Returns:
+            True if successful
+        """
+        pass
+    
+    @abstractmethod
+    def store_session_data(self, session_id: str, data: Dict[str, Any]) -> bool:
+        """
+        Store session-specific data.
+        
+        Args:
+            session_id: Session identifier
+            data: Session data to store
+            
+        Returns:
+            True if successful
+        """
+        pass
+    
+    @abstractmethod
+    def get_session_data(self, session_id: str) -> Optional[Dict[str, Any]]:
+        """
+        Retrieve session data.
+        
+        Args:
+            session_id: Session identifier
+            
+        Returns:
+            Session data or None if not found
+        """
+        pass
+    
+    @abstractmethod
+    def clear_session_data(self, session_id: str) -> bool:
+        """
+        Clear session data.
+        
+        Args:
+            session_id: Session identifier
+            
+        Returns:
+            True if successful
+        """
+        pass
+    
+    @abstractmethod
+    def get_correlation_data(self, 
+                           user_id: str,
+                           conditions: List[str],
+                           start_date: datetime,
+                           end_date: datetime) -> Dict[str, Any]:
+        """
+        Get data for correlation analysis.
+        
+        Args:
+            user_id: User identifier
+            conditions: List of conditions to analyze
+            start_date: Analysis start date
+            end_date: Analysis end date
+            
+        Returns:
+            Correlation analysis data
+        """
+        pass
+    
+    @abstractmethod
+    def backup_user_data(self, user_id: str) -> Dict[str, Any]:
+        """
+        Create a backup of all user data.
+        
+        Args:
+            user_id: User identifier
+            
+        Returns:
+            Complete user data backup
+        """
+        pass
+    
+    @abstractmethod
+    def restore_user_data(self, user_id: str, backup_data: Dict[str, Any]) -> bool:
+        """
+        Restore user data from backup.
+        
+        Args:
+            user_id: User identifier
+            backup_data: Backup data to restore
+            
+        Returns:
+            True if successful
+        """
+        pass
+    
+    @abstractmethod
+    def health_check(self) -> Dict[str, Any]:
+        """
+        Perform storage health check.
+        
+        Returns:
+            Health status information
+        """
         pass

@@ -54,5 +54,12 @@
     "max_pain": null,
     "episodes": 0,
     "observations": 2
+  },
+  {
+    "date": "2025-08-21",
+    "avg_pain": null,
+    "max_pain": null,
+    "episodes": 0,
+    "observations": 0
   }
 ]

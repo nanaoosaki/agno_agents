@@ -3,6 +3,7 @@
 # Combines features from implementation_plan_o3.md and additional_details_from_gemini2.5pro.md
 
 import os
+import uuid
 from typing import List, Tuple, Optional
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
@@ -142,7 +143,10 @@ def unified_submit(
     audio_path: str,
     files: Optional[List[gr.File]],
     history: List[dict],
-    agent_name: str,
+    dev_mode: bool,
+    simple_agent: str,
+    dev_agent: str,
+    session_id: str = None,
 ):
     """
     Handles a single submission from any combination of text, audio, and files.
@@ -174,18 +178,37 @@ def unified_submit(
     # Yield to update the UI immediately with the user's turn
     yield history, "", None, None
     
-    # 4. Call the agent with all collected information
+    # 4. Generate session ID if not provided
+    if not session_id:
+        session_id = str(uuid.uuid4())
+    
+    # 5. Determine active agent
+    agent_name = get_active_agent_name(dev_mode, simple_agent, dev_agent)
+    
+    # 6. Call the agent with all collected information
     try:
-        result = call_agent(agent_name, combined_prompt, filepaths)
+        result = call_agent(agent_name, combined_prompt, filepaths, session_id)
         
         # Update the last message with the actual response
         response_text = result.text
+        
+        # Add developer mode route chip if enabled
+        if dev_mode and result.meta and "routed_to" not in result.meta:
+            # For direct agent calls in dev mode, show which agent was used
+            route_chip = f"🔍 **Routed to:** {agent_name}"
+            response_text = f"{route_chip}\n\n{result.text}"
+        elif result.meta and result.meta.get("routed_to"):
+            # For auto-router responses, show routing decision with confidence
+            routed_to = result.meta.get("routed_to")
+            confidence = result.meta.get("confidence", "N/A")
+            route_chip = f"🎯 **Auto-Routed:** {routed_to} ({confidence})"
+            response_text = f"{route_chip}\n\n{result.text}"
         
         # Add metadata if available
         if result.meta and "error" not in result.meta:
             model_info = result.meta.get("model", "")
             if model_info:
-                response_text = f"{result.text}\n\n*Model: {model_info}*"
+                response_text = f"{response_text}\n\n*Model: {model_info}*"
         
         history[-1] = {"role": "assistant", "content": response_text}
         
@@ -422,6 +445,28 @@ def get_agent_description(agent_name: str) -> str:
     agent_info = get_agent_info()
     return agent_info.get(agent_name, "No description available")
 
+def toggle_dev_mode(dev_mode_enabled):
+    """Toggle between simple and developer agent dropdowns."""
+    if dev_mode_enabled:
+        return (
+            gr.update(visible=False),  # Hide simple dropdown
+            gr.update(visible=True),   # Show developer dropdown
+            "🔧 **Developer Mode Active** - Testing individual specialist agents"
+        )
+    else:
+        return (
+            gr.update(visible=True),   # Show simple dropdown
+            gr.update(visible=False),  # Hide developer dropdown
+            "🤖 **User Mode** - Unified health companion experience"
+        )
+
+def get_active_agent_name(dev_mode, simple_agent, dev_agent):
+    """Get the currently active agent name based on mode."""
+    if dev_mode:
+        return dev_agent
+    else:
+        return simple_agent
+
 # --- Gradio UI Layout ---
 with gr.Blocks(
     title="Agno Chat Interface",
@@ -440,22 +485,48 @@ with gr.Blocks(
     gr.Markdown("Chat with AI agents powered by the Agno framework. Supports text, voice, and file inputs.")
     
     with gr.Row():
-        with gr.Column(scale=3):
-            agent_dropdown = gr.Dropdown(
+        with gr.Column(scale=2):
+            # Developer mode toggle
+            dev_mode_toggle = gr.Checkbox(
+                label="🔧 Developer Mode", 
+                value=False,
+                info="Enable testing of individual agents"
+            )
+        with gr.Column(scale=4):
+            # Default dropdown (Auto-Router only)
+            agent_dropdown_simple = gr.Dropdown(
+                choices=["Health Companion (Auto-Router)"],
+                value="Health Companion (Auto-Router)",
+                label="🤖 Health Companion",
+                info="AI-powered health assistant",
+                visible=True
+            )
+            # Developer dropdown (all agents)
+            agent_dropdown_dev = gr.Dropdown(
                 choices=list(AGENTS.keys()),
                 value=list(AGENTS.keys())[0] if AGENTS else None,
-                label="🔧 Select Agent",
-                info="Choose which AI agent to chat with"
+                label="🔧 Select Specialist Agent",
+                info="Choose which AI agent to test directly",
+                visible=False
             )
         with gr.Column(scale=1):
             clear_btn = gr.Button("🗑️ Clear Chat", variant="secondary")
     
+    # Mode status indicator
+    mode_status = gr.Markdown(
+        value="🤖 **User Mode** - Unified health companion experience",
+        elem_classes="agent-info"
+    )
+    
     # Agent description
     agent_description = gr.Markdown(
-        value=get_agent_description(list(AGENTS.keys())[0]) if AGENTS else "",
+        value=get_agent_description("Health Companion (Auto-Router)"),
         elem_classes="agent-info"
     )
 
+    # Session state management
+    session_id_state = gr.State(value=lambda: str(uuid.uuid4()))
+    
     # Main chat interface
     chat_history = gr.Chatbot(
         height=500,
@@ -510,22 +581,34 @@ with gr.Blocks(
     
     # --- Event Handling ---
     
+    # Developer mode toggle
+    dev_mode_toggle.change(
+        fn=toggle_dev_mode,
+        inputs=[dev_mode_toggle],
+        outputs=[agent_dropdown_simple, agent_dropdown_dev, mode_status]
+    )
+    
     # Update agent description when selection changes
-    agent_dropdown.change(
+    agent_dropdown_simple.change(
         fn=get_agent_description,
-        inputs=[agent_dropdown],
+        inputs=[agent_dropdown_simple],
+        outputs=[agent_description]
+    )
+    agent_dropdown_dev.change(
+        fn=get_agent_description,
+        inputs=[agent_dropdown_dev],
         outputs=[agent_description]
     )
     
     # Unified submission handlers
     send_btn.click(
         fn=unified_submit,
-        inputs=[text_input, mic_input, file_input, chat_history, agent_dropdown],
+        inputs=[text_input, mic_input, file_input, chat_history, dev_mode_toggle, agent_dropdown_simple, agent_dropdown_dev, session_id_state],
         outputs=[chat_history, text_input, mic_input, file_input],
     )
     text_input.submit(
         fn=unified_submit,
-        inputs=[text_input, mic_input, file_input, chat_history, agent_dropdown],
+        inputs=[text_input, mic_input, file_input, chat_history, dev_mode_toggle, agent_dropdown_simple, agent_dropdown_dev, session_id_state],
         outputs=[chat_history, text_input, mic_input, file_input],
     )
     

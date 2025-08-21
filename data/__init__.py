@@ -1,8 +1,14 @@
 """
-Data persistence layer for the health companion app.
+Data layer for the health companion system.
 
-This module contains:
-- storage_interface: Abstract storage API definitions
-- json_store: JSON file implementation of storage
-- schemas: Pydantic models for persisted data
+This module provides storage abstractions and implementations for health data,
+user profiles, and session management.
 """
+
+from .storage_interface import HealthDataStorage
+from .json_store import JsonStore
+
+__all__ = [
+    "HealthDataStorage",
+    "JsonStore"
+]
