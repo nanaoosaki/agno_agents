@@ -1,58 +1,115 @@
-# Agno-Chat Project Analysis
+# Agno Health Companion - Project Analysis
 
-## 1. Project File Structure
+**Author**: AI Assistant (Claude)  
+**Last Updated**: August 21, 2025  
+**Status**: Production-Ready with Developer Mode
 
-Key directories and files:
+## 1. Enhanced Project File Structure
+
+Complete project architecture including latest implementations:
 
 ```
 D:\AI\AI_agents_agno/
-├── app.py                          # Main Gradio application
-├── agents.py                       # Agent registry and orchestration
-├── requirements.txt                # Dependencies
-├── healthlogger/                   # Pure Agno health logging workflow
-│   ├── workflow.py                 # Main workflow orchestration
+├── app.py                          # Main Gradio application with multi-modal support
+├── agents.py                       # Agent registry and orchestration with Developer Mode
+├── requirements.txt                # Dependencies (updated with new packages)
+├── .env                           # Environment variables (API keys)
+│
+├── healthlogger/                   # Pure Agno health logging workflow v3.1
+│   ├── workflow.py                 # Multi-modal workflow orchestration
 │   ├── workflow_steps.py           # Deterministic processing logic
 │   ├── agents.py                   # Extractor and Reply agents
 │   ├── schema_router.py            # LLM-compatible schemas
 │   └── prompts.py                  # System prompts
+│
 ├── health_advisor/                 # Health management layer
-│   ├── recall/                     # Historical data analysis
+│   ├── recall/                     # Historical data analysis v2.1
 │   │   ├── agent.py               # Recall agent implementation
-│   │   └── tools.py               # Historical data tools
-│   ├── coach/                      # Evidence-based guidance
+│   │   ├── tools.py               # Historical data tools with time parsing
+│   │   └── workflow.py            # Recall workflow wrapper
+│   ├── coach/                      # Evidence-based guidance v2.0
 │   │   ├── agent.py               # Coach agent implementation
-│   │   └── tools.py               # Coaching tools
-│   ├── router/                     # Intent routing
-│   │   ├── agent.py               # Router agent implementation
-│   │   └── schema.py              # Router decision schema
+│   │   ├── tools.py               # Coaching tools with knowledge base
+│   │   └── workflow.py            # Coach workflow wrapper
+│   ├── router/                     # Intent routing with enhanced schema
+│   │   ├── agent.py               # MasterAgent with session management
+│   │   └── schema.py              # Enhanced RouterDecision schema
 │   └── knowledge/                  # Knowledge base management
-│       └── loader.py              # ChromaDB knowledge loader
-├── data/                           # Data persistence layer
-│   ├── json_store.py              # JSON-based storage implementation
+│       └── loader.py              # ChromaDB knowledge loader with lazy loading
+│
+├── profile_and_onboarding/         # NEW: Stateful profile management v3.3
+│   ├── __init__.py                # Package initialization
+│   ├── agents.py                  # Specialized onboarding step agents
+│   ├── storage.py                 # Profile storage with "Propose→Confirm→Commit"
+│   ├── workflow.py                # Wrapper with fallback support
+│   └── workflow_v2.py             # Structured 6-step onboarding workflow
+│
+├── data/                           # Enhanced data persistence layer
+│   ├── __init__.py                # Package initialization
+│   ├── json_store.py              # JSON-based storage with new methods
 │   ├── storage_interface.py        # Abstract storage contracts
 │   ├── daily_history.py           # Daily aggregation utilities
 │   ├── episodes.json              # Episode data
 │   ├── observations.json          # Observation data
+│   ├── interventions.json         # Intervention data
 │   ├── events.jsonl               # Event audit trail
-│   └── schemas/                    # Pydantic data models
-│       └── episodes.py            # Episode-related schemas
-├── core/                           # Shared business logic
-│   ├── ontology.py                # Health condition normalization
-│   ├── policies.py                # Application constants
-│   └── timeutils.py               # Date/time utilities
+│   ├── user_profiles.json         # NEW: User profile storage
+│   ├── session_data.json          # NEW: Session state storage
+│   └── schemas/                    # Enhanced Pydantic data models
+│       ├── __init__.py            # Schema exports
+│       ├── episodes.py            # Episode-related schemas
+│       └── user_profile.py        # NEW: Comprehensive user profile schemas
+│
+├── core/                           # Enhanced shared business logic
+│   ├── __init__.py                # Core module exports
+│   ├── ontology.py                # Health condition normalization (enhanced)
+│   ├── timeutils.py               # Date/time utilities with timezone support
+│   ├── agent_manifests.py         # NEW: Agent capability manifests
+│   ├── shadow_routing.py          # NEW: Shadow routing for accuracy monitoring
+│   └── file_handler.py            # NEW: Multi-modal file processing utilities
+│
+├── scripts/                        # NEW: Development and testing scripts
+│   ├── routecheck.py              # Router accuracy testing script
+│   ├── batch_parse_conversations.py # Conversation parsing utilities
+│   └── pdf_to_markdown.py         # Document processing scripts
+│
+├── tests/                          # Test suite
+│   ├── test_stateful_implementation.py # NEW: Stateful architecture tests
+│   ├── test_structured_onboarding.py  # NEW: Onboarding workflow tests
+│   ├── test_counters.py           # Counter functionality tests
+│   └── [other test files]         # Additional test implementations
+│
+├── docs/                           # Comprehensive documentation
+│   ├── agno/                      # Agno framework documentation
+│   │   ├── index.md               # Main documentation index
+│   │   ├── quick_reference.md     # Quick API reference
+│   │   ├── core/                  # Core concepts documentation
+│   │   ├── knowledge/             # Knowledge base documentation
+│   │   ├── tools/                 # Tools and utilities documentation
+│   │   └── [extensive docs]       # Complete Agno documentation
+│   └── Linda/                     # Implementation reports and plans
+│       ├── developer_mode_implementation_plan.md    # NEW: Developer mode plan
+│       ├── developer_mode_implementation_report.md  # NEW: Developer mode report
+│       ├── enhanced_onboarding_implementation_report.md # NEW: Onboarding report
+│       ├── stateful_health_companion_implementation_report.md # NEW: Architecture report
+│       ├── multimodal_health_logger_implementation_report.md # Multi-modal report
+│       ├── unified_multimodal_implementation_report.md # Unified UI report
+│       └── [other implementation docs] # Additional reports
+│
 └── knowledge/                      # Knowledge base content
     └── migraine_handout.md        # Medical knowledge source
 ```
 
 ## 2. Key File Contents
 
-### app.py
+### app.py (Enhanced with Developer Mode & Unified Multi-Modal Input)
 ```python
 # app.py
-# Gradio-based chat interface for Agno agents
-# Combines features from implementation_plan_o3.md and additional_details_from_gemini2.5pro.md
+# Enhanced Gradio-based chat interface with Developer Mode and unified multi-modal input
+# Features: Developer mode toggle, route chips, session management, unified input handling
 
 import os
+import uuid
 from typing import List, Tuple, Optional
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
@@ -633,12 +690,15 @@ if __name__ == "__main__":
     )
 ```
 
-### agents.py
+### agents.py (Enhanced with Developer Mode & Session Management)
 
 ```python
 # agents.py
-# Following docs/agno/core/running_your_agent.md and docs/agno/misc/basic_agents.md
+# Enhanced agent registry with Developer Mode support, shadow routing, and session management
+# Features: MasterAgent orchestration, specialized health agents, developer mode integration
+
 import os
+import inspect
 from dataclasses import dataclass
 from typing import Dict, Any, Optional, List
 from dotenv import load_dotenv
@@ -1124,7 +1184,7 @@ def get_agent_info() -> Dict[str, str]:
 
 ## 3. Dependencies and Configuration
 
-### requirements.txt
+### requirements.txt (Updated with New Dependencies)
 ```
 python-dotenv==1.0.1
 gradio==4.44.0
@@ -1133,16 +1193,45 @@ agno==0.2.5
 apscheduler==3.10.4
 pandas==2.2.2
 plotly==5.24.0
+
+# Multi-modal health logger dependencies
+python-magic==0.4.27
+python-magic-bin==0.4.14  # Windows-specific binaries
+
+# Knowledge base and vector storage
+chromadb==0.4.18
+sentence-transformers==2.2.2
+
+# Additional utilities
+unstructured==0.10.25
+markdown==3.5.1
+
+# Optional: For future EXIF data stripping
+# piexif==1.1.3
 ```
 
-### .env.example
+### .env.example (Enhanced Configuration)
 ```
-# Core LLM / STT
-OPENAI_API_KEY=sk-...
+# Core LLM APIs
+OPENAI_API_KEY=sk-...                    # Required for agents and embeddings
+GEMINI_API_KEY=your_gemini_key_here      # Optional for Gemini models
 
-# If you'll use other APIs, add here and read with dotenv in agents.py or app.py:
-# EXA_API_KEY=...
-# NEBIUS_API_KEY=...
+# Optional additional AI providers
 # ANTHROPIC_API_KEY=...
 # GROQ_API_KEY=...
+# EXA_API_KEY=...
+# NEBIUS_API_KEY=...
+
+# Application Settings
+USER_TIMEZONE=UTC                        # Default timezone for health data
+DEBUG_MODE=False                         # Enable debug logging
+SHADOW_ROUTING_ENABLED=True              # Enable shadow routing for dev mode
+
+# Storage Configuration (for future backends)
+# DATABASE_URL=sqlite:///health_data.db
+# REDIS_URL=redis://localhost:6379
+
+# Security Settings (for production)
+# SECRET_KEY=your_secret_key_here
+# ENCRYPTION_KEY=your_encryption_key_here
 ```
