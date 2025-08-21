@@ -185,5 +185,26 @@
     "metadata": {
       "mood": "stressed"
     }
+  },
+  {
+    "observation_id": "obs_5275859d",
+    "timestamp": "2025-08-20T13:54:30.562033",
+    "category": "sleep",
+    "value": null,
+    "notes": "User reported having gone to bed early at 8:30 p.m. and waking up at 6 a.m., which is an hour or two later than usual. User describes feeling refreshed after sleep. The user also noted doing full body stretches upon waking and had a breakfast consisting of cashew cereal with blueberries, milk, a slice of whole wheat bread, and another glass of milk. This logs various aspects of sleep quality and morning routine."
+  },
+  {
+    "observation_id": "obs_4628c2ab",
+    "timestamp": "2025-08-20T14:26:07.867982",
+    "category": "sleep",
+    "value": null,
+    "notes": "User said via voice: 'I feel fine. Sleep quality is probably 5 or 6. I feel refreshed, but definitely I think it's two hours later than usual time. It might be a problem.'. User typed: 'Yesterday I went to bed early, 8.30 p.m. and today I actually got up around 6 a.m. I woke up twice and then out from dreams and then I don't know this is like a one hour or two hour later than my usual wake time so I just want to note that. Waking up I did some full body stretch, a tiny bit of neck stretch and then I had a breakfast which is the cashew cereal, blueberry and the milk combo and then I had one slice of whole wheat bread and then I had another glass of milk. That's it.Oh, feel pretty, um, refreshed and solid asleep.','Woke up twice during the night but managed to feel refreshed in the morning.'"
+  },
+  {
+    "observation_id": "obs_34000334",
+    "timestamp": "2025-08-20T14:41:38.384506",
+    "category": "sleep",
+    "value": null,
+    "notes": "User said via voice: 'Oh, Sleepy Colour, there's about eight, um, refreshed.'. User typed: 'Yesterday I went to bed early, 8.30 p.m. and today I actually got up around 6 a.m. I woke up twice and then out from dreams and then I don't know this is like a one hour or two hour later than my usual wake time so I just want to note that. Waking up I did some full body stretch, a tiny bit of neck stretch and then I had a breakfast which is the cashew cereal, blueberry and the milk combo and then I had one slice of whole wheat bread and then I had another glass of milk. That's it.Oh, feel pretty, um, refreshed and solid asleep.'\n\nNutrition Information from Image:\n1% Low Fat Milk:\n- Serving Size: 1 cup (240 ml)\n- Calories: 100\n- Total Fat: 5g\n- Sodium: 110mg\n- Total Carbohydrate: 12g\n- Protein: 8g"
   }
 ]

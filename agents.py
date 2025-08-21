@@ -159,6 +159,8 @@ Always be helpful, accurate, and provide well-structured responses.""",
 # Health Logger v3 import
 try:
     from healthlogger.workflow import HealthLoggerWorkflowWrapper
+    # Import file handling utilities for multi-modal support
+    from core.file_handler import process_uploaded_files, Attachment, get_image_description
     health_logger_v3 = HealthLoggerWorkflowWrapper()
 except ImportError as e:
     print(f"Warning: Health Logger v3 not available: {e}")
@@ -435,9 +437,9 @@ AGENTS: Dict[str, Any] = {
     "GeneralAgent": GeneralAgent(),
 }
 
-# Add Health Logger v3 if available
+# Add Health Logger v3.1 if available
 if health_logger_v3:
-    AGENTS["Health Logger (v3)"] = health_logger_v3
+    AGENTS["Health Logger (v3.1 Multi-Modal)"] = health_logger_v3
 
 # Add Recall Agent if available
 if recall_agent_wrapper:

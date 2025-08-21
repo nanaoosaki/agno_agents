@@ -17,6 +17,9 @@ Based on API call to `https://api.openai.com/v1/models` on 2025-01-11:
 - `gpt-4o-mini-audio-preview-2024-12-17`
 - `gpt-4o-realtime-preview`
 
+## Embedding Models Available 
+
+
 ## Notes:
 - The correct model ID for "gpt-4o-mini" is `gpt-4o-mini-2024-07-18`
 - The correct model ID for "gpt-4o" is `gpt-4o` (base model)

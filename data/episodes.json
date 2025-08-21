@@ -1319,5 +1319,46 @@
       }
     ],
     "last_updated_at": "2025-08-17T13:08:20.015336"
+  },
+  "ep_2025-08-20_calcium supplementation_21b9738e": {
+    "episode_id": "ep_2025-08-20_calcium supplementation_21b9738e",
+    "condition": "calcium supplementation",
+    "started_at": "2025-08-20T13:52:10.354512",
+    "ended_at": null,
+    "status": "open",
+    "current_severity": null,
+    "max_severity": null,
+    "severity_points": [],
+    "notes_log": [
+      {
+        "ts": "2025-08-20T13:52:10.354512",
+        "text": "User reported they have taken calcium. The attached image is presumed to contain information about the calcium supplement taken. Additional analysis of the image is required for specific details on the calcium supplement such as dosage and frequency. Trusting the image data for any discrepancies present."
+      },
+      {
+        "ts": "2025-08-20T13:53:15.384541",
+        "text": "User tested out and took Exseradine PM headache medication, which contains 250 mg of acetaminophen and 250 mg of aspirin. The user mentioned it's caffeine-free. Presuming this is for migraine relief based on the context."
+      },
+      {
+        "ts": "2025-08-20T14:42:58.464992",
+        "text": "User said via voice: 'oh i'm feeling tiny bit of pain on my right temple and also my neck feels stiff as well'. User typed: 'see images for my neck area where the patch applies'.\n\nThe attached image shows a patch applied to the neck area, suggesting a treatment for the stiffness."
+      }
+    ],
+    "interventions": [
+      {
+        "ts": "2025-08-20T13:52:10.354512",
+        "type": "calcium",
+        "dose": null,
+        "timing": null,
+        "notes": null
+      },
+      {
+        "ts": "2025-08-20T13:53:15.384541",
+        "type": "Exseradine PM",
+        "dose": "250 mg acetaminophen",
+        "timing": null,
+        "notes": "caffeine-free"
+      }
+    ],
+    "last_updated_at": "2025-08-20T14:42:58.464992"
   }
 }

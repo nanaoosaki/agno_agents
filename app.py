@@ -125,35 +125,58 @@ def format_message_with_files(message: str, filepaths: List[str]) -> str:
     
     return f"{message}{file_info}"
 
-def user_submit(
-    message: str,
+def format_user_turn(text: str, audio_transcript: str, filepaths: List[str]) -> str:
+    """Formats the user's turn for display in the chat history."""
+    parts = []
+    if audio_transcript:
+        parts.append(f"🎤 **Voice Input:** *\"{audio_transcript}\"*")
+    if text:
+        parts.append(f"✏️ **Typed Notes:** *\"{text}\"*")
+    if filepaths:
+        file_names = [os.path.basename(p) for p in filepaths]
+        parts.append(f"📎 **Attachments:** {', '.join(file_names)}")
+    return "\n\n".join(parts)
+
+def unified_submit(
+    text_message: str,
+    audio_path: str,
+    files: Optional[List[gr.File]],
     history: List[dict],
     agent_name: str,
-    files: Optional[List[gr.File]],
 ):
     """
-    Handle text and file submissions.
-    Updated for Gradio messages format (OpenAI-style dictionaries)
+    Handles a single submission from any combination of text, audio, and files.
+    This is the new unified handler that replaces separate text and audio submission.
     """
-    if not message.strip():
-        return history, gr.update(value=""), gr.update(value=None)
-    
     history = history or []
+    
+    # 1. Process all inputs
+    audio_transcript = transcribe_audio(audio_path) if audio_path else ""
     filepaths = normalize_files(files)
     
-    # Format user message with file information
-    display_message = format_message_with_files(message, filepaths)
+    # Check if there is any input at all
+    if not text_message.strip() and not audio_transcript.strip() and not filepaths:
+        # Nothing to do, just return the current state
+        return history, "", None, None
     
-    # Add user message and thinking response using new messages format
+    # 2. Construct a comprehensive prompt for the agent
+    combined_prompt = ""
+    if audio_transcript:
+        combined_prompt += f"User said via voice: '{audio_transcript}'. "
+    if text_message:
+        combined_prompt += f"User typed: '{text_message}'."
+    
+    # 3. Format the message for display in the UI
+    display_message = format_user_turn(text_message, audio_transcript, filepaths)
     history.append({"role": "user", "content": display_message})
     history.append({"role": "assistant", "content": "🤔 *Thinking...*"})
     
-    # Yield intermediate state to show "thinking" message
-    yield history, gr.update(value=""), gr.update(value=None)
+    # Yield to update the UI immediately with the user's turn
+    yield history, "", None, None
     
-    # Call the agent and get response
+    # 4. Call the agent with all collected information
     try:
-        result = call_agent(agent_name, message, filepaths)
+        result = call_agent(agent_name, combined_prompt, filepaths)
         
         # Update the last message with the actual response
         response_text = result.text
@@ -169,42 +192,10 @@ def user_submit(
     except Exception as e:
         history[-1] = {"role": "assistant", "content": f"❌ **Error:** {str(e)}"}
     
-    yield history, gr.update(value=""), gr.update(value=None)
+    # 5. Yield final result and clear all inputs
+    yield history, "", None, None
 
-def mic_submit(
-    audio_path: str,
-    history: List[dict],
-    agent_name: str,
-    files: Optional[List[gr.File]],
-):
-    """
-    Handle microphone submissions by transcribing first.
-    Updated for Gradio messages format
-    """
-    history = history or []
-    
-    if not audio_path:
-        error_msg = "No audio file received"
-        history.append({"role": "user", "content": f"🎤 {error_msg}"})
-        history.append({"role": "assistant", "content": ""})
-        return history, None
-    
-    # Transcribe audio
-    transcribed_text = transcribe_audio(audio_path)
-    
-    if not transcribed_text:
-        transcribed_text = "[Audio input was empty or could not be transcribed]"
-    
-    # Add microphone indicator to show this came from audio
-    mic_message = f"🎤 {transcribed_text}"
-    
-    # Use the same submission logic as text input but only return 2 values
-    for result in user_submit(mic_message, history, agent_name, files):
-        # Extract only the first 2 values (history, text_input) and ignore file_input
-        if isinstance(result, tuple) and len(result) >= 2:
-            yield result[0], None  # Return history and clear mic_input
-        else:
-            yield result, None
+# Legacy mic_submit function removed - now using unified_submit
 
 def clear_chat():
     """Clear the chat history."""
@@ -474,34 +465,26 @@ with gr.Blocks(
         avatar_images=("🧑‍💻", "🤖")
     )
     
-    # Text input section
-    with gr.Row():
-        text_input = gr.Textbox(
-            placeholder="💬 Type your message here or use the microphone...",
-            scale=4,
-            lines=2,
-            max_lines=5,
-            show_label=False
-        )
-        send_btn = gr.Button("📤 Send", scale=1, variant="primary")
-
-    # Audio input section
-    with gr.Row():
-        with gr.Column(scale=2):
+    # --- UNIFIED MULTI-MODAL INPUT SECTION ---
+    with gr.Group():
+        gr.Markdown("### 🔄 **Multi-Modal Input** - Combine text, voice, and files in one submission")
+        with gr.Column():
+            text_input = gr.Textbox(
+                placeholder="💬 Type any notes here...",
+                label="Text Input",
+                lines=2,
+                max_lines=5
+            )
             mic_input = gr.Audio(
                 sources=["microphone"],
                 type="filepath",
-                label="🎤 Voice Input"
+                label="🎤 Voice Input (record your main message here)"
             )
-        with gr.Column(scale=1):
-            mic_send_btn = gr.Button("🎵 Transcribe & Send", variant="secondary")
-
-    # File attachment section
-    with gr.Row():
-        file_input = gr.Files(
-            label="📎 Attach Files",
-            file_count="multiple"
-        )
+            file_input = gr.Files(
+                label="📎 Attach Files (e.g., medication labels, food pictures)",
+                file_count="multiple"
+            )
+            send_btn = gr.Button("📤 Send All Inputs", variant="primary", size="lg")
     
     # Daily history calendar - moved up and opened by default
     with gr.Accordion("📅 Daily Health History", open=True):
@@ -517,11 +500,12 @@ with gr.Blocks(
     # Status/info section
     with gr.Row():
         gr.Markdown("""
-        ### 💡 Tips:
-        - **Text**: Type and press Enter or click Send
-        - **Voice**: Record audio and click "Transcribe & Send"
-        - **Files**: Attach images, PDFs, or documents for analysis
-        - **Agents**: Switch between different AI agents for specialized tasks
+        ### 💡 **Unified Multi-Modal Experience**:
+        - **Combine Everything**: Use text, voice, and files together in one submission
+        - **Text**: Type notes or additional context 
+        - **Voice**: Record your main message (automatically transcribed)
+        - **Files**: Attach medication labels, nutrition facts, or health documents
+        - **Single Send**: One button processes all inputs together for comprehensive analysis
         """)
     
     # --- Event Handling ---
@@ -533,29 +517,22 @@ with gr.Blocks(
         outputs=[agent_description]
     )
     
-    # Text input handlers
-    text_input.submit(
-        fn=user_submit,
-        inputs=[text_input, chat_history, agent_dropdown, file_input],
-        outputs=[chat_history, text_input, file_input],
-    )
+    # Unified submission handlers
     send_btn.click(
-        fn=user_submit,
-        inputs=[text_input, chat_history, agent_dropdown, file_input],
-        outputs=[chat_history, text_input, file_input],
+        fn=unified_submit,
+        inputs=[text_input, mic_input, file_input, chat_history, agent_dropdown],
+        outputs=[chat_history, text_input, mic_input, file_input],
+    )
+    text_input.submit(
+        fn=unified_submit,
+        inputs=[text_input, mic_input, file_input, chat_history, agent_dropdown],
+        outputs=[chat_history, text_input, mic_input, file_input],
     )
     
-    # Microphone input handler
-    mic_send_btn.click(
-        fn=mic_submit,
-        inputs=[mic_input, chat_history, agent_dropdown, file_input],
-        outputs=[chat_history, mic_input],
-    )
-    
-    # Clear chat handler
+    # Clear chat handler - now clears all inputs
     clear_btn.click(
-        fn=clear_chat,
-        outputs=[chat_history, text_input]
+        fn=lambda: ([], "", None, None),
+        outputs=[chat_history, text_input, mic_input, file_input]
     )
 
     refresh_history.click(
