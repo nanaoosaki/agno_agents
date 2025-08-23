@@ -1,0 +1,17 @@
+{
+  "test_user": {
+    "user_id": "test_user",
+    "schema_version": 1,
+    "user_tz": "UTC",
+    "created_at": "2025-08-23T11:11:29.826084Z",
+    "last_updated_at": "2025-08-23T11:11:29.826101Z",
+    "last_updated_by": "system",
+    "onboarding_completed": false,
+    "onboarding_completed_at": null,
+    "conditions": [],
+    "medications": [],
+    "routines": [],
+    "notification_preferences": {},
+    "privacy_settings": {}
+  }
+}

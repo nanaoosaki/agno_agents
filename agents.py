@@ -269,9 +269,78 @@ try:
                 self.session_storage[session_id] = {
                     "pending_action": None,
                     "open_episode_id": None,
-                    "conversation_context": []
+                    "conversation_context": [],
+                    "user_id": session_id,  # Add user_id for profile management
+                    "pending_profile_change": None
                 }
             return self.session_storage[session_id]
+        
+        def _handle_profile_intent(self, decision, message: str, session_state: Dict[str, Any]) -> ChatResult:
+            """Handle profile-related intents"""
+            try:
+                user_id = session_state.get("user_id", "anonymous")
+                
+                if decision.primary_intent == "onboarding" or (decision.profile_action == "start_onboarding"):
+                    # Route to onboarding workflow
+                    from profile_and_onboarding.onboarding_workflow import ProfileOnboardingWrapper
+                    onboarding_wrapper = ProfileOnboardingWrapper()
+                    result = onboarding_wrapper.run(message, session_id=user_id)
+                    return ChatResult(
+                        text=result.get("content", "Onboarding error"),
+                        meta=result.get("metadata", {})
+                    )
+                
+                elif decision.primary_intent == "profile_update" or (decision.profile_action == "update_profile"):
+                    # Handle profile updates
+                    from profile_and_onboarding.updater_agent import handle_profile_update
+                    result = handle_profile_update(message, user_id)
+                    
+                    # Store pending changes if confirmation required
+                    if result.get("metadata", {}).get("requires_confirmation"):
+                        session_state["pending_profile_change"] = result["metadata"]["proposed_changes"]
+                    
+                    return ChatResult(
+                        text=result.get("content", "Profile update error"),
+                        meta=result.get("metadata", {})
+                    )
+                
+                elif decision.primary_intent == "profile_view" or (decision.profile_action == "view_profile"):
+                    # View profile information
+                    from profile_and_onboarding.tools import get_profile_summary
+                    try:
+                        # Create a mock agent for the tool call
+                        class MockAgent:
+                            def __init__(self):
+                                self.workflow_session_state = None
+                        
+                        mock_agent = MockAgent()
+                        summary = get_profile_summary.func(mock_agent, user_id)
+                        return ChatResult(
+                            text=summary,
+                            meta={"profile_view": True, "user_id": user_id}
+                        )
+                    except Exception as e:
+                        return ChatResult(
+                            text=f"Error retrieving profile: {str(e)}",
+                            meta={"error": True}
+                        )
+                
+                else:
+                    return ChatResult(
+                        text="I can help you with profile management. You can:\n• Start onboarding to set up your profile\n• Update your medications, conditions, or routines\n• View your current profile information\n\nWhat would you like to do?",
+                        meta={"profile_help": True}
+                    )
+                    
+            except ImportError as e:
+                return ChatResult(
+                    text="❌ Profile system not available. Please check the profile_and_onboarding module.",
+                    meta={"error": "profile_module_unavailable", "details": str(e)}
+                )
+            except Exception as e:
+                return ChatResult(
+                    text=f"Error handling profile request: {str(e)}",
+                    meta={"error": True}
+                )
         
         def run(self, prompt: str, files: Optional[List[str]] = None) -> ChatResult:
             print(f"\n--- MasterAgent: Routing user prompt: '{prompt}' ---")
@@ -282,14 +351,32 @@ try:
             session_state = self._get_session_state(session_id)
             
             # 1. HANDLE CONTROL MESSAGES & PENDING ACTIONS (SHORT-CIRCUIT)
-            if prompt.startswith("/resolve") and session_state.get("pending_action"):
+            if prompt.startswith("/resolve"):
                 print("--> Handling resolved action directly.")
-                # For MVP, we'll just clear the pending action
-                session_state["pending_action"] = None
-                return ChatResult(
-                    text="✅ Action resolved successfully.",
-                    meta={"action": "control_resolved", "session_id": session_id}
-                )
+                
+                # Handle profile confirmations
+                if "profile" in prompt.lower() and session_state.get("pending_profile_change"):
+                    try:
+                        from profile_and_onboarding.updater_agent import commit_profile_changes
+                        pending_change = session_state.pop("pending_profile_change")
+                        user_id = session_state.get("user_id", session_id)
+                        
+                        result = commit_profile_changes(
+                            user_id=user_id,
+                            proposed_changes=pending_change,
+                            user_choice="confirm"
+                        )
+                        return ChatResult(text=result, meta={"action": "profile_committed", "session_id": session_id})
+                    except Exception as e:
+                        return ChatResult(text=f"Error confirming profile changes: {str(e)}", meta={"error": True})
+                
+                # General pending action handling
+                elif session_state.get("pending_action"):
+                    session_state["pending_action"] = None
+                    return ChatResult(
+                        text="✅ Action resolved successfully.",
+                        meta={"action": "control_resolved", "session_id": session_id}
+                    )
             
             # 2. GET ROUTING DECISION (STATE-AWARE)
             try:
@@ -348,6 +435,10 @@ try:
                 else:
                     primary_result = ChatResult(text="❌ Coach Agent not available", meta={"error": "agent_unavailable"})
             
+            elif final_intent in ["profile_update", "onboarding", "profile_view"]:
+                print(f"--> Routing to Profile Handler ({final_intent})")
+                primary_result = self._handle_profile_intent(decision, prompt, session_state)
+            
             elif final_intent == "control_action":
                 print("--> Handling control action")
                 primary_result = ChatResult(
@@ -358,7 +449,7 @@ try:
             elif final_intent == "unknown":
                 print("--> Unknown intent - asking for clarification")
                 primary_result = ChatResult(
-                    text="I'm not sure what you'd like me to help with. You can:\n• Log health information (e.g., 'I have a headache')\n• Ask about your history (e.g., 'Show me my recent episodes')\n• Get advice (e.g., 'What should I do for this pain?')",
+                    text="I'm not sure what you'd like me to help with. You can:\n• Log health information (e.g., 'I have a headache')\n• Ask about your history (e.g., 'Show me my recent episodes')\n• Get advice (e.g., 'What should I do for this pain?')\n• Update your profile (e.g., 'Add new medication')\n• View your profile (e.g., 'Show my profile')",
                     meta={"action": "clarification_request"}
                 )
             
@@ -448,6 +539,13 @@ if recall_agent_wrapper:
 # Add Coach Agent if available
 if coach_agent_wrapper:
     AGENTS["Coach Agent"] = coach_agent_wrapper
+
+# Add Profile & Onboarding if available
+try:
+    from profile_and_onboarding.onboarding_workflow import ProfileOnboardingWrapper
+    AGENTS["Profile & Onboarding"] = ProfileOnboardingWrapper()
+except ImportError as e:
+    print(f"Warning: Profile & Onboarding not available: {e}")
 
 # Add Master Agent (Health Companion) if available - This should be the DEFAULT
 if master_agent:
