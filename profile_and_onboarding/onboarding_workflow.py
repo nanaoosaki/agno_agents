@@ -31,12 +31,15 @@ medications_agent = Agent(
     model=OpenAIChat(id="gpt-4o-mini-2024-07-18"),
     response_model=OnboardMedicationsResponse,
     instructions=[
-        "Extract medications from user input including dosage and schedule.",
-        "Categorize medications as preventative, abortive, supplement, or other.",
-        "If dosage or schedule information is missing, set needs_clarification=True.",
-        "Focus on current medications, not past ones.",
-        "Include prescriber information if mentioned.",
-        "Be specific about medication names (generic names preferred)."
+        "Extract medications from user input. Accept partial information and don't over-clarify.",
+        "Examples: 'ubrelvy' → name='Ubrelvy', type='abortive' (assume common medication types)",
+        "Examples: 'Ubrelvy 25mg' → name='Ubrelvy', dose='25mg', type='abortive'",
+        "Examples: 'Pantoprazole morning' → name='Pantoprazole', schedule='morning', type='other'",
+        "If user provides just a medication name, extract it and set reasonable defaults.",
+        "Common migraine medications like Ubrelvy, Nurtec, Imitrex are typically 'abortive' type.",
+        "Preventative medications include propranolol, topiramate, amitriptyline.",
+        "Only set needs_clarification=True if the input is truly unclear or not medication-related.",
+        "Always create at least one medication entry if user mentions any medication name."
     ]
 )
 
@@ -62,7 +65,7 @@ preview_agent = Agent(
         "Present a summary of collected profile information for user confirmation.",
         "Allow user to confirm or request edits to specific sections.",
         "Respond with appropriate action based on user feedback.",
-        "If user says 'confirm', 'yes', 'looks good', respond with action='confirm'.",
+        "If user says 'confirm', 'yes', 'yes please', 'looks good', 'that's right', 'correct', respond with action='confirm'.",
         "If user wants to edit conditions, respond with action='edit_conditions'.",
         "If user wants to edit medications, respond with action='edit_medications'.",
         "If user wants to edit routines, respond with action='edit_routines'."
@@ -127,7 +130,21 @@ class OnboardingWorkflow:
             }
         
         # Run conditions extraction
-        result = conditions_agent.run(message)
+        agent_response = conditions_agent.run(message)
+        
+        # Extract structured data from RunResponse object
+        if hasattr(agent_response, 'content') and hasattr(agent_response.content, 'needs_clarification'):
+            # Agno v2 RunResponse with structured content
+            result = agent_response.content
+        elif hasattr(agent_response, 'needs_clarification'):
+            # Direct structured response (fallback/mock mode)
+            result = agent_response
+        else:
+            # Fallback if structure is unexpected
+            return {
+                "content": "I had trouble processing your conditions. Could you please list your health conditions again?",
+                "metadata": {"error": True, "step": "conditions"}
+            }
         
         if result.needs_clarification:
             return {
@@ -161,7 +178,21 @@ class OnboardingWorkflow:
                 "metadata": {"step": "medications", "awaiting_input": True}
             }
         
-        result = medications_agent.run(message)
+        agent_response = medications_agent.run(message)
+        
+        # Extract structured data from RunResponse object
+        if hasattr(agent_response, 'content') and hasattr(agent_response.content, 'needs_clarification'):
+            # Agno v2 RunResponse with structured content
+            result = agent_response.content
+        elif hasattr(agent_response, 'needs_clarification'):
+            # Direct structured response (fallback/mock mode)
+            result = agent_response
+        else:
+            # Fallback if structure is unexpected
+            return {
+                "content": "I had trouble processing your medications. Could you please list your current medications again?",
+                "metadata": {"error": True, "step": "medications"}
+            }
         
         if result.needs_clarification:
             return {
@@ -169,11 +200,23 @@ class OnboardingWorkflow:
                 "metadata": {"needs_clarification": True, "step": "medications"}
             }
         
-        # Save progress
-        self.session_state["partial_profile"]["medications"] = [
-            {**med.model_dump(), "source": "onboarding", "started_at": datetime.now(timezone.utc).isoformat()}
-            for med in result.medications
-        ]
+        # Save progress and ensure medications were extracted
+        if not result.medications:
+            return {
+                "content": "I didn't find any medications in your response. Could you please tell me what medications you're currently taking? (You can just list the names if you don't know dosages)",
+                "metadata": {"needs_clarification": True, "step": "medications"}
+            }
+        
+        medications_data = []
+        for med in result.medications:
+            med_dict = med.dict() if hasattr(med, 'dict') else med.model_dump()
+            med_dict.update({
+                "source": "onboarding", 
+                "started_at": datetime.now(timezone.utc).isoformat()
+            })
+            medications_data.append(med_dict)
+        
+        self.session_state["partial_profile"]["medications"] = medications_data
         self.session_state["step_index"] = 2
         
         med_count = len(result.medications)
@@ -190,7 +233,21 @@ class OnboardingWorkflow:
                 "metadata": {"step": "routines", "awaiting_input": True}
             }
         
-        result = routines_agent.run(message)
+        agent_response = routines_agent.run(message)
+        
+        # Extract structured data from RunResponse object
+        if hasattr(agent_response, 'content') and hasattr(agent_response.content, 'needs_clarification'):
+            # Agno v2 RunResponse with structured content
+            result = agent_response.content
+        elif hasattr(agent_response, 'needs_clarification'):
+            # Direct structured response (fallback/mock mode)
+            result = agent_response
+        else:
+            # Fallback if structure is unexpected
+            return {
+                "content": "I had trouble processing your routines. Could you please describe your daily health routines again?",
+                "metadata": {"error": True, "step": "routines"}
+            }
         
         if result.needs_clarification:
             return {
@@ -198,24 +255,26 @@ class OnboardingWorkflow:
                 "metadata": {"needs_clarification": True, "step": "routines"}
             }
         
-        # Save progress
-        self.session_state["partial_profile"]["routines"] = [
-            {**routine.model_dump(), "last_confirmed_at": datetime.now(timezone.utc).isoformat()}
-            for routine in result.routines
-        ]
+        # Save progress (routines can be empty - user might not have specific routines)
+        routines_data = []
+        for routine in result.routines:
+            routine_dict = routine.dict() if hasattr(routine, 'dict') else routine.model_dump()
+            routine_dict.update({"last_confirmed_at": datetime.now(timezone.utc).isoformat()})
+            routines_data.append(routine_dict)
+        
+        self.session_state["partial_profile"]["routines"] = routines_data
         self.session_state["step_index"] = 3
         
-        return {
-            "content": "Perfect! Let me show you a summary of your profile for confirmation.",
-            "metadata": {"step_completed": "routines"}
-        }
+        # Immediately transition to preview and show summary
+        return self._handle_preview_step(None)
     
     def _handle_preview_step(self, message: str) -> dict:
         """Step 4: Preview profile and get confirmation"""
         partial_profile = self.session_state.get("partial_profile", {})
         
-        if not message:
-            # Create summary
+        # If message is None, show the summary (first time in preview)
+        if message is None:
+            # Show profile summary for confirmation
             summary_parts = ["Here's your health profile summary:"]
             
             conditions = partial_profile.get("conditions", [])
@@ -246,8 +305,22 @@ class OnboardingWorkflow:
                 "metadata": {"awaiting_confirmation": True, "step": "preview"}
             }
         
-        # Process user response
-        result = preview_agent.run(f"User response to profile summary: {message}")
+        # User is responding to the summary - process their confirmation response
+        agent_response = preview_agent.run(f"User response to profile summary: {message}")
+        
+        # Extract structured data from RunResponse object
+        if hasattr(agent_response, 'content') and hasattr(agent_response.content, 'action'):
+            # Agno v2 RunResponse with structured content
+            result = agent_response.content
+        elif hasattr(agent_response, 'action'):
+            # Direct structured response (fallback/mock mode)
+            result = agent_response
+        else:
+            # Fallback if structure is unexpected
+            return {
+                "content": "I didn't understand that response. Please say 'confirm' to save your profile, or 'edit conditions/medications/routines' to modify a section.",
+                "metadata": {"error": True, "step": "preview"}
+            }
         
         if result.action == "confirm":
             # Finalize onboarding
@@ -336,7 +409,7 @@ class ProfileOnboardingWrapper:
     def __init__(self):
         self.workflows = {}  # Session-based workflow storage
     
-    def run(self, prompt: str, files=None, session_id: str = "anonymous") -> dict:
+    def run(self, prompt: str, files=None, session_id: str = "anonymous"):
         """Run method following existing ChatResult pattern"""
         try:
             # Get or create workflow for this session
@@ -357,13 +430,34 @@ class ProfileOnboardingWrapper:
                 "session_id": session_id
             })
             
-            return result
+            # CRITICAL FIX: Return ChatResult object instead of raw dict
+            from dataclasses import dataclass
+            from typing import Dict, Any, Optional
+            
+            @dataclass
+            class ChatResult:
+                text: str
+                meta: Optional[Dict[str, Any]] = None
+            
+            return ChatResult(
+                text=result.get("content", "Onboarding response error"),
+                meta=result.get("metadata", {})
+            )
             
         except Exception as e:
-            return {
-                "content": f"Error during onboarding: {str(e)}",
-                "metadata": {
+            # Import ChatResult for error case
+            from dataclasses import dataclass
+            from typing import Dict, Any, Optional
+            
+            @dataclass
+            class ChatResult:
+                text: str
+                meta: Optional[Dict[str, Any]] = None
+            
+            return ChatResult(
+                text=f"Error during onboarding: {str(e)}",
+                meta={
                     "error": True,
                     "agent_name": self.name
                 }
-            }
+            )

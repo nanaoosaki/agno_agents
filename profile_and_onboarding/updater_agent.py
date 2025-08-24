@@ -176,7 +176,7 @@ class ProfileUpdater:
                     continue
             
             if changes_applied:
-                changes_text = "\n".join([f"✓ {change}" for change in changes_applied])
+                changes_text = "\n".join([f"* {change}" for change in changes_applied])
                 return f"Successfully updated your profile:\n\n{changes_text}"
             else:
                 return "No changes could be applied. Please check your profile data and try again."

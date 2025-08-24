@@ -110,10 +110,10 @@ def process_uploaded_files(filepaths: List[str]) -> List[Attachment]:
                 )
             )
             
-            print(f"✅ Processed file: {os.path.basename(fp)} (tagged as {tag})")
+            print(f"Processed file: {os.path.basename(fp)} (tagged as {tag})")
             
         except Exception as e:
-            print(f"❌ Error processing file {fp}: {e}")
+            print(f"Error processing file {fp}: {e}")
             continue
     
     return processed_attachments

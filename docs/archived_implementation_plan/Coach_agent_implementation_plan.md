@@ -139,3 +139,237 @@ Use as your authoritative source for non-medication guidance highlights:
 * Enforce the **one paragraph + ≤2 bullets** rule and run `safety_filters()` last.
 
 That’s it—lean, grounded, and ready for Agno wiring.
+
+## implementation details from gemini 2.5pro 
+Excellent. The architectural refactor is complete, the foundation is solid, and now we can build the CoachAgent on top of it with confidence. The provided plan is perfect, and we will implement it directly within the new, clean, layered architecture.
+
+This plan confirms that the "Layered Architecture" was the right choice. The CoachAgent will live in the health_advisor layer and will act as a read-only consumer of data from both the data layer (for dynamic logs) and the profile_and_onboarding layer (for static user info), with its advice grounded in its own knowledge module.
+
+Here is the comprehensive, step-by-step implementation plan for the Coach Agent, with all code snippets ready to be placed in their correct locations within your newly refactored project.
+
+Implementation Plan: The Agno-Native Coach Agent (v3.2)
+Step 1: Ingest the Knowledge Base (health_advisor/knowledge/loader.py)
+
+First, we need to make the "Migraine Headache Megahandout" available to the agent. We'll use Agno's MarkdownKnowledgeBase and create a simple loader script.
+
+Create health_advisor/knowledge/loader.py:
+
+code
+Python
+download
+content_copy
+expand_less
+
+# health_advisor/knowledge/loader.py
+from pathlib import Path
+from agno.knowledge.markdown import MarkdownKnowledgeBase
+from agno.vectordb.lancedb import LanceDb
+
+# Define paths relative to the project root
+# This assumes your script runs from the `agno-chat` directory
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+HANDOUT_PATH = PROJECT_ROOT / "knowledge" / “Migraine Headache Megahandout.md"
+LANCEDB_PATH = PROJECT_ROOT / "data" / "lancedb_coach"
+
+# Create the Knowledge Base instance
+migraine_knowledge_base = MarkdownKnowledgeBase(
+    path=HANDOUT_PATH,
+    vector_db=LanceDb(
+        uri=str(LANCEDB_PATH),
+        table_name="migraine_handout"
+    ),
+)
+
+def load_knowledge_if_needed():
+    """Function to load the handout into the vector database if it doesn't exist."""
+    if not LANCEDB_PATH.exists():
+        print("Knowledge base not found. Loading migraine handout...")
+        migraine_knowledge_base.load(recreate=True)
+        print("✅ Knowledge base loaded successfully.")
+    else:
+        print("✅ Knowledge base already exists.")
+
+if __name__ == "__main__":
+    load_knowledge_if_needed()
+Step 2: Build the Coach Agent's Toolkit (health_advisor/coach/tools.py)
+
+This toolkit contains the deterministic functions that fetch data, retrieve knowledge, and apply safety rules.
+
+Create health_advisor/coach/tools.py:
+
+code
+Python
+download
+content_copy
+expand_less
+IGNORE_WHEN_COPYING_START
+IGNORE_WHEN_COPYING_END
+# health_advisor/coach/tools.py
+from agno.tools import tool
+from agno.agent import Agent
+from typing import Optional, Dict, Any, List
+
+# Import from the correct layers
+from data.json_store import find_latest_open_episode # Or your storage interface
+from ..knowledge.loader import migraine_knowledge_base
+
+@tool
+def fetch_active_episode_snapshot(agent: Agent) -> Optional[Dict[str, Any]]:
+    """
+    Fetches a compact summary of the user's most recent open health episode
+    for a specific condition to provide immediate context for coaching.
+    """
+    # Note: In a real app, the condition would be dynamically determined.
+    # For MVP, we can hardcode or infer from the agent's context.
+    condition = "migraine" # This can be made dynamic later
+    episode = find_latest_open_episode(condition)
+    
+    if episode and episode.get("status") == "open":
+        return {
+            "condition": episode.get("condition"),
+            "current_severity": episode.get("current_severity"),
+            "notes": episode.get("notes"),
+            "interventions_tried": [iv.get('type') for iv in episode.get('interventions', [])]
+        }
+    return None
+
+@tool
+def get_coaching_snippets(agent: Agent, topic: str, num_snippets: int = 2) -> List[str]:
+    """
+    Searches the Migraine Handout knowledge base for actionable, non-medication advice
+    on a specific topic like 'lifestyle', 'triggers', 'stress', or 'hydration'.
+    """
+    results = migraine_knowledge_base.search(query=topic, limit=num_snippets)
+    return [result.get("content", "") for result in results]
+
+@tool
+def apply_safety_guardrails(agent: Agent, proposed_advice: str) -> str:
+    """
+    Reviews a proposed piece of advice to ensure it is safe and non-prescriptive.
+    It removes specific medical advice, dosage, or diagnoses.
+    """
+    # Simple rule-based filter for MVP. Can be replaced with a dedicated safety agent later.
+    unsafe_keywords = ["dosage", "mg", "prescription", "diagnose", "prescribe"]
+    if any(keyword in proposed_advice.lower() for keyword in unsafe_keywords):
+        return "Based on general wellness principles, focusing on lifestyle factors like hydration and rest can be beneficial. For specific medical advice, please consult a healthcare professional."
+    
+    # Check for overuse mentions
+    if "more than 2 days per week" in proposed_advice or "frequent use" in proposed_advice:
+        return proposed_advice + "\n\n*Note: Frequent use of pain medication can sometimes lead to overuse headaches. It's always a good idea to track usage and discuss patterns with your doctor.*"
+
+    return proposed_advice
+Step 3: Define the Coach Agent (health_advisor/coach/agent.py)
+
+This Agno agent orchestrates the tools to generate its response.
+
+Create health_advisor/coach/agent.py:
+
+code
+Python
+download
+content_copy
+expand_less
+IGNORE_WHEN_COPYING_START
+IGNORE_WHEN_COPYING_END
+# health_advisor/coach/agent.py
+from agno.agent import Agent
+from agno.models.openai import OpenAIChat
+from .tools import fetch_active_episode_snapshot, get_coaching_snippets, apply_safety_guardrails
+
+coach_agent = Agent(
+    name="CoachAgent",
+    model=OpenAIChat(id="gpt-4o"),
+    tools=[
+        fetch_active_episode_snapshot,
+        get_coaching_snippets,
+        apply_safety_guardrails,
+    ],
+    show_tool_calls=True,
+    add_history_to_messages=True,
+    num_history_runs=3,
+    instructions=[
+        "You are an empathetic and supportive health coach. Your goal is to provide safe, actionable, non-medication tips based on the user's situation and a knowledge base.",
+        "Follow this strict plan:",
+        "1. First, call `fetch_active_episode_snapshot` to understand the user's current health status.",
+        "2. Based on the active episode's condition (e.g., 'migraine'), call `get_coaching_snippets` to retrieve 1-2 relevant tips from the knowledge base. Use topics like 'lifestyle', 'triggers', or 'stress'.",
+        "3. Synthesize a brief, personalized suggestion. If the user already tried an intervention, acknowledge it and suggest a *complementary* action (e.g., 'Since you've tried heat, gentle hydration might also help.').",
+        "4. CRITICAL FINAL STEP: Before responding, you MUST pass your complete proposed message to the `apply_safety_guardrails` tool to ensure it's safe.",
+        "5. Your final response to the user is the text returned by the `apply_safety_guardrails` tool."
+    ]
+)
+Step 4: Integrate the Coach Agent into the Main UI (agents.py)
+
+Finally, make the new agent available to the Gradio app.
+
+Modify agents.py:```python
+
+agents.py
+... (keep all your existing imports and code) ...
+--- Import the new Coach Agent and its knowledge loader ---
+
+from health_advisor.coach.agent import coach_agent
+from health_advisor.knowledge.loader import load_knowledge_if_needed
+
+--- Load the Coach's knowledge base on startup ---
+This will run once when the application starts.
+
+load_knowledge_if_needed()
+
+--- Add a wrapper class for the Coach Agent ---
+
+class CoachAgentWrapper:
+name = "Coach Agent"
+def run(self, prompt: str, files: Optional[list] = None) -> ChatResult:
+# For the Coach Agent, we pass the open_episode_id from the logger's state.
+# This demonstrates inter-module state awareness.
+open_episode_id = health_logger_workflow.workflow_session_state.get("open_episode_id")
+
+code
+Code
+download
+content_copy
+expand_less
+IGNORE_WHEN_COPYING_START
+IGNORE_WHEN_COPYING_END
+response = coach_agent.run(
+        message=prompt,
+        # The tool can access this context via the agent object
+        context={"open_episode_id": open_episode_id} 
+    )
+    return ChatResult(text=response.content)
+--- Update the Agent Registry ---
+
+AGENTS: Dict[str, Any] = {
+"Health Logger (Workflow)": HealthLoggerWorkflowWrapper(),
+"Recall Agent": RecallAgentWrapper(),
+"Coach Agent": CoachAgentWrapper(), # Add the new coach
+}
+
+The call_agent function remains the same.
+code
+Code
+download
+content_copy
+expand_less
+IGNORE_WHEN_COPYING_START
+IGNORE_WHEN_COPYING_END
+### **Testing Your New Coach Agent**
+
+Your testing flow will now look like this:
+
+1.  **Start the App**: `python app.py`. On the first run, you will see a message that the knowledge base is being loaded.
+2.  **Log an Episode**:
+    *   Select **"Health Logger (Workflow)"**.
+    *   Send: `My migraine is back, it's a 6/10 and the pain is in my right temple.`
+3.  **Ask for Advice**:
+    *   Switch to **"Coach Agent"**.
+    *   Send: `What can I do for this?`
+4.  **Observe the Console**: You will see the agent executing its plan:
+    *   It will call `fetch_active_episode_snapshot`.
+    *   It will call `get_coaching_snippets` with a query like `migraine triggers`.
+    *   It will synthesize a response.
+    *   It will call `apply_safety_guardrails` on its own response.
+5.  **Check the UI**: You will receive a safe, empathetic, and context-aware suggestion grounded in your handout, like:
+    > "I'm sorry to hear your migraine is back. I've noted the severity and location. The knowledge base suggests that for some people, resting in a dark, quiet room can help reduce sensitivity to light. You could also try applying a cool compress to your temple. I hope you feel some relief soon."
+
+This implementation completes your MVP trio within a clean, scalable, and robust architecture, all powered by the Agno framework.

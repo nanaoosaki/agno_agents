@@ -55,7 +55,7 @@ SAFETY_WARNING_KEYWORDS = [
 
 # Disclaimer text for health advice
 HEALTH_ADVICE_DISCLAIMER = (
-    "⚠️ This advice is for informational purposes only and should not replace "
+    "Warning: This advice is for informational purposes only and should not replace "
     "professional medical consultation. If you have severe symptoms or concerns, "
     "please contact your healthcare provider."
 )

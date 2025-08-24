@@ -63,7 +63,6 @@ AI_agents_agno/
 ```
 
 ### **Design Principles**
-
 - **Layered Architecture** - Clear separation between data capture, analysis, and insights
 - **Shared Primitives** - Consistent condition normalization and time handling
 - **Abstract Storage** - Database-ready persistence interface

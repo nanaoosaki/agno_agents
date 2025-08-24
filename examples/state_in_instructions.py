@@ -20,3 +20,5 @@ agent = Agent(
 )
 
 agent.print_response("What is my name?", stream=True)
+
+# this can be used for checking the user static profiles 

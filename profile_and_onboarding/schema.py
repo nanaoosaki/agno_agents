@@ -11,7 +11,7 @@ class Condition(BaseModel):
     started_at: Optional[datetime] = None
     ended_at: Optional[datetime] = None
     severity: Optional[int] = Field(None, ge=1, le=10)
-    source: Literal["user", "inferred", "imported"] = "user"
+    source: Literal["user", "inferred", "imported", "onboarding"] = "user"
 
 class Medication(BaseModel):
     name: str
@@ -22,7 +22,7 @@ class Medication(BaseModel):
     started_at: Optional[datetime] = None
     stopped_at: Optional[datetime] = None
     prescriber: Optional[str] = None
-    source: Literal["user", "inferred", "imported"] = "user"
+    source: Literal["user", "inferred", "imported", "onboarding"] = "user"
 
 class Routine(BaseModel):
     category: Literal["sleep", "hydration", "exercise", "stress", "nutrition"]

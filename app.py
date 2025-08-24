@@ -34,7 +34,7 @@ client = None
 if OPENAI_API_KEY and OpenAI:
     try:
         client = OpenAI(api_key=OPENAI_API_KEY)
-        print("✅ OpenAI client initialized for audio transcription")
+        print("OpenAI client initialized for audio transcription")
     except Exception as e:
         print(f"Warning: Could not initialize OpenAI client: {e}")
 else:
@@ -190,7 +190,7 @@ def unified_submit(
         history[-1] = {"role": "assistant", "content": response_text}
         
     except Exception as e:
-        history[-1] = {"role": "assistant", "content": f"❌ **Error:** {str(e)}"}
+        history[-1] = {"role": "assistant", "content": f"**Error:** {str(e)}"}
     
     # 5. Yield final result and clear all inputs
     yield history, "", None, None
@@ -376,7 +376,7 @@ def load_daily_history_ui():
     """Load and display daily health history data."""
     try:
         records = [r.__dict__ for r in load_history()]
-        print(f"📊 Loading daily history: {len(records)} records found")
+        print(f"Loading daily history: {len(records)} records found")
         
         if records:
             df = pd.DataFrame(records)
@@ -404,7 +404,7 @@ def load_daily_history_ui():
         return fig, table_df
         
     except Exception as e:
-        print(f"❌ Error loading daily history: {e}")
+        print(f"Error loading daily history: {e}")
         # Return error visualization
         fig = px.scatter(
             x=[1], y=[1], 
@@ -547,13 +547,13 @@ with gr.Blocks(
     )
 
 if __name__ == "__main__":
-    print("🚀 Starting Agno Chat Interface...")
-    print(f"📊 Available agents: {', '.join(AGENTS.keys())}")
+    print("Starting Agno Chat Interface...")
+    print(f"Available agents: {', '.join(AGENTS.keys())}")
     
     # Launch the Gradio app
     demo.launch(
         server_name="127.0.0.1",
-        server_port=7860,
+        server_port=7861,
         inbrowser=True,
         show_api=False,
         share=False

@@ -38,7 +38,7 @@ def create_health_logger_workflow() -> Workflow:
     """
     
     if not AGNO_WORKFLOW_AVAILABLE:
-        print("⚠️ Agno workflow not available, using fallback")
+        print("Warning: Agno workflow not available, using fallback")
         return Workflow(
             name="Health Logger Workflow V3 (Fallback)",
             steps=[],
@@ -86,7 +86,7 @@ class HealthLoggerWorkflowWrapper:
     
     def __init__(self):
         self.workflow = create_health_logger_workflow()
-        print("✅ Health Logger v3 (Pure Agno) initialized successfully")
+        print("Health Logger v3 (Pure Agno) initialized successfully")
     
     def run(self, prompt: str, files: Optional[List[str]] = None):
         """
@@ -155,34 +155,34 @@ class HealthLoggerWorkflowWrapper:
                                 detail="auto"  # Let Agno decide detail level
                             )
                             images_for_workflow.append(image_obj)
-                            print(f"✅ Successfully loaded image: {os.path.basename(att.path)} ({att.tag}) as base64")
+                            print(f"Successfully loaded image: {os.path.basename(att.path)} ({att.tag}) as base64")
                             
                         except Exception as img_error:
-                            print(f"⚠️ Failed to load image {att.path}: {img_error}")
+                            print(f"Warning: Failed to load image {att.path}: {img_error}")
                             # Continue processing other images
                             continue
                             
                 except ImportError:
-                    print("⚠️ Agno Image class not available. Processing files as text context only.")
+                    print("Warning: Agno Image class not available. Processing files as text context only.")
                     # Fallback: Include file paths in prompt
                     file_paths = [att.path for att in attachments]
                     enhanced_prompt += f"\n\nFile paths for reference: {', '.join(file_paths)}"
                 except Exception as e:
-                    print(f"⚠️ Error preparing images for Agno: {e}")
+                    print(f"Warning: Error preparing images for Agno: {e}")
                     # Fallback to text-only processing
                     images_for_workflow = []
             
             # Run the workflow with enhanced prompt and images
             try:
                 if images_for_workflow:
-                    print(f"🎯 Running workflow with {len(images_for_workflow)} image(s) and enhanced prompt")
+                    print(f"Running workflow with {len(images_for_workflow)} image(s) and enhanced prompt")
                     response = self.workflow.run(
                         message=enhanced_prompt,
                         images=images_for_workflow,
                         session_id=session_id
                     )
                 else:
-                    print("🎯 Running workflow with text-only prompt")
+                    print("Running workflow with text-only prompt")
                     response = self.workflow.run(
                         message=enhanced_prompt,
                         session_id=session_id
@@ -190,13 +190,13 @@ class HealthLoggerWorkflowWrapper:
                     
                 # Validate response content to prevent HTTP issues
                 if not hasattr(response, 'content') or not response.content:
-                    print("⚠️ Empty response from workflow, using fallback message")
+                    print("Warning: Empty response from workflow, using fallback message")
                     response_content = "I've processed your health information. The data has been logged successfully."
                 else:
                     response_content = str(response.content)
                     
             except Exception as workflow_error:
-                print(f"❌ Workflow execution failed: {workflow_error}")
+                print(f"Error: Workflow execution failed: {workflow_error}")
                 # Fallback response
                 response_content = f"I encountered an issue processing your multi-modal input: {str(workflow_error)}. Please try again or contact support."
             
@@ -231,6 +231,6 @@ class HealthLoggerWorkflowWrapper:
                 meta: Optional[Dict[str, Any]] = None
             
             return ChatResult(
-                text=f"❌ Error in health logger workflow: {str(e)}",
+                text=f"Error in health logger workflow: {str(e)}",
                 meta={"error": str(e)}
             )

@@ -216,7 +216,7 @@ try:
                     from health_advisor.knowledge.loader import load_knowledge_if_needed
                     load_knowledge_if_needed()
                     self._knowledge_loaded = True
-                    print("✅ Coach knowledge base loaded successfully")
+                    print("Coach knowledge base loaded successfully")
                 except Exception as e:
                     print(f"Warning: Coach knowledge base could not be loaded: {e}")
                     print("Coach Agent will use fallback advice instead")
@@ -262,6 +262,12 @@ try:
         
         def __init__(self):
             self.session_storage = {}  # Simple in-memory session storage for MVP
+            # Initialize onboarding wrapper once to maintain session state
+            try:
+                from profile_and_onboarding.onboarding_workflow import ProfileOnboardingWrapper
+                self.onboarding_wrapper = ProfileOnboardingWrapper()
+            except ImportError:
+                self.onboarding_wrapper = None
         
         def _get_session_state(self, session_id: str) -> Dict[str, Any]:
             """Get or create session state for a given session ID"""
@@ -281,10 +287,22 @@ try:
                 user_id = session_state.get("user_id", "anonymous")
                 
                 if decision.primary_intent == "onboarding" or (decision.profile_action == "start_onboarding"):
-                    # Route to onboarding workflow
-                    from profile_and_onboarding.onboarding_workflow import ProfileOnboardingWrapper
-                    onboarding_wrapper = ProfileOnboardingWrapper()
-                    result = onboarding_wrapper.run(message, session_id=user_id)
+                    # Route to onboarding workflow and set active state
+                    session_state["onboarding_active"] = True
+                    print("--> Starting onboarding workflow, setting active state")
+                    
+                    if not self.onboarding_wrapper:
+                        return ChatResult(
+                            text="Onboarding system not available. Please try again later.",
+                            meta={"error": True}
+                        )
+                    result = self.onboarding_wrapper.run(message, session_id=user_id)
+                    
+                    # Check if onboarding completed immediately
+                    if result.get("metadata", {}).get("onboarding_completed"):
+                        session_state["onboarding_active"] = False
+                        print("--> Onboarding completed in first step, clearing active state")
+                    
                     return ChatResult(
                         text=result.get("content", "Onboarding error"),
                         meta=result.get("metadata", {})
@@ -374,11 +392,40 @@ try:
                 elif session_state.get("pending_action"):
                     session_state["pending_action"] = None
                     return ChatResult(
-                        text="✅ Action resolved successfully.",
+                        text="Action resolved successfully.",
                         meta={"action": "control_resolved", "session_id": session_id}
                     )
             
-            # 2. GET ROUTING DECISION (STATE-AWARE)
+            # 2. CHECK FOR ACTIVE ONBOARDING FLOW BEFORE ROUTING
+            # If user is in middle of onboarding, route directly to onboarding workflow
+            if session_state.get("onboarding_active"):
+                print("--> User is in active onboarding flow, routing directly to onboarding")
+                try:
+                    if not self.onboarding_wrapper:
+                        return ChatResult(
+                            text="Onboarding system not available. Please try again later.",
+                            meta={"error": True}
+                        )
+                    result = self.onboarding_wrapper.run(prompt, session_id=session_id)
+                    
+                    # Check if onboarding is completed
+                    if result.get("metadata", {}).get("onboarding_completed"):
+                        session_state["onboarding_active"] = False
+                        print("--> Onboarding completed, clearing active state")
+                    
+                    return ChatResult(
+                        text=result.get("content", "Onboarding response error"),
+                        meta=result.get("metadata", {})
+                    )
+                except Exception as e:
+                    print(f"Error in onboarding flow: {e}")
+                    session_state["onboarding_active"] = False  # Clear on error
+                    return ChatResult(
+                        text=f"Error in onboarding: {str(e)}. Please try again.",
+                        meta={"error": True}
+                    )
+            
+            # 3. GET ROUTING DECISION (STATE-AWARE)
             try:
                 router_response = router_agent.run(prompt)
                 
@@ -387,7 +434,7 @@ try:
                     decision = router_response.content
                 elif hasattr(router_response, 'content'):
                     # Fallback if structured output fails
-                    print("⚠️ Router returned non-structured response. Defaulting to logger.")
+                    print("Warning: Router returned non-structured response. Defaulting to logger.")
                     decision = RouterDecision(
                         primary_intent="log",
                         secondary_intent=None,
@@ -398,7 +445,7 @@ try:
                     raise Exception("Invalid router response format")
                     
             except Exception as e:
-                print(f"⚠️ Router agent failed: {e}. Defaulting to logger.")
+                print(f"Warning: Router agent failed: {e}. Defaulting to logger.")
                 decision = RouterDecision(
                     primary_intent="log",
                     secondary_intent=None,
@@ -406,8 +453,8 @@ try:
                     rationale="Router agent error - defaulting to health logging"
                 )
             
-            print(f"🧠 Router Decision: Primary='{decision.primary_intent}', Secondary='{decision.secondary_intent}', Confidence={decision.confidence:.2f}")
-            print(f"📝 Rationale: {decision.rationale}")
+            print(f"Router Decision: Primary='{decision.primary_intent}', Secondary='{decision.secondary_intent}', Confidence={decision.confidence:.2f}")
+            print(f"Rationale: {decision.rationale}")
             
             # 3. APPLY CONFIDENCE THRESHOLDS & HEURISTICS
             final_intent = decision.primary_intent
@@ -417,7 +464,7 @@ try:
                     final_intent = "recall"
                 elif any(word in prompt.lower() for word in ["what should i do", "help", "advice", "recommend"]):
                     final_intent = "coach"
-                print(f"⚠️ Confidence low ({decision.confidence:.2f}), applying heuristic. Final intent: '{final_intent}'")
+                print(f"Warning: Confidence low ({decision.confidence:.2f}), applying heuristic. Final intent: '{final_intent}'")
             
             # 4. EXECUTE THE WORKFLOW (potentially multi-step)
             primary_result = None
@@ -510,10 +557,15 @@ try:
                     "had_secondary_intent": decision.secondary_intent is not None
                 })
             
-            return primary_result if primary_result else ChatResult(
+            final_result = primary_result if primary_result else ChatResult(
                 text="❌ Unknown error in routing",
                 meta={"error": "routing_failure"}
             )
+            
+            # Log the AI's response for debugging
+            print(f"AI Response: {final_result.text}")
+            
+            return final_result
     
     master_agent = MasterAgent()
     
